@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lawsearch.css"/>
+    <script src="https://kit.fontawesome.com/139aa3f25a.js" crossorigin="anonymous"></script>
+    <script src="./lawsearch.js"></script>
+</head>
+<body>
+    <div id="headLine"></div>
+
+    <div id="content">
+        <div id="headBtnBox">
+            <div id="headBtnBoxLeft">
+                <div class="headBtn" onclick="moveToLawSearch()">법률안 검색</div>
+                <div class="headBtn">의안 검색</div>
+            </div>
+            <img src="./src/logo.png" style="margin-top:30px"/>
+            <div id="headBtnBoxRight">
+                <div class="headBtn">요즘 국회</div>
+                <div class="headBtn">ABOUT</div>
+            </div>
+        </div>
+        <div class="coverAll">
+            <div id="centerBox">
+                <div style="font-size: 30px;">법률안 검색</div>
+                <div id="searchInput">
+                    <div id="searchLense" onclick="searchHandler()">
+                        <i class="fas fa-search"></i>
+
+                    </div>
+                    <div id="inputWrapper">
+                        <input id="search"/>
+                    </div>
+                </div>
+            </div>
+            <div style="width:1240px; display:flex; flex-direction:row; justify-content: space-between; flex-wrap: wrap;">
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+
+            </div>
+        </div>
+        <div id="bottomLine"></div> <!--포지션 ABSOLUTE-->
+    </div>
+</body>
+</html>
