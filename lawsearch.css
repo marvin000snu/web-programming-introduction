@@ -51,6 +51,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
 }
+
 #headBtnBoxRight {
   margin-right: 100px;
   width: 420px;
@@ -59,6 +60,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
 }
+
 .headBtn {
   width: 200px;
   height: 100%;
@@ -69,6 +71,7 @@ body {
   text-align: center;
   font-size: 20px;
 }
+
 .headBtn:hover {
   width: 200px;
   height: 100%;
@@ -99,6 +102,7 @@ body {
   justify-content: flex-start;
   align-items: center;
 }
+
 #searchInput {
   margin-top: 40px;
   height: 70px;
@@ -110,21 +114,25 @@ body {
   justify-content: flex-start;
   align-items: center;
 }
+
 #searchLense {
   width: 77px;
   height: 37.5px;
   border-right: 2px solid #cfd1d0;
   text-align: 37.5px;
 }
+
 .fa-search {
   color: #cfd1d0;
   font-size: 35px;
   margin-left: 20px;
 }
+
 #inputWrapper {
   width: 600px;
   height: 100%;
 }
+
 #inputWrapper input {
   margin: 10px;
   width: 600px;
@@ -133,10 +141,17 @@ body {
   font-size: 30px;
   background-color: transparent;
 }
+
 #inputWrapper input:focus {
   border: 0px;
   background-color: transparent;
   outline: none;
+}
+
+input#search {
+  color: #2E1D14;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 #searchText {
@@ -146,6 +161,14 @@ body {
   height: 18px;
 }
 
+#cardBox {
+  width: 1240px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .card {
   width: 400px;
   height: 200px;
@@ -153,4 +176,33 @@ body {
   border-radius: 10px;
   margin-top: 40px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.card .inner {
+  margin: 35px;
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: 500;
+  height: 30px;
+  color: '#2e1d14';
+}
+
+.description {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+}
+
+.cardParagraph {
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 20px;
+  color: #2e1d14;
+}
+
+.cardImage {
+  width: 68px;
+  height: 68px;
 }

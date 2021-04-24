@@ -17,7 +17,7 @@
                 <div class="headBtn" onclick="moveToLawSearch()">법률안 검색</div>
                 <div class="headBtn">의안 검색</div>
             </div>
-            <img src="./src/logo.png" style="margin-top:30px"/>
+            <img src="./src/logo.png" style="margin-top:30px" onclick="moveToHome()"/>
             <div id="headBtnBoxRight">
                 <div class="headBtn">요즘 국회</div>
                 <div class="headBtn">ABOUT</div>
@@ -29,27 +29,13 @@
                 <div id="searchInput">
                     <div id="searchLense" onclick="searchHandler()">
                         <i class="fas fa-search"></i>
-
                     </div>
                     <div id="inputWrapper">
-                        <input id="search"/>
+                        <input id="search" placeholder="의안명 혹은 관심있는 키워드로 검색해보세요!"/>
                     </div>
                 </div>
             </div>
-            <div style="width:1240px; display:flex; flex-direction:row; justify-content: space-between; flex-wrap: wrap;">
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-
+            <div id="cardBox">
             </div>
         </div>
         <div id="bottomLine"></div> <!--포지션 ABSOLUTE-->
