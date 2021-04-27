@@ -9,3 +9,7 @@ function moveToHome() {
 const moveToSearchResult = (id) => {
   window.location.href = "./searchresult.html?" + "id=" + id;
 };
+
+function moveToSearchBoth() {
+  window.location.href = "./searchboth.html";
+}
