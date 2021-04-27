@@ -8,7 +8,7 @@ function searchHandler() {
   );
 }
 
-const TestTags = ["안녕하세요", "여기에", "키워드", "넣어주세용", "하하하"];
+const TestTags = ["동물보호법", "좋은 어른법", "국민연금", "전월세신고제", "육아휴직"];
 
 /**
  * Popular search item view.
