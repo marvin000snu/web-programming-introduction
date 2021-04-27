@@ -1,16 +1,6 @@
 import { createInfoText } from "./searchresult.js";
 import { testLawData } from "./testData.js";
 
-function searchHandler() {
-  const value = document.getElementById("search").value;
-  alert(value + " 를 검색합니다.");
-  window.open(
-    "http://web2021-1.s3-website.ap-northeast-2.amazonaws.com/searchboth.html" +
-      value,
-    "_blank"
-  );
-}
-
 /**
  * Create simple card
  *
@@ -67,15 +57,6 @@ window.onload = () => {
   const CardsPreview = () => {
     const div = document.getElementById("cardBox");
     // The number of cards shown in the preview
-    const maxAmount = 12;
-
-    for (let i = 0; i < maxAmount; i++) {
-      const id = i % 3;
-      const currentData = testLawData[id];
-      const card = createCard(currentData);
-      div.appendChild(card);
-    }
-  };
-
-  CardsPreview();
-};
+    const maxAmount = 3;
+  }
+}
