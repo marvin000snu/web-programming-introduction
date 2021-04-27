@@ -73,8 +73,8 @@ const createCard = (data) => {
 
   const image = new Image();
   image.setAttribute("class", "cardImage");
-  if (isCompleted) image.src = './img/complete.png';
-  else image.src = './img/inprogress.png';
+  if (isCompleted) image.src = '../img/complete.png';
+  else image.src = '../img/inprogress.png';
 
   inner.appendChild(titleElement);
   description.appendChild(paragraphElement);

@@ -12,6 +12,10 @@ function moveToLawSearch() {
   window.location.href = "./lawsearch.html";
 }
 
+function moveToPeopleSearch() {
+  window.location.href = "./people.html";
+}
+
 const TestTags = ["안녕하세요", "여기에", "키워드", "넣어주세용", "하하하"];
 
 /**
@@ -35,3 +39,5 @@ window.onload = () => {
 
   tagitemPreview();
 };
+
+

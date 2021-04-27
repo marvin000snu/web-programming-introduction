@@ -25,6 +25,7 @@ body {
   height: 40px;
   width: 100vw;
   min-width: 1440px;
+  margin-top: 50px;
 }
 
 #headBtnBox {
@@ -92,7 +93,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   margin-top: 50px;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
 }
 
 #centerBox {
