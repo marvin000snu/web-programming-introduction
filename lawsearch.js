@@ -1,3 +1,6 @@
+import { createInfoText } from "./searchresult.js";
+import { testLawData } from "./testData.js";
+
 function searchHandler() {
   const value = document.getElementById("search").value;
   alert(value + " 를 검색합니다.");
@@ -8,44 +11,9 @@ function searchHandler() {
   );
 }
 
-function moveToHome() {
-  window.location.href = "./index.html";
-}
-
-// For presentation!
-const testLawData = [
-  {
-    id: "1",
-    title: "공동주택관리법 일부개정법률안",
-    whoCreate: "박상혁의원 외 12인",
-    where: "국토교통관리위원회",
-    when: "2021 - 04 - 05",
-    summary: "공동주택, 회계관리, 회계감사",
-    isCompleted: false,
-  },
-  {
-    id: "2",
-    title: "부동산 거래신고 등에 관한 법률 일부개정법률안",
-    whoCreate: "박상혁의원 외 12인",
-    where: "국토교통관리위원회",
-    when: "2021 - 04 - 05",
-    summary: "공동주택, 회계관리, 회계감사",
-    isCompleted: true,
-  },
-  {
-    id: "3",
-    title: "자원의 절약과 재활용촉진에 관한 법률 일부개정법률안",
-    whoCreate: "박상혁의원 외 12인",
-    where: "국토교통관리위원회",
-    when: "2021 - 04 - 05",
-    summary: "공동주택, 회계관리, 회계감사",
-    isCompleted: false,
-  },
-];
-
 /**
  * Create simple card
- * 
+ *
  * ! Consider a more simpler way..
  * @param {*} data law data
  * @returns Card div element.
@@ -59,27 +27,32 @@ const createCard = (data) => {
   const titleElement = document.createElement("p");
   const paragraphElement = document.createElement("p");
 
+  // Set card element attribute
   cardElement.setAttribute("class", "card");
+  cardElement.style.cursor = "pointer";
+  cardElement.onclick = () => moveToSearchResult(id);
+
   inner.setAttribute("class", "inner");
   description.setAttribute("class", "description");
   titleElement.setAttribute("class", "cardTitle");
   paragraphElement.setAttribute("class", "cardParagraph");
 
-  let paragraph = `누가? ${whoCreate}` + '</br>' + `어디서? ${where}` + '</br>' + `언제? ${when}` + '</br>' + `한줄요약: ${summary}`;
+  const infoList = [whoCreate, where, when, summary];
+  createInfoText(infoList, paragraphElement);
   const cardTitle = document.createTextNode(title);
-  paragraphElement.innerHTML = paragraph;
 
   titleElement.appendChild(cardTitle);
 
   const image = new Image();
   image.setAttribute("class", "cardImage");
-  if (isCompleted) image.src = './img/complete.png';
-  else image.src = './img/inprogress.png';
+
+  if (isCompleted) image.src = "./img/complete.png";
+  else image.src = "./img/inprogress.png";
 
   inner.appendChild(titleElement);
   description.appendChild(paragraphElement);
   description.appendChild(image);
-  inner.appendChild(description)
+  inner.appendChild(description);
 
   cardElement.appendChild(inner);
 

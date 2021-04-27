@@ -8,10 +8,6 @@ function searchHandler() {
   );
 }
 
-function moveToLawSearch() {
-  window.location.href = "./lawsearch.html";
-}
-
 const TestTags = ["안녕하세요", "여기에", "키워드", "넣어주세용", "하하하"];
 
 /**
