@@ -1,16 +1,6 @@
 import { createInfoText } from "./searchresult.js";
 import { testLawData } from "./testData.js";
 
-function searchHandler() {
-  const value = document.getElementById("search").value;
-  alert(value + " 를 검색합니다.");
-  window.open(
-    "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=" +
-      value,
-    "_blank"
-  );
-}
-
 /**
  * Create simple card
  *
@@ -45,8 +35,9 @@ const createCard = (data) => {
 
   const image = new Image();
   image.setAttribute("class", "cardImage");
-  if (isCompleted) image.src = '../img/complete.png';
-  else image.src = '../img/inprogress.png';
+
+  if (isCompleted) image.src = "./img/complete.png";
+  else image.src = "./img/inprogress.png";
 
   inner.appendChild(titleElement);
   description.appendChild(paragraphElement);
@@ -66,15 +57,6 @@ window.onload = () => {
   const CardsPreview = () => {
     const div = document.getElementById("cardBox");
     // The number of cards shown in the preview
-    const maxAmount = 12;
-
-    for (let i = 0; i < maxAmount; i++) {
-      const id = i % 3;
-      const currentData = testLawData[id];
-      const card = createCard(currentData);
-      div.appendChild(card);
-    }
-  };
-
-  CardsPreview();
-};
+    const maxAmount = 3;
+  }
+}
