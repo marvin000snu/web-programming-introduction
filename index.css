@@ -1,7 +1,13 @@
 :root {
   --main-color: #01b0b4;
 }
-
+#searchItemText {
+  color: #60d3ce;
+  font-size: 58px;
+  text-align: center;
+  background-color:red;
+  width:100%;
+}
 body {
   background-color: #fefdf9;
   width: 100vw;
@@ -168,11 +174,7 @@ body {
   margin-top: 10px;
 }
 
-#searchItemText {
-  color: #60d3ce;
-  font-size: 18px;
-  margin-right: 30px;
-}
+
 
 a.tag {
   color: #60d3ce;

@@ -9,3 +9,7 @@ function moveToPeopleSearch(){
 function moveToPeopleDetail(){
     window.location.href = "./peopleDetail.html"
 }
+
+function moveToHome() {
+    window.location.href = "./index.html";
+}
