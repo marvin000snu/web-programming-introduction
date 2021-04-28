@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>POLI-SEE</title>
     <link rel="stylesheet" href="../css/peopleDetail.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <script
       src="https://kit.fontawesome.com/139aa3f25a.js"
       crossorigin="anonymous"
@@ -17,11 +19,11 @@
         var ctx = canvas.getContext("2d");
         const data = {
   labels: [
-    '능력1',
-    '능력1',
-    '능력1',
-    '능력1',
-    '능력1',
+    '상임위원회 출석률',
+    '본회의 출석률',
+    '발의 법안 수',
+    '당선횟수',
+    '가결률',
     '능력1',
     '능력1'
   ],
@@ -36,7 +38,7 @@
     pointHoverBackgroundColor: '#fff',
     pointHoverBorderColor: 'rgb(255, 99, 132)'
   }, {
-    label: 'XXX 의원',
+    label: '의원 평균치',
     data: [28, 48, 40, 19, 96, 27, 100],
     fill: true,
     backgroundColor: 'rgba(54, 162, 235, 0.2)',
@@ -111,9 +113,9 @@ const config = {
                 flex-direction: column;
               "
             >
-              <img src="../src/peopleSample.png" />
-              <div style="margin-top: 30px; font-size: 20px; font-weight: bold">
-                2선 의원이며, 과학기술정보방송통신위원회에서 법안을 심사하고 있습니다. 
+              <img src="../src/person1.png" />
+              <div style="margin-top: 30px; font-size: 20px; font-weight: bold; text-align: center;">
+                2선 의원이며, 과학 기술 정보 방송통신위원회에서 <br>법안을 심사하고 있습니다. 
               </div>
             </div>
             <div

@@ -1,13 +1,7 @@
 :root {
   --main-color: #01b0b4;
 }
-#searchItemText {
-  color: #60d3ce;
-  font-size: 58px;
-  text-align: center;
-  background-color:red;
-  width:100%;
-}
+
 body {
   background-color: #fefdf9;
   width: 100vw;
@@ -64,6 +58,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
 }
+
 #headBtnBoxRight {
   margin-right: 100px;
   width: 420px;
@@ -72,6 +67,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
 }
+
 .headBtn {
   width: 200px;
   height: 100%;
@@ -81,8 +77,8 @@ body {
   line-height: 45px;
   text-align: center;
   font-size: 20px;
-
 }
+
 .headBtn:hover {
   width: 200px;
   height: 100%;
@@ -174,7 +170,11 @@ body {
   margin-top: 10px;
 }
 
-
+#searchItemText {
+  color: #60d3ce;
+  font-size: 18px;
+  margin-right: 30px;
+}
 
 a.tag {
   color: #60d3ce;

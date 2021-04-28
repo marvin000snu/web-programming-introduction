@@ -31,6 +31,11 @@ window.onload = () => {
       const tagElement = document.createElement("a");
 
       tagElement.setAttribute("class", "tag");
+      tagElement.style.fontSize = "18px";
+      tagElement.style.marginLeft = "18px";
+      tagElement.style.textDecoration = "none";
+      tagElement.style.marginLeft = "25px";
+      tagElement.style.color = "#01b0b4"
       tagElement.appendChild(tag);
       tagElement.href = "#";
 

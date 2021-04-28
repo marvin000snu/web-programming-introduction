@@ -1,3 +1,7 @@
+html *{
+  font-family: Noto Sans KR, sans-serif ;
+}
+
 body {
   background-color: #fefdf9;
   width: 100vw;

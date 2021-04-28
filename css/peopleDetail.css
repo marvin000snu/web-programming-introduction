@@ -11,6 +11,11 @@ body {
     height: 100vh;
   }
   
+  html *{
+    font-family: Noto Sans KR, sans-serif ;
+  }
+
+  
   #headLine {
     background-color: #01b9b4;
     height: 10px;

@@ -181,3 +181,9 @@ const generatePage = () => {
 window.onload = () => {
   generatePage();
 };
+
+function moveToPeopleSearch() {
+  alert(1)
+  window.location.href = "./people.html";
+}
+
