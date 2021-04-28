@@ -2,57 +2,50 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>POLI-SEE</title>
-    <link rel="stylesheet" href="../css/lawsearch.css"/>
+    <link rel="stylesheet" href="./css/lawsearch.css" />
     <script src="https://kit.fontawesome.com/139aa3f25a.js" crossorigin="anonymous"></script>
-    <script src="../js/lawsearch.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <script type="module" src="./js/testData.js"></script>
+    <script type="module" src="./js/lawsearch.js"></script>
+    <script src="./js/movePage.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div id="headLine"></div>
+    <div id="headLine"></div>
 
     <div id="content">
-      <div id="headBtnBox">
-        <div id="headBtnBoxLeft">
-          <div class="headBtn" onclick="moveToLawSearch()">법률안 검색</div>
-          <div class="headBtn" onclick="moveToPeopleSearch()">의원 검색</div>
-        </div>
-        <img
-          src="./src/logoOpen.png"
-          style="margin-top: 30px"
-          onclick="moveToHome()"
-          width="150px"
-          height="100px"
-        />
-        <div id="headBtnBoxRight">
-          <div class="headBtn">요즘 국회</div>
-          <div class="headBtn">ABOUT</div>
+        <div id="headBtnBox">
+            <div id="headBtnBoxLeft">
+                <div class="headBtn" onclick="moveToLawSearch()">법률안 검색</div>
+                <div class="headBtn" onclick="moveToPeopleSearch()">의원 검색</div>
+            </div>
+            <img src="./img/LOGO OPEN.png" style="margin-top: 30px; width: 84.67px; height: 60px;"
+                onclick="moveToHome()" />
+            <div id="headBtnBoxRight">
+                <div class="headBtn">요즘 국회</div>
+                <div class="headBtn">ABOUT</div>
+            </div>
         </div>
         <div class="coverAll">
             <div id="centerBox">
-                <div style="font-size: 30px;">법률안 검색</div>
+                <div style="font-size: 30px">법률안 검색</div>
                 <div id="searchInput">
                     <div id="searchLense" onclick="searchHandler()">
                         <i class="fas fa-search"></i>
                     </div>
                     <div id="inputWrapper">
-                        <input id="search" placeholder="의안명 혹은 관심 있는 키워드로 검색해보세요!"/>
+                        <input id="search" placeholder="의원명 혹은 관심있는 키워드로 검색해보세요!" />
                     </div>
                 </div>
             </div>
-            <div id="inputWrapper">
-              <input
-                id="search"
-                placeholder="의안명 혹은 관심있는 키워드로 검색해보세요!"
-              />
-            </div>
-          </div>
+            <div id="cardBox"></div>
         </div>
-        <div id="cardBox"></div>
-    <div id="bottomLine"></div>
+        <div id="bottomLine"></div>
+        <!--포지션 ABSOLUTE-->
+    </div>
+</body>
 
 </html>
