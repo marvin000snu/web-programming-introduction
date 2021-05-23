@@ -129,7 +129,7 @@
         <div class="headBtn" onclick="moveToLawSearch()">법률안 검색</div>
         <div class="headBtn" onClick="moveToPeopleSearch()">의원 검색</div>
       </div>
-      <img src="./img/LOGO OPEN.png" style="margin-top: 30px" onclick="moveToHome()" width="150px" height="100px" />
+      <img id="logo" src="./img/LOGO OPEN.png" onclick="moveToHome()"/>
       <div id="headBtnBoxRight">
         <div class="headBtn">요즘 국회</div>
         <div class="headBtn">ABOUT</div>
@@ -137,75 +137,49 @@
     </div>
     <div class="coverAll">
       <div id="centerBox">
-        <div style="font-size: 30px">OOO (국민의 힘) / 서울 관악 갑</div>
+        <div id="name">OOO (국민의 힘) / 서울 관악 갑</div>
       </div>
-      <div style="
-              width: 1240px;
-              display: flex;
-              flex-direction: row;
-              justify-content: space-between;
-              flex-wrap: wrap;
-              margin-top: 100px;
-              min-height: 800px;
-            ">
+      <div id="boxCover">
         <div class="mainbox">
           <img src="../img/person1.png" />
-          <div style="margin-top: 30px; font-size: 20px; font-weight: bold; text-align: center;">
+          <div id="paragraph2">
             2선 의원이며, 과학 기술 정보 방송통신위원회에서 <br>법안을 심사하고 있습니다.
           </div>
         </div>
-        <div style="
-                width: 50%;
-                height: 400px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-              ">
+        <div id="chartContainer">
           <canvas id="chart" width="400" height="400">
         </div>
         <div class="semibox">
-          <div style=" font-size: 18px;">
+          <div id="subtitle">
             출석 점수
           </div>
-          <div style="margin-top: 20px; font-size: 20px; font-weight: bold;">
+          <div id="paragraph">
             상임위원회: 진정한 성실 개근맨! <br>
             00번의 회의 중, 00번 참석 / 00번 병가 / 00번 청가 / 00번 결석했어요
           </div>
-          <div style="margin-top: 20px; font-size: 20px; font-weight: bold;">
+          <div id="paragraph">
             본회의: 의원님 얼굴 까먹기 일보직전 <br>
             00번의 회의 중, 00번 참석 / 00번 병가 / 00번 청가 / 00번 결석했어요
           </div>
         </div>
-        <div style="
-        width: 50%;
-        height: 400px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        ">
-          <div id="chart_div"  style="width: 600px; height: 400px;"></div>
+        <div id="chartContainer">
+          <div id="chart_div"></div>
         </div>
         <div class = "semibox">
-          <div style=" font-size: 18px;">
+          <div id="subtitle">
             법안 점수
           </div>
-          <div style="margin-top: 20px; font-size: 20px; font-weight: bold;">
+          <div id="paragraph">
             제출 법률안 수: 50개  <br>
             300명 의원 중 134등을 기록했어요. 
           </div>
-          <div style="margin-top: 20px; font-size: 20px; font-weight: bold;">
+          <div id="paragraph">
             통과는 얼마나?: 타율이 안 좋으시네요 <br>
             제출한 법률안 50개 중, 10개만 통과되었어요.
           </div>
         </div>
-        <div style="
-        width: 50%;
-        height: 400px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        ">
-          <div id="chart_div2"  style="width: 600px; height: 400px;"></div>
+        <div id="chartContainer">
+          <div id="chart_div2"></div>
         </div>
       </div>
       <div id="bottomLine"></div>

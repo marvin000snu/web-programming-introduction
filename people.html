@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,8 +12,11 @@
     ></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="./js/people.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet">
   </head>
+
   <body>
     <div id="headLine"></div>
     <div id="content">
@@ -21,13 +25,7 @@
           <div class="headBtn" onclick="moveToLawSearch()">법률안 검색</div>
           <div class="headBtn" onClick="moveToPeopleSearch()">의원 검색</div>
         </div>
-              <img
-      src="./img/LOGO OPEN.png"
-      style="margin-top: 30px"
-      onclick="moveToHome()"
-      width="150px"
-      height="100px"
-    />
+        <img id="logo" src="./img/LOGO OPEN.png" onclick="moveToHome()" />
         <div id="headBtnBoxRight">
           <div class="headBtn">요즘 국회</div>
           <div class="headBtn">ABOUT</div>
@@ -35,7 +33,7 @@
       </div>
       <div class="coverAll">
         <div id="centerBox">
-          <div style="font-size: 30px">의원 검색</div>
+          <div id="subtitle">의원 검색</div>
           <div id="searchInput">
             <div id="searchLense" onclick="searchHandler()">
               <i class="fas fa-search"></i>
@@ -45,335 +43,122 @@
             </div>
           </div>
         </div>
-        <div
-          style="
-            width: 1240px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-top: 100px;
-          "
-        >
-          <div
-      style="
-        width: 150px;
-        height: 192px;
-        margin-top: 30px;
-        padding-left: 25px;
-        padding-right: 25px;
-        display: flex;
-        flex-direction: column;
-      "
-      
-    >
-      <div style="width: 150px; height: 150px" onclick="moveToPeopleDetail()">
-        <img src="./img/peopleSample.png" width="150px" height="150px" />
-      </div>
-      <div
-        style="
-          width: 150px;
-          height: 42px;
-
-          text-align: center;
-          line-height: 42px;
-        "
-      >
-        OOO / 서울 관악 갑
-      </div>
-    </div>          <div
-    style="
-      width: 150px;
-      height: 192px;
-      margin-top: 30px;
-      padding-left: 25px;
-      padding-right: 25px;
-      display: flex;
-      flex-direction: column;
-    "
-    
-  >
-    <div style="width: 150px; height: 150px" onclick="moveToPeopleDetail()">
-      <img src="../img/peopleSample.png" width="150px" height="150px" />
-    </div>
-    <div
-      style="
-        width: 150px;
-        height: 42px;
-
-        text-align: center;
-        line-height: 42px;
-      "
-    >
-      OOO / 서울 관악 갑
-    </div>
-  </div>          <div
-  style="
-    width: 150px;
-    height: 192px;
-    margin-top: 30px;
-    padding-left: 25px;
-    padding-right: 25px;
-    display: flex;
-    flex-direction: column;
-  "
-  
->
-  <div style="width: 150px; height: 150px" onclick="moveToPeopleDetail()">
-    <img src="../img/peopleSample.png" width="150px" height="150px" />
-  </div>
-  <div
-    style="
-      width: 150px;
-      height: 42px;
-
-      text-align: center;
-      line-height: 42px;
-    "
-  >
-    OOO / 서울 관악 갑
-  </div>
-</div>          <div
-style="
-  width: 150px;
-  height: 192px;
-  margin-top: 30px;
-  padding-left: 25px;
-  padding-right: 25px;
-  display: flex;
-  flex-direction: column;
-"
-
->
-<div style="width: 150px; height: 150px" onclick="moveToPeopleDetail()">
-  <img src="../img/peopleSample.png" width="150px" height="150px" />
-</div>
-<div
-  style="
-    width: 150px;
-    height: 42px;
-
-    text-align: center;
-    line-height: 42px;
-  "
->
-  OOO / 서울 관악 갑
-</div>
-</div>          <div
-style="
-  width: 150px;
-  height: 192px;
-  margin-top: 30px;
-  padding-left: 25px;
-  padding-right: 25px;
-  display: flex;
-  flex-direction: column;
-"
-
->
-<div style="width: 150px; height: 150px" onclick="moveToPeopleDetail()">
-  <img src="../img/peopleSample.png" width="150px" height="150px" />
-</div>
-<div
-  style="
-    width: 150px;
-    height: 42px;
-
-    text-align: center;
-    line-height: 42px;
-  "
->
-  OOO / 서울 관악 갑
-</div>
-</div>          <div
-style="
-  width: 150px;
-  height: 192px;
-  margin-top: 30px;
-  padding-left: 25px;
-  padding-right: 25px;
-  display: flex;
-  flex-direction: column;
-"
-
->
-<div style="width: 150px; height: 150px" onclick="moveToPeopleDetail()">
-  <img src="../img/peopleSample.png" width="150px" height="150px" />
-</div>
-<div
-  style="
-    width: 150px;
-    height: 42px;
-
-    text-align: center;
-    line-height: 42px;
-  "
->
-  OOO / 서울 관악 갑
-</div>
-</div>          <div
-style="
-  width: 150px;
-  height: 192px;
-  margin-top: 30px;
-  padding-left: 25px;
-  padding-right: 25px;
-  display: flex;
-  flex-direction: column;
-"
-
->
-<div style="width: 150px; height: 150px" onclick="moveToPeopleDetail()">
-  <img src="../img/peopleSample.png" width="150px" height="150px" />
-</div>
-<div
-  style="
-    width: 150px;
-    height: 42px;
-
-    text-align: center;
-    line-height: 42px;
-  "
->
-  OOO / 서울 관악 갑
-</div>
-</div>          <div
-style="
-  width: 150px;
-  height: 192px;
-  margin-top: 30px;
-  padding-left: 25px;
-  padding-right: 25px;
-  display: flex;
-  flex-direction: column;
-"
-
->
-<div style="width: 150px; height: 150px" onclick="moveToPeopleDetail()">
-  <img src="../img/peopleSample.png" width="150px" height="150px" />
-</div>
-<div
-  style="
-    width: 150px;
-    height: 42px;
-
-    text-align: center;
-    line-height: 42px;
-  "
->
-  OOO / 서울 관악 갑
-</div>
-</div>          <div
-style="
-  width: 150px;
-  height: 192px;
-  margin-top: 30px;
-  padding-left: 25px;
-  padding-right: 25px;
-  display: flex;
-  flex-direction: column;
-"
-
->
-<div style="width: 150px; height: 150px" onclick="moveToPeopleDetail()">
-  <img src="../img/peopleSample.png" width="150px" height="150px" />
-</div>
-<div
-  style="
-    width: 150px;
-    height: 42px;
-
-    text-align: center;
-    line-height: 42px;
-  "
->
-  OOO / 서울 관악 갑
-</div>
-</div>          <div
-style="
-  width: 150px;
-  height: 192px;
-  margin-top: 30px;
-  padding-left: 25px;
-  padding-right: 25px;
-  display: flex;
-  flex-direction: column;
-"
-
->
-<div style="width: 150px; height: 150px" onclick="moveToPeopleDetail()">
-  <img src="../img/peopleSample.png" width="150px" height="150px" />
-</div>
-<div
-  style="
-    width: 150px;
-    height: 42px;
-
-    text-align: center;
-    line-height: 42px;
-  "
->
-  OOO / 서울 관악 갑
-</div>
-</div>          <div
-style="
-  width: 150px;
-  height: 192px;
-  margin-top: 30px;
-  padding-left: 25px;
-  padding-right: 25px;
-  display: flex;
-  flex-direction: column;
-"
-
->
-<div style="width: 150px; height: 150px" onclick="moveToPeopleDetail()">
-  <img src="../img/peopleSample.png" width="150px" height="150px" />
-</div>
-<div
-  style="
-    width: 150px;
-    height: 42px;
-
-    text-align: center;
-    line-height: 42px;
-  "
->
-  OOO / 서울 관악 갑
-</div>
-</div>          <div
-            style="
-              width: 150px;
-              height: 192px;
-              margin-top: 30px;
-              padding-left: 25px;
-              padding-right: 25px;
-              display: flex;
-              flex-direction: column;
-            "
-            
-          >
-            <div style="width: 150px; height: 150px" onclick="moveToPeopleDetail()">
-              <img src="../img/peopleSample.png" width="150px" height="150px" />
+        <div id="boxCover">
+          <div id="boxContainer">
+            <div id="boxImg"
+              onclick="moveToPeopleDetail()">
+              <img src="./img/peopleSample.png" width="150px" height="150px" />
             </div>
-            <div
-              style="
-                width: 150px;
-                height: 42px;
-
-                text-align: center;
-                line-height: 42px;
-              "
-            >
+            <div id="boxInner">
               OOO / 서울 관악 갑
             </div>
           </div>
-    
-        
+          <div id="boxContainer">
+            <div id="boxImg"
+              onclick="moveToPeopleDetail()">
+              <img src="../img/peopleSample.png" width="150px" height="150px" />
+            </div>
+            <div id="boxInner">
+              OOO / 서울 관악 갑
+            </div>
+          </div>
+          <div id="boxContainer">
+            <div id="boxImg"
+              onclick="moveToPeopleDetail()">
+              <img src="../img/peopleSample.png" width="150px" height="150px" />
+            </div>
+            <div id="boxInner">
+              OOO / 서울 관악 갑
+            </div>
+          </div>
+          <div id="boxContainer">
+            <div id="boxImg"
+              onclick="moveToPeopleDetail()">
+              <img src="../img/peopleSample.png" width="150px" height="150px" />
+            </div>
+            <div id="boxInner">
+              OOO / 서울 관악 갑
+            </div>
+          </div>
+          <div id="boxContainer">
+            <div id="boxImg"
+              onclick="moveToPeopleDetail()">
+              <img src="../img/peopleSample.png" width="150px" height="150px" />
+            </div>
+            <div id="boxInner">
+              OOO / 서울 관악 갑
+            </div>
+          </div>
+          <div id="boxContainer">
+            <div id="boxImg"
+              onclick="moveToPeopleDetail()">
+              <img src="../img/peopleSample.png" width="150px" height="150px" />
+            </div>
+            <div id="boxInner">
+              OOO / 서울 관악 갑
+            </div>
+          </div>
+          <div id="boxContainer">
+            <div id="boxImg"
+              onclick="moveToPeopleDetail()">
+              <img src="../img/peopleSample.png" width="150px" height="150px" />
+            </div>
+            <div id="boxInner">
+              OOO / 서울 관악 갑
+            </div>
+          </div>
+          <div id="boxContainer">
+            <div id="boxImg"
+              onclick="moveToPeopleDetail()">
+              <img src="../img/peopleSample.png" width="150px" height="150px" />
+            </div>
+            <div id="boxInner">
+              OOO / 서울 관악 갑
+            </div>
+          </div>
+          <div id="boxContainer">
+            <div id="boxImg"
+              onclick="moveToPeopleDetail()">
+              <img src="../img/peopleSample.png" width="150px" height="150px" />
+            </div>
+            <div id="boxInner">
+              OOO / 서울 관악 갑
+            </div>
+          </div>
+          <div id="boxContainer">
+            <div id="boxImg"
+              onclick="moveToPeopleDetail()">
+              <img src="../img/peopleSample.png" width="150px" height="150px" />
+            </div>
+            <div id="boxInner">
+              OOO / 서울 관악 갑
+            </div>
+          </div>
+          <div id="boxContainer">
+            <div id="boxImg"
+              onclick="moveToPeopleDetail()">
+              <img src="../img/peopleSample.png" width="150px" height="150px" />
+            </div>
+            <div id="boxInner">
+              OOO / 서울 관악 갑
+            </div>
+          </div>
+          <div id="boxContainer">
+            <div id="boxImg"
+              onclick="moveToPeopleDetail()">
+              <img src="../img/peopleSample.png" width="150px" height="150px" />
+            </div>
+            <div id="boxInner">
+              OOO / 서울 관악 갑
+            </div>
+          </div>
 
 
-        <!--포지션 ABSOLUTE-->
+
+
+          <!--포지션 ABSOLUTE-->
+        </div>
       </div>
-    </div>
-  </body>
-</html>
+    </body>
+
+  </html>

@@ -13,3 +13,7 @@ const moveToSearchResult = (id) => {
 function moveToSearchBoth() {
   window.location.href = "./searchboth.html";
 }
+
+function moveToPeopleSearch() {
+  window.location.href = "./people.html";
+}

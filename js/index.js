@@ -1,8 +1,7 @@
 function searchHandler(key) {
   const value = document.getElementById("search").value;
   alert(value + " 를 검색합니다.");
-  window.location.href = "./searchboth.html?search="+value;
-
+  window.location.href = "./searchboth.html?search=" + value;
 }
 
 function moveToHome() {
@@ -13,11 +12,7 @@ function moveToLawSearch() {
   window.location.href = "./lawsearch.html";
 }
 
-function moveToPeopleSearch() {
-  window.location.href = "./people.html";
-}
-
-const TestTags = ["부동산 대책", "저출산", "코로나19", "선거법", ];
+const TestTags = ["부동산 대책", "저출산", "코로나19", "선거법"];
 
 /**
  * Popular search item view.
@@ -35,7 +30,7 @@ window.onload = () => {
       tagElement.style.marginLeft = "18px";
       tagElement.style.textDecoration = "none";
       tagElement.style.marginLeft = "25px";
-      tagElement.style.color = "#01b0b4"
+      tagElement.style.color = "#01b0b4";
       tagElement.appendChild(tag);
       tagElement.href = "#";
 
@@ -45,5 +40,3 @@ window.onload = () => {
 
   tagitemPreview();
 };
-
-

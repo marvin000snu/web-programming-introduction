@@ -12,14 +12,14 @@ function moveToHome() {
   window.location.href = "./index.html";
 }
 
-function moveToPeopleSearch(){
-  window.location.href ="./people.html"
+function moveToPeopleSearch() {
+  window.location.href = "./people.html";
 }
 
 // For presentation!
 const testLawData = [
   {
-    id: "1",
+    id: "0",
     title: "공동주택관리법 일부개정법률안",
     whoCreate: "박상혁의원 외 12인",
     where: "국토교통관리위원회",
@@ -28,7 +28,7 @@ const testLawData = [
     isCompleted: false,
   },
   {
-    id: "2",
+    id: "1",
     title: "부동산 거래신고 등에 관한 법률 일부개정법률안",
     whoCreate: "박상혁의원 외 12인",
     where: "국토교통관리위원회",
@@ -37,7 +37,7 @@ const testLawData = [
     isCompleted: true,
   },
   {
-    id: "3",
+    id: "2",
     title: "자원의 절약과 재활용촉진에 관한 법률 일부개정법률안",
     whoCreate: "박상혁의원 외 12인",
     where: "국토교통관리위원회",
@@ -49,14 +49,14 @@ const testLawData = [
 
 /**
  * Create simple card
- * 
+ *
  * ! Consider a more simpler way..
  * @param {*} data law data
  * @returns Card div element.
  */
 const createCard = (data) => {
   const { id, title, whoCreate, where, when, summary, isCompleted } = data;
-
+  console.log(id);
   const cardElement = document.createElement("div");
   const inner = document.createElement("div");
   const description = document.createElement("div");
@@ -64,15 +64,23 @@ const createCard = (data) => {
   const paragraphElement = document.createElement("p");
 
   cardElement.setAttribute("class", "card");
-  cardElement.addEventListener("click",()=>{
-    window.location.href = "./searchresult.html?id=1";
-  })
+  cardElement.style.cursor = "pointer";
+  cardElement.addEventListener("click", () => {
+    moveToSearchResult(id);
+  });
   inner.setAttribute("class", "inner");
   description.setAttribute("class", "description");
   titleElement.setAttribute("class", "cardTitle");
   paragraphElement.setAttribute("class", "cardParagraph");
 
-  let paragraph = `누가? ${whoCreate}` + '</br>' + `어디서? ${where}` + '</br>' + `언제? ${when}` + '</br>' + `한줄요약: ${summary}`;
+  let paragraph =
+    `누가? ${whoCreate}` +
+    "</br>" +
+    `어디서? ${where}` +
+    "</br>" +
+    `언제? ${when}` +
+    "</br>" +
+    `한줄요약: ${summary}`;
   const cardTitle = document.createTextNode(title);
   paragraphElement.innerHTML = paragraph;
 
@@ -80,13 +88,13 @@ const createCard = (data) => {
 
   const image = new Image();
   image.setAttribute("class", "cardImage");
-  if (isCompleted) image.src = './img/complete.png';
-  else image.src = './img/inprogress.png';
+  if (isCompleted) image.src = "./img/complete.png";
+  else image.src = "./img/inprogress.png";
 
   inner.appendChild(titleElement);
   description.appendChild(paragraphElement);
   description.appendChild(image);
-  inner.appendChild(description)
+  inner.appendChild(description);
 
   cardElement.appendChild(inner);
 
