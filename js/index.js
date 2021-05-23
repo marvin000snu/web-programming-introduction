@@ -1,7 +1,12 @@
 function searchHandler(key) {
   const value = document.getElementById("search").value;
-  alert(value + " 를 검색합니다.");
   window.location.href = "./searchboth.html?search=" + value;
+}
+
+function entersearch() {
+  if(search.keycode == 13){
+    searchInput();
+  }
 }
 
 function moveToHome() {
