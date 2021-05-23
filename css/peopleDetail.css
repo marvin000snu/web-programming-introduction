@@ -9,13 +9,18 @@ body {
   padding: 0px;
   margin: 0px;
   height: 100vh;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
-html *{
-  font-family: Noto Sans KR, sans-serif ;
+html * {
+  font-family: Noto Sans KR, sans-serif;
 }
 
+img#logo {
+  margin-top: 30px;
+  width: 84.67px;
+  height: 60px;
+}
 
 #headLine {
   background-color: #01b9b4;
@@ -33,6 +38,7 @@ html *{
   min-width: 1440px;
   margin-top: 50px;
 }
+
 #headBtnBox {
   height: 140px;
   width: 100%;
@@ -44,7 +50,7 @@ html *{
 
 #content {
   width: 1440px;
-  flex:1;
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
@@ -57,6 +63,7 @@ html *{
   flex-direction: row;
   justify-content: space-between;
 }
+
 #headBtnBoxRight {
   margin-right: 100px;
   width: 420px;
@@ -65,6 +72,7 @@ html *{
   flex-direction: row;
   justify-content: space-between;
 }
+
 .headBtn {
   width: 200px;
   height: 100%;
@@ -75,6 +83,7 @@ html *{
   text-align: center;
   font-size: 20px;
 }
+
 .headBtn:hover {
   width: 200px;
   height: 100%;
@@ -159,6 +168,55 @@ html *{
   border-radius: 10px;
   margin-top: 40px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+#boxCover {
+  width: 1240px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 100px;
+  min-height: 800px;
+}
+
+#chartContainer {
+  width: 50%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#chart_div {
+  width: 600px;
+  height: 400px;
+}
+
+#chart_div2 {
+  width: 600px;
+  height: 400px;
+}
+
+#subtitle {
+  font-size: 18px;
+}
+
+#name {
+  font-size: 30px;
+}
+
+#paragraph {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#paragraph2 {
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .mainbox {

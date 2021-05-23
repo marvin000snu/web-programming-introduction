@@ -5,16 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POLI-SEE</title>
-    <link rel="stylesheet" href="./css/index.css"/>
+    <link rel="stylesheet" href="./css/index.css" />
     <script src="https://kit.fontawesome.com/139aa3f25a.js" crossorigin="anonymous"></script>
     <script src="./js/index.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR:wght@300&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <div id="headLine"></div>
-    <div id="bottomLine"></div> <!--포지션 ABSOLUTE-->
+    <div id="bottomLine"></div>
+    <!--포지션 ABSOLUTE-->
     <div id="content">
         <div id="headBtnBox">
             <div id="headBtnBoxLeft">
@@ -28,35 +30,26 @@
         </div>
         <div class="coverAll">
             <div id="centerBox">
-                <img src="./img/logo.png"/>
+                <img src="./img/logo.png" />
                 <div id="searchInput">
                     <div id="searchLense" onclick="searchHandler()">
                         <i class="fas fa-search"></i>
 
                     </div>
                     <div id="inputWrapper">
-                        <input id="search"/>
+                        <input id="search" />
                     </div>
                 </div>
                 <div id="searchText">21대 국회는 무슨 법률안을 만들고 있을까? 관심있는 키워드나 의안명을 검색해보세요!</div>
-                <div id="popularSearchItemBox" style=
-                "line-height: 26px;
-                text-align: center;
-                align-items: center;
-                display: flex;
-                height: 50px;
-                margin-top: 10px;""
-                >
-                    <div id="searchItemText" style="  color: #60d3ce;
-                    font-size: 18px;
-                    margin-right: 30px;">인기검색어</div>
+                <div id="popularSearchItemBox">
+                    <div id="searchItemText">인기검색어</div>
                     <div id="popularSearchItems"></div>
                 </div>
             </div>
         </div>
-      </div>
     </div>
-  </div>
+    </div>
+    </div>
 </body>
 
 </html>
