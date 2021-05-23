@@ -1,9 +1,9 @@
-import { createSimplePeopleList } from "../src/convert.js";
+import { createSimplePeopleList } from "../js/convert";
 import {
   createVoteResultCanvas,
   colorSet,
   koreanStatusValue,
-} from "../src/draw.js";
+} from "./draw";
 import { testLawData, testVoteResult } from "./testData.js";
 
 /**
