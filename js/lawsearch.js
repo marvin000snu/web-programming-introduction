@@ -56,7 +56,6 @@ const testLawData = [
  */
 const createCard = (data) => {
   const { id, title, whoCreate, where, when, summary, isCompleted } = data;
-  console.log(id);
   const cardElement = document.createElement("div");
   const inner = document.createElement("div");
   const description = document.createElement("div");

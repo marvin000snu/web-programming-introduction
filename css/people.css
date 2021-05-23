@@ -93,6 +93,15 @@ img#logo {
   cursor: pointer;
 }
 
+#cardBox {
+  margin-top: 100px;
+  width: 1240px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .coverAll {
   flex: 1;
   display: flex;
