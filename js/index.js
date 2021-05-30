@@ -4,7 +4,7 @@ function searchHandler(key) {
 }
 
 function entersearch() {
-  if(search.keycode == 13){
+  if (search.keycode == 13) {
     searchInput();
   }
 }
@@ -15,6 +15,10 @@ function moveToHome() {
 
 function moveToLawSearch() {
   window.location.href = "./lawsearch.html";
+}
+
+function moveToPeopleSearch() {
+  window.location.href = "./people.html";
 }
 
 const TestTags = ["부동산 대책", "저출산", "코로나19", "선거법"];
