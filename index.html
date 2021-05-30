@@ -13,6 +13,14 @@
         rel="stylesheet">
 </head>
 
+<script>
+    function enterKey() {
+        if (window.event.keyCode == 13) {
+            searchHandler();
+        }
+    }
+</script>
+
 <body>
     <div id="headLine"></div>
     <div id="bottomLine"></div>
@@ -37,7 +45,7 @@
 
                     </div>
                     <div id="inputWrapper">
-                        <input id="search" placeholder= " 관심 있는 의원이나 법률안을 검색해보세요!" style=
+                        <input onkeyup="enterKey()" id="search" placeholder= " 관심 있는 의원이나 법률안을 검색해보세요!" style=
                         "font-size: 20px;" />
                     </div>
                 </div>
