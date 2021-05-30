@@ -1,3 +1,5 @@
+import { committeeData, typeData, partyData } from "./tagData.js";
+
 /**
  *
  * @param {*} data People data
@@ -120,8 +122,31 @@ const tagSearch = async () => {
   });
 };
 
+const addCategory = (elements, datas, size) => {
+  for (let i = 0; i < size; i++) {
+    for (let key in datas[i]) {
+      const optionElement = document.createElement("option");
+      optionElement.setAttribute("value", key);
+      optionElement.innerHTML = `${datas[i][key]}`;
+      elements[i].appendChild(optionElement);
+    }
+  }
+};
+
 window.onload = async () => {
   await getData("all", "all", "all").then((data) => {
     showOnPage(data);
   });
+
+  const partyElement = document.getElementById("정당");
+  const typeElement = document.getElementById("당선방법");
+  const committeeElement = document.getElementById("소속위원회");
+
+  addCategory(
+    [partyElement, typeElement, committeeElement],
+    [partyData, typeData, committeeData],
+    3
+  );
 };
+
+window.tagSearch = tagSearch;
