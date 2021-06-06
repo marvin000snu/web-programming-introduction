@@ -44,6 +44,10 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+  const analytics = firebase.analytics;
+  analytics().setCurrentScreen(window.location.pathname) // sets `screen_name` parameter
+  console.log(window.location.pathname);
+  analytics().logEvent('screen_view') 
 </script>
     <div id="headLine"></div>
     <div id="bottomLine"></div>
