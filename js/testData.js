@@ -29,10 +29,10 @@ export const testLawData = [
   {
     id: "0",
     title: "공동주택관리법 일부개정법률안",
+    summary: "공동주택, 회계관리, 회계감사에 대한 법률안이에요.",
     whoCreate: testPeopleData,
     where: "국토교통관리위원회",
-    when: "2021 - 04 - 05",
-    summary: "공동주택, 회계관리, 회계감사",
+    when: "2021 - 04 - 05 제안",
     status: "위원회 심사",
     isCompleted: false,
     text: testTextParagraph,

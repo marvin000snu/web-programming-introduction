@@ -1,0 +1,50 @@
+#headBtnBox {
+  height: 140px;
+  width: 100%;
+  display: flex;
+  justify-content: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#headBtnBoxLeft {
+  margin-left: 100px;
+  width: 420px;
+  height: 45px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#headBtnBoxRight {
+  margin-right: 100px;
+  width: 420px;
+  height: 45px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.headBtn {
+  width: 200px;
+  height: 100%;
+  border: 2px solid #01b9b4;
+  border-radius: 10px;
+  color: #01b9b4;
+  line-height: 45px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.headBtn:hover {
+  width: 200px;
+  height: 100%;
+  border: 2px solid #01b9b4;
+  border-radius: 10px;
+  background-color: #01b9b4;
+  line-height: 45px;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
