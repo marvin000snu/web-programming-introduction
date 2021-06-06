@@ -10,7 +10,8 @@
     <script src="https://kit.fontawesome.com/139aa3f25a.js" crossorigin="anonymous"></script>
     <script type="module" src="./js/searchresult.js"></script>
     <script src="./js/movePage.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -22,8 +23,7 @@
                 <div class="headBtn" onclick="moveToLawSearch()">법률안 검색</div>
                 <div class="headBtn" onclick="moveToPeopleSearch()">의원 검색</div>
             </div>
-            <img id="logo"src="./img/LOGO OPEN.png"
-                onclick="moveToHome()" />
+            <img id="logo" src="./img/LOGO OPEN.png" onclick="moveToHome()" />
             <div id="headBtnBoxRight">
                 <div class="headBtn">요즘 국회</div>
                 <div class="headBtn">ABOUT</div>
@@ -35,16 +35,32 @@
                     <blockquote>
                         <p id="title"></p>
                     </blockquote>
+                    <!-- 법률안 데이터가 js와 연결될 것! 의원 이미지도... -->
                     <div id="infoBox"></div>
+                    <p id="summary">공동주택, 회계관리, 회계감사에 대한 법률안이에요.</p>
+
+
                 </div>
-                <div>
-                    <div id="statusbox">
-                        <!-- 데이터에 따라 변경되도록 함수 수정 예정, searchresult.js, createStatus -->
-                        <p id="statusmessage" title="접수 > *위원회 심사* > 체계지구 심사 > 본회의 심의 > 정부 이송 > 공포">
-                            위원회 심사
-                        </p>
+                <div style="border: 0px solid red; display: flex;">
+                    <div style="border: 0px solid blue; display: inline-block;">
+                        <img id="personImage" src="../img/peopleSample.png" 
+                        style="width: 129.5px; height: 129.5px;">
+                        <br />
+                        <p id="who">박상혁 의원 외 12인</p>
                     </div>
-                    <p id="date"></p>
+                    <img id="committeeImage" src="../img/9700513_committee.png" 
+                    style="width: 162px; height: 162px;">
+                    </p>
+
+                    <div>
+                        <p id="datewhen">2021-04-05 제안</p>
+                        <div id="statusbox">
+                            <p id="statusmessage" title="접수 > *위원회 심사* > 체계지구 심사 > 본회의 심의 > 정부 이송 > 공포">
+                                위원회 심사
+                            </p>
+                        </div>
+                        <p id="date"></p>
+                    </div>
                 </div>
             </div>
             <div class="proposedPeople item">
