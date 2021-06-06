@@ -22,29 +22,28 @@
           '본회의 출석률',
           '상임위원회 출석률',
           '발의 법안 수',
-          '당선횟수',
           '가결률'
         ],
         datasets: [{
           label: 'OOO 의원',
-          data: [65, 59, 90, 81, 56],
+          data: [65, 59, 90, 81],
           fill: true,
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor: 'rgb(255, 99, 132)',
-          pointBackgroundColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgba(1, 185, 180, 0.2)',
+          borderColor: '#01B9B4',
+          pointBackgroundColor: '#01B9B4',
           pointBorderColor: '#fff',
           pointHoverBackgroundColor: '#fff',
-          pointHoverBorderColor: 'rgb(255, 99, 132)'
+          pointHoverBorderColor: '#01B9B4'
         }, {
           label: '의원 평균치',
-          data: [28, 48, 40, 19, 96],
+          data: [28, 48, 40, 19],
           fill: true,
-          backgroundColor: 'rgba(54, 162, 235, 0.2)',
-          borderColor: 'rgb(54, 162, 235)',
-          pointBackgroundColor: 'rgb(54, 162, 235)',
+          backgroundColor: 'rgba(163, 156, 148, 0.2)',
+          borderColor: '#A39C94',
+          pointBackgroundColor: '#A39C94',
           pointBorderColor: '#fff',
           pointHoverBackgroundColor: '#fff',
-          pointHoverBorderColor: 'rgb(54, 162, 235)'
+          pointHoverBorderColor: '#A39C94'
         }]
       };
       const config = {
@@ -84,7 +83,9 @@
         title: '의원님들의 출석랭킹',
         hAxis: {title: '상임위원회 출석률', minValue: 0, maxValue: 100},
         vAxis: {title: '본회의 출석률', minValue: 0, maxValue: 100},
-        legend: 'none'
+        legend: 'none',
+        backgroundColor: "#FEFDF9",
+        colors: ['#01B9B4']
       };
 
       var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
@@ -111,9 +112,10 @@
         title: '의원님들의 법안랭킹',
         hAxis: {title: '법률안 제출 랭킹', minValue: 0, maxValue: 100},
         vAxis: {title: '본회의 출석률', minValue: 0, maxValue: 100},
-        legend: 'none'
-      };
+        legend: 'none',
+        backgroundColor: "#FEFDF9"
 
+      }
       var chart = new google.visualization.ScatterChart(document.getElementById('chart_div2'));
 
       chart.draw(data, options);
@@ -132,7 +134,7 @@
       <img id="logo" src="./img/LOGO OPEN.png" onclick="moveToHome()"/>
       <div id="headBtnBoxRight">
         <div class="headBtn">요즘 국회</div>
-        <div class="headBtn">ABOUT</div>
+        <div class="headBtn" onclick="moveToAbout()">ABOUT</div>
       </div>
     </div>
     <div class="coverAll">

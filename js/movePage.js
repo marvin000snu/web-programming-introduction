@@ -21,3 +21,7 @@ function moveToPeopleSearch() {
 function moveToPeopleDetail() {
   window.location.href = "./peopleDetail.html";
 }
+
+function moveToAbout() {
+  window.location.href = "./about.html";
+}
