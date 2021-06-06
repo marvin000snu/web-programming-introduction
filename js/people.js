@@ -8,11 +8,11 @@ const createPeopleCard = (data) => {
   const { committee, count, gender, id, local, name, party, type } = data;
   const cardElement = document.createElement("div");
   const imgCover = document.createElement("div");
-  const inner = document.createElement("div");
+  const inner = document.createElement("p");
 
   cardElement.setAttribute("id", "boxContainer");
   imgCover.setAttribute("id", "boxImg");
-  inner.setAttribute("id", "boxInner");
+  inner.setAttribute("id", "peopleName");
 
   const innerText = `${name} / ${local}`;
   inner.innerHTML = innerText;
@@ -20,6 +20,10 @@ const createPeopleCard = (data) => {
   const image = new Image();
   image.setAttribute("class", "cardImage");
   image.src = "../img/peopleSample.png";
+  image.addEventListener("click", () => {
+    location.href = `./peopleDetail.html?id=${id}`;
+  });
+  image.style.cursor = "pointer";
 
   cardElement.appendChild(image);
   cardElement.appendChild(inner);
@@ -27,7 +31,7 @@ const createPeopleCard = (data) => {
   return cardElement;
 };
 
-const requestDataFromServer = async () => {
+export const requestPeopleData = async () => {
   return $.ajax({
     url: "http://3.34.197.145:3002/api/people/getAllPeople", // 클라이언트가 요청을 보낼 서버의 URL 주소
     type: "GET", // HTTP 요청 방식(GET, POST)
@@ -54,7 +58,7 @@ const getData = async (party, type, committee) => {
   let values = [party, type, committee];
   let categoryList = ["party", "type", "committee"];
   let datas = [];
-  await requestDataFromServer().then((res) => {
+  await requestPeopleData().then((res) => {
     const peopleData = res["result"];
 
     if (party == "all" && type == "all" && committee == "all") {

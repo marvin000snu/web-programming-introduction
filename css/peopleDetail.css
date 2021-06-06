@@ -212,11 +212,10 @@ img#logo {
   font-weight: bold;
 }
 
-#paragraph2 {
+#peopleParagraph {
   margin-top: 30px;
   font-size: 20px;
-  font-weight: bold;
-  text-align: center;
+  font-weight: 400;
 }
 
 .mainbox {
