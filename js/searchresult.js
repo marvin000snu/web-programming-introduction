@@ -1,9 +1,5 @@
-import { createSimplePeopleList } from "../js/convert";
-import {
-  createVoteResultCanvas,
-  colorSet,
-  koreanStatusValue,
-} from "./draw";
+import { createSimplePeopleList } from "./convert.js";
+import { createVoteResultCanvas, colorSet, koreanStatusValue } from "./draw.js";
 import { testLawData, testVoteResult } from "./testData.js";
 
 /**
@@ -163,7 +159,7 @@ const generatePage = () => {
   const idTemp = temp[1].split("=");
   const id = idTemp[1];
   const lawData = getCurrentData(id);
-
+  console.log(id);
   const { title, whoCreate, where, when, summary, status, text } = lawData;
   const infoList = [whoCreate, where, when, summary];
   const titleElement = document.getElementById("title");
@@ -183,7 +179,6 @@ window.onload = () => {
 };
 
 function moveToPeopleSearch() {
-  alert(1)
+  alert(1);
   window.location.href = "./people.html";
 }
-

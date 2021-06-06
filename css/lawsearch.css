@@ -2,8 +2,8 @@
   --main-color: #01b0b4;
 }
 
-html *{
-  font-family: Noto Sans KR, sans-serif ;
+html * {
+  font-family: Noto Sans KR, sans-serif;
 }
 
 body {
@@ -17,7 +17,7 @@ body {
   padding: 0px;
   margin: 0px;
   height: 100vh;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 #headLine {
@@ -44,6 +44,16 @@ body {
   justify-content: row;
   align-items: center;
   justify-content: space-between;
+}
+
+img#logo {
+  margin-top: 30px;
+  width: 84.67px;
+  height: 60px;
+}
+
+#subtitle {
+  font-size: 30px;
 }
 
 #content {

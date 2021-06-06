@@ -81,7 +81,6 @@ const createSimplePeopleList = (peopleData) => {
   return simpleList;
 };
 
-
 const createInfoText = (infoList, div) => {
   // Modify this after presentation
   const text = ["누가?", "어디서?", "언제?", "한줄요약"];
@@ -127,22 +126,22 @@ window.onload = () => {
   CardsPreview();
   const temp = location.href.split("?");
   const idTemp = temp[1].split("=");
-  const key = idTemp[1];
-  console.log(document.getElementById("search").placeholder)
+  const key = decodeURI(idTemp[1]);
+
+  console.log(document.getElementById("search").placeholder);
   document.getElementById("search").placeholder = key;
+};
 
+function moveToLawSearch() {
+  window.location.href = "./lawsearch.html";
 }
 
-function moveToLawSearch(){
-  window.location.href ="./lawsearch.html"
+function moveToPeopleSearch() {
+  window.location.href = "./people.html";
 }
 
-function moveToPeopleSearch(){
-  window.location.href ="./people.html"
-}
-
-function moveToPeopleDetail(){
-  window.location.href = "./peopleDetail.html"
+function moveToPeopleDetail() {
+  window.location.href = "./peopleDetail.html";
 }
 
 function moveToHome() {

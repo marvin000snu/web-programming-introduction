@@ -13,7 +13,7 @@ body {
   padding: 0px;
   margin: 0px;
   height: 100vh;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 #headLine {
@@ -39,6 +39,16 @@ body {
   justify-content: row;
   align-items: center;
   justify-content: space-between;
+}
+
+img#logo {
+  margin-top: 30px;
+  width: 84.67px;
+  height: 60px;
+}
+
+#subtitle2 {
+  font-size: 30px;
 }
 
 #content {
@@ -118,6 +128,11 @@ body {
 
 #subtitle {
   margin: 50px 100px 50px 100px;
+}
+
+#subtitleInner {
+  font-size: 25px;
+  line-height: 36px;
 }
 
 #searchInput {
@@ -222,6 +237,37 @@ input#search {
 .cardImage {
   width: 68px;
   height: 68px;
+}
+
+#boxCover {
+  width: 1240px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 100px;
+}
+
+#boxContainer {
+  width: 150px;
+  height: 192px;
+  margin-top: 30px;
+  padding-left: 25px;
+  padding-right: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+#boxImg {
+  width: 150px;
+  height: 150px;
+}
+
+#boxInner {
+  width: 150px;
+  height: 42px;
+  text-align: center;
+  line-height: 42px;
 }
 
 p strong {

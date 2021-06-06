@@ -22,7 +22,7 @@
                 <div class="headBtn" onclick="moveToLawSearch()">법률안 검색</div>
                 <div class="headBtn" onclick="moveToPeopleSearch()">의원 검색</div>
             </div>
-            <img src="./img/LOGO OPEN.png" style="margin-top: 30px; width: 84.67px; height: 60px;"
+            <img id="logo"src="./img/LOGO OPEN.png"
                 onclick="moveToHome()" />
             <div id="headBtnBoxRight">
                 <div class="headBtn">요즘 국회</div>
@@ -30,8 +30,8 @@
             </div>
         </div>
         <div class="coverAll">
-            <div class="info item" style="display: flex; justify-content: space-between;">
-                <div style="display: inline-block;">
+            <div class="infoitem">
+                <div id="infoContainer">
                     <blockquote>
                         <p id="title"></p>
                     </blockquote>
@@ -56,7 +56,7 @@
                 <!-- 나중에 투표 결과에 따라 변경하도록 함수 만들 예정 -->
                 <h2>투표 결과: 원안 그대로 통과</h2>
                 <hr>
-                <div id="votingResultView" style="display: flex;">
+                <div id="votingResultView">
                 </div>
             </div>
             <div class="paragraph item">

@@ -1,51 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>POLI-SEE</title>
     <link rel="stylesheet" href="./css/lawsearch.css" />
-    <script src="https://kit.fontawesome.com/139aa3f25a.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/139aa3f25a.js"
+      crossorigin="anonymous"
+    ></script>
     <script type="module" src="./js/testData.js"></script>
     <script type="module" src="./js/lawsearch.js"></script>
     <script src="./js/movePage.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-</head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
     <div id="headLine"></div>
 
     <div id="content">
-        <div id="headBtnBox">
-            <div id="headBtnBoxLeft">
-                <div class="headBtn" onclick="moveToLawSearch()">법률안 검색</div>
-                <div class="headBtn" onclick="moveToPeopleSearch()">의원 검색</div>
-            </div>
-            <img src="./img/LOGO OPEN.png" style="margin-top: 30px; width: 84.67px; height: 60px;"
-                onclick="moveToHome()" />
-            <div id="headBtnBoxRight">
-                <div class="headBtn">요즘 국회</div>
-                <div class="headBtn">ABOUT</div>
-            </div>
+      <div id="headBtnBox">
+        <div id="headBtnBoxLeft">
+          <div class="headBtn" onclick="moveToLawSearch()">법률안 검색</div>
+          <div class="headBtn" onclick="moveToPeopleSearch()">의원 검색</div>
         </div>
-        <div class="coverAll">
-            <div id="centerBox">
-                <div style="font-size: 30px">법률안 검색</div>
-                <div id="searchInput">
-                    <div id="searchLense" onclick="searchHandler()">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <div id="inputWrapper">
-                        <input id="search" placeholder="의원명 혹은 관심있는 키워드로 검색해보세요!" />
-                    </div>
-                </div>
-            </div>
-            <div id="cardBox"></div>
+        <img id="logo" src="./img/LOGO OPEN.png" onclick="moveToHome()" />
+        <div id="headBtnBoxRight">
+          <div class="headBtn">요즘 국회</div>
+          <div class="headBtn">ABOUT</div>
         </div>
-        <div id="bottomLine"></div>
-        <!--포지션 ABSOLUTE-->
-    </div>
-</body>
+      </div>
+      <div class="coverAll">
+        <div id="centerBox">
+          <div id="subtitle">법률안 검색</div>
+          <div id="searchInput">
+            <div id="searchLense" onclick="searchHandler()">
+              <i class="fas fa-search"></i>
+            </div>
+            <div id="inputWrapper">
+              <input
+                id="search"
+                placeholder="의원명 혹은 관심있는 키워드로 검색해보세요!"
+              />
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="소속위원회">소속위원회</label>
 
+          <select name="소속위원회" id="소속위원회">
+            <option value="전체">전체</option>
+            <option value="국회운영위원회">국회운영위원회</option>
+            <option value="법제사법위원회">법제사법위원회</option>
+            <option value="정무위원회">정무위원회</option>
+            <option value="기획재정위원회">기획재정위원회</option>
+            <option value="교육위원회">교육위원회</option>
+            <option value="과학기술정보방송통신위원회">
+              기본소득과학기술정보방송통신위원회
+            </option>
+            <option value="외교통일위원회">외교통일위원회</option>
+            <option value="국방위원회">국방위원회</option>
+            <option value="행정안전위원회">행정안전위원회</option>
+            <option value="문화체육관광위원회">문화체육관광위원회</option>
+            <option value="농림축산식품해양수산위원회">
+              농림축산식품해양수산위원회
+            </option>
+            <option value="산업통상자원중소벤처기업위원회">
+              산업통상자원중소벤처기업위원회
+            </option>
+            <option value="보건복지위원회">보건복지위원회</option>
+            <option value="환경노동위원회">환경노동위원회</option>
+            <option value="국토교통위원회">국토교통위원회</option>
+            <option value="정보위원회">정보위원회</option>
+            <option value="여성가족위원회">여성가족위원회</option>
+          </select>
+
+          <label for="상태">상태</label>
+
+          <select name="상태" id="상태">
+            <option value="전체">전체</option>
+            <option value="처리중">처리중</option>
+            <option value="완료">완료</option>
+          </select>
+        </div>
+        <div id="cardBox"></div>
+      </div>
+      <div id="bottomLine"></div>
+      <!--포지션 ABSOLUTE-->
+    </div>
+  </body>
 </html>

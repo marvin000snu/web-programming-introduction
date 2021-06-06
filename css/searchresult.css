@@ -14,7 +14,7 @@ body {
   padding: 0px;
   margin: 0px;
   height: 100vh;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 #headLine {
@@ -40,6 +40,12 @@ body {
   justify-content: row;
   align-items: center;
   justify-content: space-between;
+}
+
+img#logo {
+  margin-top: 30px;
+  width: 84.67px;
+  height: 60px;
 }
 
 #content {
@@ -89,6 +95,15 @@ body {
   font-size: 20px;
   color: white;
   cursor: pointer;
+}
+
+.infoitem {
+  display: flex;
+  justify-content: space-between;
+}
+
+#infoContainer {
+  display: inline-block;
 }
 
 .coverAll {
