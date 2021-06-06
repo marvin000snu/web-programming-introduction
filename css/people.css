@@ -193,6 +193,7 @@ div#boxContainer {
   padding-right: 25px;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 div#boxImg {
@@ -200,11 +201,9 @@ div#boxImg {
   height: 150px;
 }
 
-div#boxInner {
-  width: 150px;
-  height: 42px;
+p#peopleName {
   text-align: center;
-  line-height: 42px;
+  display: inline-block;
 }
 
 .card {
