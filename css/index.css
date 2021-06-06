@@ -1,5 +1,9 @@
+html {
+  scroll-behavior: smooth;
+}
 html * {
   font-family: Noto Sans KR, sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
