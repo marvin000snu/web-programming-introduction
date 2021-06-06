@@ -21,3 +21,8 @@ function moveToPeopleSearch() {
 function moveToPeopleDetail() {
   window.location.href = "./peopleDetail.html";
 }
+
+const topFunction= ()=>{
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
