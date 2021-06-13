@@ -100,13 +100,12 @@ img#logo {
   cursor: pointer;
 }
 
-#tempBox {
-  margin-top: -150px;
-  flex: 1;
+#peopleCardBox {
+  margin-top: -50px;
+  width: 1240px;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .coverAll {
@@ -114,6 +113,7 @@ img#logo {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
   margin-top: 50px;
   margin-bottom: 50px;
 }
@@ -239,7 +239,12 @@ input#search {
   height: 68px;
 }
 
-#boxCover {
+.peopleCardImage {
+  width: 150px;
+  height: 150px;
+}
+
+div#boxCover {
   width: 1240px;
   display: flex;
   flex-direction: row;
@@ -248,7 +253,7 @@ input#search {
   margin-top: 100px;
 }
 
-#boxContainer {
+div#boxContainer {
   width: 150px;
   height: 192px;
   margin-top: 30px;
@@ -256,9 +261,10 @@ input#search {
   padding-right: 25px;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
-#boxImg {
+div#boxImg {
   width: 150px;
   height: 150px;
 }

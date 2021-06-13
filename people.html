@@ -1,64 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>POLI-SEE</title>
-    <link rel="stylesheet" href="../css/people.css" />
-    <script
-      src="https://kit.fontawesome.com/139aa3f25a.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script type="module" src="./js/people.js"></script>
-    <script src="./js/movePage.js"></script>
-    <script></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>POLI-SEE</title>
+        <link rel="stylesheet" href="../css/people.css" />
+        <script
+            src="https://kit.fontawesome.com/139aa3f25a.js"
+            crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script type="module" src="./js/people.js"></script>
+        <script src="./js/movePage.js"></script>
+        <script></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+            rel="stylesheet"
+            />
+    </head>
 
-  <body>
-    <div id="headLine"></div>
-    <header id="header"></header>
-    <div id="content">
-      <div id="headBtnBox">
-        <div id="headBtnBoxLeft">
-          <div class="headBtn" onclick="moveToLawSearch()">법률안 검색</div>
-          <div class="headBtn" onClick="moveToPeopleSearch()">의원 검색</div>
-        </div>
-        <img id="logo" src="./img/LOGO OPEN.png" onclick="moveToHome()" />
-        <div id="headBtnBoxRight">
-          <div class="headBtn">요즘 국회</div>
-          <div class="headBtn">ABOUT</div>
-        </div>
-      </div>
-      <div class="coverAll">
-        <div id="centerBox">
-          <div id="subtitle">의원 검색</div>
-          <div id="searchInput">
-            <div id="searchLense" onclick="searchHandler()">
-              <i class="fas fa-search"></i>
+    <body>
+        <div id="headLine"></div>
+        <header id="header"></header>
+        <div id="content">
+            <div id="headBtnBox">
+                <div id="headBtnBoxLeft">
+                    <div class="headBtn" onclick="moveToLawSearch()">법률안 검색</div>
+                    <div class="headBtn" onClick="moveToPeopleSearch()">의원 검색</div>
+                </div>
+                <img id="logo" src="./img/LOGO OPEN.png" onclick="moveToHome()"
+                    />
+                <div id="headBtnBoxRight">
+                    <div class="headBtn">요즘 국회</div>
+                    <div class="headBtn">ABOUT</div>
+                </div>
             </div>
-            <div id="inputWrapper">
-              <input id="search" />
-            </div>
-          </div>
-        </div>
-        <div id="filter-search">
-          <label for="정당">정당:</label>
-          <select name="정당" id="정당"></select>
-          <label for="당선 방법">당선 방법</label>
-          <select name="당선 방법" id="당선방법"></select>
-          <label for="소속위원회">소속위원회</label>
-          <select name="소속위원회" id="소속위원회"></select>
-          <button onclick="tagSearch()" id="f-search">검색</button>
-        </div>
-        <div id="cardBox"></div>
+            <div class="coverAll">
+                <div id="centerBox">
+                    <div id="subtitle">의원 검색</div>
+                    <div id="searchInput">
+                        <div id="searchLense" onclick="searchHandler()">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div id="inputWrapper">
+                            <input id="search" />
+                        </div>
+                    </div>
+                </div>
+                <div id="filter-search">
+                    <label for="정당">정당:</label>
+                    <select name="정당" id="정당"></select>
+                    <label for="당선 방법">당선 방법</label>
+                    <select name="당선 방법" id="당선방법"></select>
+                    <label for="소속위원회">소속위원회</label>
+                    <select name="소속위원회" id="소속위원회"></select>
+                    <button onclick="tagSearch()" id="f-search">검색</button>
+                </div>
+                <div id="cardBox"></div>
 
-        <!--포지션 ABSOLUTE-->
-      </div>
-    </div>
-  </body>
+                <!--포지션 ABSOLUTE-->
+            </div>
+        </div>
+    </body>
 </html>

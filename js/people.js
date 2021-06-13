@@ -4,7 +4,7 @@ import { committeeData, typeData, partyData } from "./tagData.js";
  *
  * @param {*} data People data
  */
-const createPeopleCard = (data) => {
+export const createPeopleCard = (data) => {
   const { committee, count, gender, id, local, name, party, type } = data;
   const cardElement = document.createElement("div");
   const imgCover = document.createElement("div");
@@ -18,7 +18,7 @@ const createPeopleCard = (data) => {
   inner.innerHTML = innerText;
 
   const image = new Image();
-  image.setAttribute("class", "cardImage");
+  image.setAttribute("class", "peopleCardImage");
   image.src = "../img/peopleSample.png";
   image.addEventListener("click", () => {
     location.href = `./peopleDetail.html?id=${id}`;
@@ -54,13 +54,13 @@ const filtering = (datas, category, value) => {
  * @param {string} category Tag category
  * @param {string} tagText Text value
  */
-const getData = async (party, type, committee) => {
+export const getData = async (party, type, committee) => {
   let values = [party, type, committee];
   let categoryList = ["party", "type", "committee"];
   let datas = [];
+
   await requestPeopleData().then((res) => {
     const peopleData = res["result"];
-
     if (party == "all" && type == "all" && committee == "all") {
       // Search all
       peopleData.forEach((data) => {
@@ -76,6 +76,7 @@ const getData = async (party, type, committee) => {
       }
     }
   });
+
   return datas;
 };
 
@@ -86,9 +87,19 @@ const getData = async (party, type, committee) => {
  */
 const showOnPage = (peopleData) => {
   const maxAmount = 300; // 한페이지에 보여줄 Maximum 갯수
-
   const div = document.getElementById("cardBox");
-  //
+
+  // 검색 결과가 없을 경우
+  if (peopleData.length == 0) {
+    const message = "검색결과가 없습니다!";
+    const pElement = document.createElement("p");
+    pElement.setAttribute("id", "warning-message");
+    pElement.innerHTML = message;
+    div.appendChild(pElement);
+    alert("검색결과가 없습니다."); // Remove this?
+    return;
+  }
+
   try {
     for (let i = 0; i < maxAmount; i++) {
       const currentData = peopleData[i];
@@ -96,7 +107,7 @@ const showOnPage = (peopleData) => {
       div.appendChild(peopleCard);
     }
   } catch {
-    // 검색 내역이 없을 때 UI 생각해 볼 것!
+    // Cannot destructure property 'committee' of 'data' as it is undefined
   }
 };
 
@@ -138,9 +149,13 @@ const addCategory = (elements, datas, size) => {
 };
 
 window.onload = async () => {
-  await getData("all", "all", "all").then((data) => {
-    showOnPage(data);
-  });
+  await getData("all", "all", "all")
+    .then((data) => {
+      showOnPage(data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 
   const partyElement = document.getElementById("정당");
   const typeElement = document.getElementById("당선방법");
