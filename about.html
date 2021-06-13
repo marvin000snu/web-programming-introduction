@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POLI-SEE</title>
+    <link rel="stylesheet" href="./css/about.css" />
+    <script
+    src="https://kit.fontawesome.com/139aa3f25a.js"
+    crossorigin="anonymous"
+    ></script>
+    <script type="module" src="./js/testData.js"></script>
+    <script type="module" src="./js/lawsearch.js"></script>
+    <script src="./js/movePage.js"></script>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet"
+    />
+</head>
+<body>
+  <div id="headLine"></div>
+  <div id="content">
+    <div id="headBtnBox">
+      <div id="headBtnBoxLeft">
+        <div class="headBtn" onclick="moveToLawSearch()">법률안 검색</div>
+        <div class="headBtn" onClick="moveToPeopleSearch()">의원 검색</div>
+      </div>
+      <img id="logo" src="./img/LOGO OPEN.png" onclick="moveToHome()"/>
+      <div id="headBtnBoxRight">
+        <div class="headBtn">요즘 국회</div>
+        <div class="headBtn" onclick="moveToAbout()">ABOUT</div>
+      </div>
+    </div>
+    <div class="mission-grid">
+        <div class="mission-item">
+            <img id="mission-logo", src="./img/LOGO OPEN.png" alt="">
+        </div>
+        <div class="mission-item">
+            <h2>Our Mission</h2>
+            <p id="mission-text">
+                POLI-SEE는
+                정치를 뜻하는 <strong>‘Politics’</strong>와 보다를 뜻하는 <strong>‘See’</strong>의 합성어로,<br>
+                누구나 쉽게 21대 국회의 입법과정을 감시할 수 있는 서비스를 지향합니다. <br>
+                6월 6일 기준 21대 국회에 제출된 법률안은 10695개입니다. 언론은 결코 이를 <br> 
+                모두 다루지 못합니다. 우리 손으로 먼저 어떤 법률안이 통과되고, 
+                또 통과되지 <br>못하고 있는지, 어느 의원이 법률안 제출에 열심인지를 쉽고 재밌게 살펴봅시다. 
+            </p>
+        </div>
+    </div>
+    <div class="about-grid">
+        <h2 class="about-title">복잡한 검색은 가라, 원클릭 법률안 검색</h2>
+        <p class="about-text">
+            기존 의안정보시스템의 복잡한 검색 환경을 개선해, 홈화면에서 관심있는 키워드 혹은 의안명을 입력해 <br>
+            궁금한 의안에 바로 접근할 수 있습니다. 또한 법률안 검색 메뉴를 통해 통과된 법률안과 <br>
+            그렇지 못한 법률안을 쉽게 확인할 수 있습니다. 
+        </p>
+        <h2 class="about-title">누가누가 찬성했나, 이제는 읽지 말고 보자</h2>
+        <p class="about-text">
+            기존 의안정보시스템은 각각의 법률안의 발의자와 찬반현황을 텍스트로 제공하는 것과 달리,<br>
+            POLI-SEE는 ‘보다’라는 서비스의 목표에 맞춰 발의자와 찬반현황 데이터를 시각화해 가독성을<br>
+            높였습니다. 또한 의원 및 소관위원회 아이콘을 제작해 딱딱한 법률안을 보다 친근하게 느낄 수<br>
+            있도록 메인 화면에 배치했습니다. 
+        </p>
+
+        <h2 class="about-title">일잘러 의원은 누구인가, 본격 21대 의원 성적표</h2>
+        <p class="about-text">
+            국회 입법과정을 감시하는 이유 중 하나는 국회의원들이 잘 하고 있나 확인하기 위함이죠. <br>
+            POLI-SEE는 소위 일 잘하는 의원이 누구인지 알아보기 위해 출석 현황과 법률안 제출 현황을 <br>
+            바탕으로 순위를 매겼습니다. 우리 지역구 의원의 순위가 궁금하다면 지금 바로 의원 검색 메뉴를<br>
+            이용해보세요. 
+        </p>
+        <h2 class="about-title">Our Team Member</h2>
+        <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>김예진</td>
+                        <td>Front-end Developer</td>
+                        <td>서울대학교 영어영문학과</td>
+                    </tr>
+                    <tr>
+                        <td>김용인</td>
+                        <td>Front-end Developer</td>
+                        <td>서울대학교 영어영문학과</td>
+                    </tr>
+                    <tr>
+                        <td>유동훈</td>
+                        <td>Back-end Developer(개발 총괄)</td>
+                        <td>서울대학교 영어영문학과</td>
+                    </tr>
+                    <tr>
+                        <td>이기은</td>
+                        <td>Front-end Developer, </td>
+                        <td>서울대학교 영어영문학과</td>
+                    </tr>
+                    <tr>
+                        <td>이원진</td>
+                        <td>Designer</td>
+                        <td>서울대학교 영어영문학과</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+  </div>
+</body>
+</html>

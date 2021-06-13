@@ -1,11 +1,6 @@
 function searchHandler() {
   const value = document.getElementById("search").value;
-  alert(value + " 를 검색합니다.");
-  window.open(
-    "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=" +
-      value,
-    "_blank"
-  );
+  
 }
 
 function moveToHome() {
@@ -16,15 +11,21 @@ function moveToPeopleSearch() {
   window.location.href = "./people.html";
 }
 
+function entersearch() {
+  if (search.keycode == 13) {
+    searchInput();
+  }
+}
+
 // For presentation!
 const testLawData = [
   {
     id: "0",
     title: "공동주택관리법 일부개정법률안",
+    summary: "공동주택, 회계관리, 회계감사에 대한 법률안이에요.",
     whoCreate: "박상혁의원 외 12인",
     where: "국토교통관리위원회",
-    when: "2021 - 04 - 05",
-    summary: "공동주택, 회계관리, 회계감사",
+    when: "2021 - 04 - 05 제안",
     isCompleted: false,
   },
   {
@@ -73,13 +74,11 @@ export const createCard = (data) => {
   paragraphElement.setAttribute("class", "cardParagraph");
 
   let paragraph =
-    `누가? ${whoCreate}` +
+    `${whoCreate}` +
     "</br>" +
-    `어디서? ${where}` +
+    `${where}` +
     "</br>" +
-    `언제? ${when}` +
-    "</br>" +
-    `한줄요약: ${summary}`;
+    `${summary}`;
   const cardTitle = document.createTextNode(title);
   paragraphElement.innerHTML = paragraph;
 

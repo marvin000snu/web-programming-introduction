@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>POLI-SEE</title>
-    <link rel="stylesheet" href="./css/peopleDetail.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./css/loading.css" />
-    <script
-      src="https://kit.fontawesome.com/139aa3f25a.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="./js/movePage.js"></script>
-    <script type="module" src="./js/peopleDetail.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.0/dist/chart.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <script>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>POLI-SEE</title>
+        <link rel="stylesheet" href="./css/peopleDetail.css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
+            rel="stylesheet"
+            />
+        <link rel="stylesheet" href="./css/loading.css" />
+        <script
+            src="https://kit.fontawesome.com/139aa3f25a.js"
+            crossorigin="anonymous"></script>
+        <script src="./js/movePage.js"></script>
+        <script type="module" src="./js/peopleDetail.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/chart.js@3.2.0/dist/chart.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+            rel="stylesheet"
+            />
+        <script>
       // ES6?
       window.addEventListener("load", function () {
         var canvas = document.getElementById("chart");
@@ -75,11 +75,10 @@
         new Chart(ctx, config);
       });
     </script>
-    <script
-      type="text/javascript"
-      src="https://www.gstatic.com/charts/loader.js"
-    ></script>
-    <script type="text/javascript">
+        <script
+            type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
       google.charts.load("current", { packages: ["corechart"] });
       google.charts.setOnLoadCallback(drawChart);
 
@@ -110,7 +109,7 @@
         chart.draw(data, options);
       }
     </script>
-    <script type="text/javascript">
+        <script type="text/javascript">
       google.charts.load("current", { packages: ["corechart"] });
       google.charts.setOnLoadCallback(drawChart);
 
@@ -132,7 +131,7 @@
           hAxis: { title: "법률안 제출수 순위", minValue: 0, maxValue: 100 },
           vAxis: { title: "법률안 통과율", minValue: 0, maxValue: 100 },
           legend: "none",
-          backgroundColor: '#FEFDF9',
+          backgroundColor: "#FEFDF9",
         };
 
         var chart = new google.visualization.ScatterChart(
@@ -143,68 +142,69 @@
         dataView();
       }
     </script>
-  </head>
+    </head>
 
-  <body>
-    <div id="headLine"></div>
-    <div id="content">
-      <div id="headBtnBox">
-        <div id="headBtnBoxLeft">
-          <div class="headBtn" onclick="moveToLawSearch()">법률안 검색</div>
-          <div class="headBtn" onClick="moveToPeopleSearch()">의원 검색</div>
-        </div>
-        <img id="logo" src="./img/LOGO OPEN.png" onclick="moveToHome()" />
-        <div id="headBtnBoxRight">
-          <div class="headBtn">요즘 국회</div>
-          <div class="headBtn">ABOUT</div>
-        </div>
-      </div>
-      <div id="mainpage" class="coverAll">
-        <div id="centerBox">
-          <div id="name"></div>
-        </div>
-        <div id="boxCover">
-          <div class="mainbox">
-            <img src="../img/person1.png" />
-            <div id="peopleParagraph"></div>
-          </div>
-          <div id="chartContainer">
-            <canvas id="chart" width="400" height="400"></canvas>
-          </div>
-          <div class="semibox">
-            <div id="subtitle">출석 점수</div>
-            <div id="paragraph">
-              상임위원회: 진정한 성실 개근맨! <br />
-              00번의 회의 중, 00번 참석 / 00번 병가 / 00번 청가 / 00번
-              결석했어요
+    <body>
+        <div id="headLine"></div>
+        <div id="content">
+            <div id="headBtnBox">
+                <div id="headBtnBoxLeft">
+                    <div class="headBtn" onclick="moveToLawSearch()">법률안 검색</div>
+                    <div class="headBtn" onClick="moveToPeopleSearch()">의원 검색</div>
+                </div>
+                <img id="logo" src="./img/LOGO OPEN.png" onclick="moveToHome()"
+                    />
+                <div id="headBtnBoxRight">
+                    <div class="headBtn">요즘 국회</div>
+                    <div class="headBtn">ABOUT</div>
+                </div>
             </div>
-            <div id="paragraph">
-              본회의: 의원님 얼굴 까먹기 일보직전 <br />
-              00번의 회의 중, 00번 참석 / 00번 병가 / 00번 청가 / 00번
-              결석했어요
+            <div id="mainpage" class="coverAll">
+                <div id="centerBox">
+                    <div id="name"></div>
+                </div>
+                <div id="boxCover">
+                    <div class="mainbox">
+                        <img src="../img/person1.png" />
+                        <div id="peopleParagraph"></div>
+                    </div>
+                    <div id="chartContainer">
+                        <canvas id="chart" width="400" height="400"></canvas>
+                    </div>
+                    <div class="semibox">
+                        <div id="subtitle">출석 점수</div>
+                        <div id="paragraph">
+                            상임위원회: 진정한 성실 개근맨! <br />
+                            00번의 회의 중, 00번 참석 / 00번 병가 / 00번 청가 / 00번
+                            결석했어요
+                        </div>
+                        <div id="paragraph">
+                            본회의: 의원님 얼굴 까먹기 일보직전 <br />
+                            00번의 회의 중, 00번 참석 / 00번 병가 / 00번 청가 / 00번
+                            결석했어요
+                        </div>
+                    </div>
+                    <div id="chartContainer">
+                        <div id="chart_div"></div>
+                    </div>
+                    <div class="semibox">
+                        <div id="subtitle">법안 점수</div>
+                        <div id="paragraph">
+                            제출 법률안 수: 50개 <br />
+                            300명 의원 중 134등을 기록했어요.
+                        </div>
+                        <div id="paragraph">
+                            통과는 얼마나?: 타율이 안 좋으시네요 <br />
+                            제출한 법률안 50개 중, 10개만 통과되었어요.
+                        </div>
+                    </div>
+                    <div id="chartContainer">
+                        <div id="chart_div2"></div>
+                    </div>
+                </div>
+                <div id="bottomLine"></div>
             </div>
-          </div>
-          <div id="chartContainer">
-            <div id="chart_div"></div>
-          </div>
-          <div class="semibox">
-            <div id="subtitle">법안 점수</div>
-            <div id="paragraph">
-              제출 법률안 수: 50개 <br />
-              300명 의원 중 134등을 기록했어요.
-            </div>
-            <div id="paragraph">
-              통과는 얼마나?: 타율이 안 좋으시네요 <br />
-              제출한 법률안 50개 중, 10개만 통과되었어요.
-            </div>
-          </div>
-          <div id="chartContainer">
-            <div id="chart_div2"></div>
-          </div>
+            <div id="loading"><div class="spinner"></div></div>
         </div>
-        <div id="bottomLine"></div>
-      </div>
-      <div id="loading"><div class="spinner"></div></div>
-    </div>
-  </body>
+    </body>
 </html>
