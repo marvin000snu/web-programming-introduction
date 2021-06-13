@@ -107,7 +107,7 @@ window.onload = () => {
   const CardsPreview = () => {
     const div = document.getElementById("cardBox");
     // The number of cards shown in the preview
-    const maxAmount = 12;
+    const maxAmount = 7;
 
     for (let i = 0; i < maxAmount; i++) {
       const id = i % 3;

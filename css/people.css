@@ -254,3 +254,7 @@ select {
   background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg)
     no-repeat 95% 50%; /* 화살표 이미지 */
 }
+
+body {
+  border-bottom: 40px solid var(--main-color);
+}
