@@ -1,44 +1,5 @@
-const createCard = (data) => {
-  const { id, title, whoCreate, where, when, summary, isCompleted } = data;
-
-  const cardElement = document.createElement("div");
-  const inner = document.createElement("div");
-  const description = document.createElement("div");
-  const titleElement = document.createElement("p");
-  const paragraphElement = document.createElement("p");
-
-  // Set card element attribute
-  cardElement.setAttribute("class", "card");
-  cardElement.style.cursor = "pointer";
-  cardElement.onclick = () => moveToSearchResult(id);
-
-  inner.setAttribute("class", "inner");
-  description.setAttribute("class", "description");
-  titleElement.setAttribute("class", "cardTitle");
-  paragraphElement.setAttribute("class", "cardParagraph");
-
-  const infoList = [whoCreate, where, when, summary];
-  createInfoText(infoList, paragraphElement);
-  const cardTitle = document.createTextNode(title);
-
-  titleElement.appendChild(cardTitle);
-
-  const image = new Image();
-  image.setAttribute("class", "cardImage");
-
-  if (isCompleted) image.src = "./img/complete.png";
-  else image.src = "./img/inprogress.png";
-
-  inner.appendChild(titleElement);
-  description.appendChild(paragraphElement);
-  description.appendChild(image);
-  inner.appendChild(description);
-
-  cardElement.appendChild(inner);
-
-  return cardElement;
-};
-
+import { createPeopleCard, requestPeopleData } from "./people.js";
+import { createCard } from "./lawsearch.js";
 /**
  * Card item view.
  * ! Modify or remove this function after presentation.
@@ -109,21 +70,70 @@ const createInfoText = (infoList, div) => {
   return;
 };
 
-window.onload = () => {
-  const CardsPreview = () => {
-    const div = document.getElementById("cardBox");
-    // The number of cards shown in the preview
-    const maxAmount = 3;
+const getDataBySearchBoth = async (keyword) => {
+  let datas = [];
+  await requestPeopleData().then((res) => {
+    const peopleData = res["result"];
+    peopleData.forEach((data) => {
+      datas.push(data);
+    });
+  });
 
+  return datas;
+};
+
+
+/**
+ * Show data on the main page.
+ *
+ * @param {Array} data People data.
+ */
+const showOnPage = (peopleData) => {
+  const maxAmount = 300; // 한페이지에 보여줄 Maximum 갯수
+  const div = document.getElementById("peopleCardBox");
+
+  // 검색 결과가 없을 경우
+  if (peopleData.length == 0) {
+    const message = "검색결과가 없습니다!";
+    const pElement = document.createElement("p");
+    pElement.setAttribute("id", "warning-message");
+    pElement.innerHTML = message;
+    div.appendChild(pElement);
+    alert("검색결과가 없습니다."); // Remove this?
+    return;
+  }
+
+  try {
     for (let i = 0; i < maxAmount; i++) {
-      const id = i % 3;
-      const currentData = testLawData[id];
-      const card = createCard(currentData);
-      div.appendChild(card);
+      const currentData = peopleData[i];
+      const peopleCard = createPeopleCard(currentData);
+      div.appendChild(peopleCard);
     }
-  };
+  } catch {
+    // Cannot destructure property 'committee' of 'data' as it is undefined
+  }
+};
 
+const CardsPreview = () => {
+  const div = document.getElementById("cardBox");
+  // The number of cards shown in the preview
+  const maxAmount = 3;
+
+  for (let i = 0; i < maxAmount; i++) {
+    const id = i % 3;
+    const currentData = testLawData[id];
+    const card = createCard(currentData);
+    div.appendChild(card);
+  }
+};
+
+window.onload = async () => {
   CardsPreview();
+  await getDataBySearchBoth().then((data) => {
+    console.log("=>", data);
+    showOnPage(data);
+  });
+
   const temp = location.href.split("?");
   const idTemp = temp[1].split("=");
   const key = decodeURI(idTemp[1]);
@@ -131,19 +141,3 @@ window.onload = () => {
   console.log(document.getElementById("search").placeholder);
   document.getElementById("search").placeholder = key;
 };
-
-function moveToLawSearch() {
-  window.location.href = "./lawsearch.html";
-}
-
-function moveToPeopleSearch() {
-  window.location.href = "./people.html";
-}
-
-function moveToPeopleDetail() {
-  window.location.href = "./peopleDetail.html";
-}
-
-function moveToHome() {
-  window.location.href = "./index.html";
-}

@@ -1,4 +1,10 @@
-import { requestPeopleData } from "./people.js";
+const requestPeopleData = async () => {
+  return $.ajax({
+    url: "http://3.34.197.145:3002/api/people/getAllPeople", // 클라이언트가 요청을 보낼 서버의 URL 주소
+    type: "GET", // HTTP 요청 방식(GET, POST)
+    dataType: "json", // 서버에서 보내줄 데이터의 타입
+  });
+};
 
 const requestMainAttendData = async (id) => {
   return $.ajax({
@@ -23,7 +29,6 @@ const requestSubAttendData = async (id) => {
 const requestPeopleDataByID = async (id) => {
   const data = await requestPeopleData();
   const result = data["result"].find((people) => people.id === id);
-
   return result;
 };
 
@@ -68,8 +73,31 @@ const showOnPage = (mainAttendData, subAttendData, peopleData) => {
   const { sub_attend, sub_notAttend, sub_worl, sub_home } = subAttendData;
 };
 
+// Loading bar
+// FIXME: setInterval 을 아래 dataView 함수에 있는 loading 변수를 이용하도록
+const onReady = (callback) => {
+  let intervalID;
+  const checkReady = () => {
+    if (document.getElementsByTagName("body")[0] !== undefined) {
+      window.clearInterval(intervalID);
+      callback.call(this);
+    }
+  };
+  intervalID = window.setInterval(checkReady, 3000);
+};
+
+const show = (id, value) => {
+  document.getElementById(id).style.display = value ? "block" : "none";
+};
+
+onReady(() => {
+  show("mainpage", true);
+  show("loading", false);
+});
+
 // FIXME: 에러 핸들링 생각해 볼 것!
-window.onload = async () => {
+const dataView = async () => {
+  let loading = false; // handle loading bar..
   const id = Number(getParameter("id"));
   let mainAttendData,
     subAttendData,
@@ -103,3 +131,5 @@ window.onload = async () => {
     showOnPage(mainAttendData, subAttendData, peopleData);
   }
 };
+
+window.dataView = dataView;

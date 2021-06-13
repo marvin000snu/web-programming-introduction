@@ -55,8 +55,8 @@ const testLawData = [
  * @param {*} data law data
  * @returns Card div element.
  */
-const createCard = (data) => {
-  const { id, title, summary, whoCreate, where, when,  isCompleted } = data;
+export const createCard = (data) => {
+  const { id, title, whoCreate, where, when, summary, isCompleted } = data;
   const cardElement = document.createElement("div");
   const inner = document.createElement("div");
   const description = document.createElement("div");
