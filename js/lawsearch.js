@@ -11,6 +11,12 @@ function moveToPeopleSearch() {
   window.location.href = "./people.html";
 }
 
+function entersearch() {
+  if (search.keycode == 13) {
+    searchInput();
+  }
+}
+
 // For presentation!
 const testLawData = [
   {

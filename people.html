@@ -43,12 +43,13 @@
               <i class="fas fa-search"></i>
             </div>
             <div id="inputWrapper">
-              <input id="search" />
+              <input onkeyup="enterKey()" id="search" placeholder= " 관심 있는 의원을 검색해보세요!" style=
+              "font-size: 20px;" />
             </div>
           </div>
         </div>
-        <div id="filter-search">
-          <label for="정당">정당:</label>
+        <div id="filter-search" style="padding: 15px;">
+          <label for="정당">정당</label>
           <select name="정당" id="정당"></select>
           <label for="당선 방법">당선 방법</label>
           <select name="당선 방법" id="당선방법"></select>

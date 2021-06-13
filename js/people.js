@@ -158,3 +158,8 @@ window.onload = async () => {
 
 window.tagSearch = tagSearch;
 
+function entersearch() {
+  if (search.keycode == 13) {
+    searchInput();
+  }
+}

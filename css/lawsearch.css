@@ -231,3 +231,17 @@ p strong {
   font-size: 10px;
   font-weight: 300;
 }
+
+select {
+  width: 200px;
+  height: 33px;
+  padding: .3em .5em;
+  font-family: Noto Sans KR, sans-serif;
+  -webkit-appearance: none; 
+  border: 3px solid #b3b3b3;
+  border-radius: 5px;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%; //화살표 이미지
+}
+
