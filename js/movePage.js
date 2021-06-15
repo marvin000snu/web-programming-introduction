@@ -15,8 +15,8 @@ const moveToLawSearchResult = (keyword, id) => {
   window.location.href = `./searchresult.html?keyword=${keyword}&id=${id}`;
 }
 
-function moveToSearchBoth() {
-  window.location.href = "./searchboth.html";
+const moveToSearchBoth = (keyword) => {
+  window.location.href = `./searchboth.html?keyword=${keyword}`;
 }
 
 function moveToPeopleSearch() {
