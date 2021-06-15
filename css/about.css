@@ -128,7 +128,8 @@ body {
       margin-left: 100px; }
 
   #mission-text{
-      font-size: 24px;
+      font-size: 17px;
+      color:rgb(68, 68, 68);
   }
 
   .about-grid {
@@ -138,6 +139,25 @@ body {
   }
 
   .about-text {
-      font-size: 24px;
+      font-size:17px;
       margin-bottom: 50px;
+      color:rgb(68, 68, 68);
+
   }
+
+  a:link {
+    color : rgb(165, 165, 165);
+  }
+  a:visited {
+    color : rgb(100, 100, 100);
+  }
+  a:hover {
+    color : rgb(165, 165, 165);
+  }
+  a:active {
+    color : rgb(165, 165, 165);
+  }
+
+table {
+  font-size: 16px;
+}
