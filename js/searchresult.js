@@ -276,8 +276,13 @@ const generatePage = async () => {
   // TEST
 
   if (agree !== "") {
+    let vote = {};
     const voteResult = await getVoteResultFromServer(billNo);
-    createVotingResult(testVoteResult);
+    for (const [name, value] of Object.entries(voteResult)) {
+      vote[name] = value.length
+    }
+    console.log(vote);
+    createVotingResult(vote);
   }
   addVoteResultMessage(generalResult, passGubn);
   createTextParagraph(summary);
