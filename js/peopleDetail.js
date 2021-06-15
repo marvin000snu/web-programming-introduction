@@ -30,7 +30,7 @@ const getTeamLawData = async (peopleName) => {
   });
 };
 
-const getLeadLawData = async (peopleName) => {
+export const getLeadLawData = async (peopleName) => {
   return $.ajax({
     url: `http://3.34.197.145:3002/api/law/lead/${peopleName}`,
     type: "GET",

@@ -23,6 +23,22 @@ export const requestLawData = async (keyword) => {
   }
 };
 
+export const getLawDataByID = async (billId) => {
+  return $.ajax({
+    url: `http://3.34.197.145:3002/api/law/getLawInfo/${billId}`,
+    type: "GET",
+    dataType: "json",
+  });
+};
+
+export const getHashTag = async (billId) => {
+  return $.ajax({
+    url: `http://3.34.197.145:3002/api/law/hashtag/${billId}`,
+    type: "GET",
+    dataType: "json",
+  });
+};
+
 const searchByKeyword = async (keyword) => {
   // window.location.replace(`./lawsearch.html?keyword=${keyword}`)
   removePrevResult();
@@ -79,7 +95,7 @@ const removePrevResult = () => {
  * @param {string} keyword search keyword
  * @returns Card div element.
  */
-export const createCard = (data) => {
+export const createCard = async (data) => {
   const {
     agree,
     billId,
@@ -115,6 +131,7 @@ export const createCard = (data) => {
   paragraphElement.setAttribute("class", "cardParagraph");
 
   const whoCreate = `${lead}의원 외 ${team.split(",").length}인`;
+  const hashTag = await getHashTag(billId);
   const paragraph =
     `누가? ${whoCreate}` +
     "</br>" +
@@ -122,7 +139,7 @@ export const createCard = (data) => {
     "</br>" +
     `언제? ${proposeDt}` +
     "</br>" +
-    "한줄요약: ";
+    `한줄요약: ${hashTag["hash-tag"]}`;
   if (billName.length > 45) {
     titleElement.setAttribute("style", "font-size: 16px;");
   }
@@ -159,13 +176,15 @@ const tagSearch = async () => {
   });
 };
 
-const initializeView = async () => {
+const initializeView = () => {
   const keyword = getParameter("keyword");
-  await requestLawData(keyword).then((data) => {
+  requestLawData(keyword).then((data) => {
     const div = document.getElementById("cardBox");
     data.forEach((element) => {
-      const card = createCard(element);
-      div.appendChild(card);
+      const card = createCard(element).then((res) => {
+        div.appendChild(res);
+      });
+      //div.appendChild(card);
     });
   });
 };

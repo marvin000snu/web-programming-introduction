@@ -1,6 +1,6 @@
 import { createPeopleCard, requestPeopleData } from "./people.js";
 import { createCard, requestLawData } from "./lawsearch.js";
-import { getParameter } from "./peopleDetail.js";
+import { getLeadLawData, getParameter } from "./peopleDetail.js";
 
 const createSimplePeopleList = (peopleData) => {
   const first = peopleData[0];
@@ -61,6 +61,13 @@ const getDataBySearchBoth = async (keyword) => {
       console.error(err);
     });
 
+    if (datas["peopleData"].length !== 0) {
+      console.log(keyword);
+      await getLeadLawData(keyword).then(res => {
+        datas["lawData"] = res;
+      }).catch(err => console.error(err));
+    }
+
   return datas;
 };
 
@@ -106,7 +113,7 @@ const showOnPage = (lawData, peopleData) => {
         peopleCardDiv.appendChild(peopleCard);
       }
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       // Cannot destructure property 'committee' of 'data' as it is undefined
     }
   }
