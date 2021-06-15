@@ -10,6 +10,11 @@ const moveToSearchResult = (id) => {
   window.location.href = "./searchresult.html?" + "id=" + id;
 };
 
+const moveToLawSearchResult = (keyword, id) => {
+  console.log("====>", keyword);
+  window.location.href = `./searchresult.html?keyword=${keyword}&id=${id}`;
+}
+
 function moveToSearchBoth() {
   window.location.href = "./searchboth.html";
 }

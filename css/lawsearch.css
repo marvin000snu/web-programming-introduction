@@ -185,10 +185,11 @@ input#search {
 }
 
 #cardBox {
+  margin-top: 100px;
   width: 1240px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   height:auto;
 
@@ -205,14 +206,17 @@ input#search {
 }
 
 .card .inner {
-  margin: 35px;
+  margin: 25px;
 }
 
 .cardTitle {
+  height: 60px;
   font-size: 20px;
   font-weight: 500;
-  height: 30px;
+  margin: 0 auto;
   color: "#2e1d14";
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .description {
@@ -249,5 +253,12 @@ select {
   -moz-appearance: none;
   appearance: none;
   background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg)
-    no-repeat 95% 50%; //화살표 이미지
+    no-repeat 95% 50%; /* 화살표 이미지 */
+}
+
+p#warning-message {
+  margin: 0 auto;
+  text-align: center;
+  width: 50%;
+  font-size: 25px;
 }

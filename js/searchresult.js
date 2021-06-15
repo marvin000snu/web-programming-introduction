@@ -1,15 +1,24 @@
-import { createSimplePeopleList } from "./convert.js";
 import { createVoteResultCanvas, colorSet, koreanStatusValue } from "./draw.js";
 import { testLawData, testVoteResult } from "./testData.js";
+import { getParameter } from "./peopleDetail.js";
+import { requestLawData } from "./lawsearch.js";
+import { requestPeopleData } from "./people.js";
+
+
+// 제안한 사람들에서, 한줄에 표시할 개수
+const ITEM_AMOUNT = 20;
 
 /**
- * get current data from datalist.
- * @param {*} id
+ * get current data from search result.
+ * @param {string} keyword search keyword
+ * @param {string} id data id
  * @returns current data
  */
-const getCurrentData = (id) => {
-  const currentData = testLawData[id];
-  return currentData;
+const getCurrentData = async (keyword, id) => {
+  const data = await requestLawData(
+    (keyword = keyword == "all" ? undefined : keyword)
+  );
+  return data.find((d) => d.billId == id);
 };
 
 /**
@@ -20,7 +29,7 @@ const getCurrentData = (id) => {
 export const createInfoText = (infoList, div) => {
   // Modify this after presentation
   const text = ["누가?", "어디서?", "언제?", "한줄요약"];
-
+  console.log(infoList);
   for (let i = 0; i < infoList.length; i++) {
     const element = document.createElement("p");
     element.setAttribute("class", `info`);
@@ -28,8 +37,7 @@ export const createInfoText = (infoList, div) => {
     // create people list.
     // example: 박상혁의원 외 12인
     if (i == 0) {
-      const simpleList = createSimplePeopleList(infoList[0]);
-      element.innerHTML = simpleList;
+      element.innerHTML = infoList[0];
     } else if (i == infoList.length - 1) {
       const strongElement = document.createElement("strong");
       element.innerHTML = `${text[i]}`;
@@ -42,6 +50,9 @@ export const createInfoText = (infoList, div) => {
     div.appendChild(element);
   }
 
+  const summaryElement = document.getElementById("summary");
+  summaryElement.innerHTML = infoList[3];
+
   return;
 };
 
@@ -49,10 +60,17 @@ export const createInfoText = (infoList, div) => {
  * 수정예정.
  * @param {string} status
  */
-const createStatus = (status) => {
-  //const div = document.getElementById("statusbox");
-  //const statusMessage = document.createElement("p");
-  //statusMessage.setAttribute("id", "statusmessage");
+const createStatus = (peopleName, whoCreate, proposeDate, procStageCd) => {
+  const peopleImgElement = document.getElementById("personImage");
+  const whoCreateElement = document.getElementById("whoCreate");
+  const proposeDateElement = document.getElementById("proposeDate");
+  const statusElement = document.getElementById("statusmessage");
+
+  peopleImgElement.setAttribute("src", `../img/img300/${peopleName}.png`);
+  whoCreateElement.innerHTML = whoCreate;
+  proposeDateElement.innerHTML = proposeDate + "제안";
+  statusElement.innerHTML = procStageCd;
+
   return;
 };
 
@@ -78,38 +96,62 @@ const calculateSuggestedDate = (date) => {
 /**
  * Visualize and show the proposed people.
  */
-const createProposedPeopleGraphic = (peopleList) => {
+const createProposedPeopleGraphic = async (peopleList) => {
+  const partyObj = {
+    더불어민주당: "#00A0E2",
+    국민의힘: "#E61E2B",
+    정의당: "#FFCC00",
+    국민의당: "#EA5504",
+    열린민주당: " #003E9B",
+    기본소득당: "#82C8B4",
+    시대전환: "#5A147E",
+    무소속: "#d2d2d2",
+  };
+  let peopleData = {};
+
+  await requestPeopleData().then((res) => {
+    peopleList.forEach((e) => {
+      peopleData[e] = res["result"].find((d) => d.name == e);
+    });
+  });
+
   const div = document.getElementById("proposedPeopleView");
   const table = document.createElement("table");
   const tableBody = document.createElement("tbody");
-  const amount = peopleList.length;
 
   // create table row
-  const row = document.createElement("tr");
+  let row = document.createElement("tr");
+  let count = 0;
 
-  for (let i = 0; i < amount; i++) {
+  for (const [name, value] of Object.entries(peopleData)) {
     const cell = document.createElement("td");
-
     // Set class attribute for css layout.
     cell.setAttribute("class", "tooltipContainer");
     cell.setAttribute("id", "proposedPeopleGraphic");
+    try {
+      const { party, id } = value;
+      // Create tooltip
+      const toolTip = document.createElement("span");
+      toolTip.setAttribute("class", "tooltiptext");
+      toolTip.innerHTML = name;
+      cell.appendChild(toolTip);
 
-    const party = peopleList[i]["party"];
-    const name = peopleList[i]["name"];
+      // Apply colors according to the party
+      cell.setAttribute("style", `background-color:${partyObj[party]}`);
+      cell.style.cursor = "pointer";
+      cell.addEventListener("click", () => {
+        location.href = `./peopleDetail.html?id=${id}`;
+      });
+      row.appendChild(cell);
+      count += 1;
 
-    // Create tooltip
-    const toolTip = document.createElement("span");
-    toolTip.setAttribute("class", "tooltiptext");
-    toolTip.innerHTML = name;
-    cell.appendChild(toolTip);
-
-    // Apply colors according to the party
-    if (party == "더불어민주당") {
-      cell.setAttribute("style", "background: #219edb;");
-    } else {
-      cell.setAttribute("style", "background: #ffb74d;");
+      if ( count % ITEM_AMOUNT == 0) {
+        tableBody.appendChild(row);
+        row = document.createElement("tr");
+      }
+    } catch (err) {
+      console.error(err);
     }
-    row.appendChild(cell);
   }
 
   tableBody.appendChild(row);
@@ -154,31 +196,45 @@ const createTextParagraph = (textParagraph) => {
 /**
  * Render pages with multiple pieces of information.
  */
-const generatePage = () => {
-  const temp = location.href.split("?");
-  const idTemp = temp[1].split("=");
-  const id = idTemp[1];
-  const lawData = getCurrentData(id);
-  console.log(id);
-  const { title, whoCreate, where, when, summary, status, text } = lawData;
-  const infoList = [whoCreate, where, when, summary];
+const generatePage = async () => {
+  const id = getParameter("id");
+  const keyword = decodeURI(getParameter("keyword"));
+  const lawData = await getCurrentData(keyword, id);
+  const {
+    agree,
+    billId,
+    billName,
+    billNo,
+    disagree,
+    drop,
+    generalResult,
+    lead,
+    notattend,
+    passGubn,
+    procDt,
+    procStageCd,
+    proposeDt,
+    summary,
+    team,
+  } = lawData;
+
+  console.log(lawData);
+  console.log(team.split(",").length);
+  const teamList = team.split(",");
+  const whoCreate = `${lead}의원 외 ${teamList.length}인`;
+  const infoList = [whoCreate, "where", proposeDt];
   const titleElement = document.getElementById("title");
-  titleElement.innerHTML = title;
+  titleElement.innerHTML = billName;
   const div = document.getElementById("infoBox");
 
   createInfoText(infoList, div);
-  createStatus(status);
-  createProposedPeopleGraphic(whoCreate);
-  calculateSuggestedDate(when);
+  createStatus(lead, whoCreate, proposeDt, procStageCd);
+  createProposedPeopleGraphic(team.split(","));
+  calculateSuggestedDate(proposeDt);
   createVotingResult(testVoteResult);
-  createTextParagraph(text);
+  createTextParagraph(summary);
 };
 
 window.onload = () => {
   generatePage();
 };
-
-function moveToPeopleSearch() {
-  alert(1);
-  window.location.href = "./people.html";
-}

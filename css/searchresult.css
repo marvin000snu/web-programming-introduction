@@ -133,6 +133,7 @@ blockquote {
 }
 
 p#title {
+  width: 700px;
   font-size: 30px;
   line-height: 40px;
   font-weight: 500;
@@ -150,7 +151,7 @@ img#personImage {
   margin-left: -180px;
 }
 
-p#who {
+p#whoCreate {
   display: inline-block;
   position: relative;
   font-size: 19.5px;
@@ -170,7 +171,7 @@ img#committeeImage {
   left: -15px;
 }
 
-#datewhen {
+#proposeDate {
   font-size: 15px;
   position: relative;
   left: 50px;
@@ -241,7 +242,7 @@ hr {
 
 pre {
   font-size: 18px;
-  line-height: 26px;
+  line-height: 20px;
   white-space: pre-wrap;
 }
 
