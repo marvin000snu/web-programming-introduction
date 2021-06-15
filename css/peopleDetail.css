@@ -218,6 +218,7 @@ img#logo {
   margin-top: 30px;
   font-size: 20px;
   font-weight: 400;
+  height: 50px;
 }
 
 .mainbox {
@@ -235,4 +236,19 @@ img#logo {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+#backgroundCircle {
+  width: 250px;
+  height: 250px;
+  border-radius: 125px;
+  background-color: black;
+  position: absolute;
+  margin-top: 72px;
+}
+
+#circleImg {
+  width: 350px;
+  height: 350px;
+  z-index: 100;
 }

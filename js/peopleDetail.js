@@ -58,7 +58,16 @@ const showOnPage = (mainAttendData, subAttendData, peopleData) => {
     "People Data =>",
     peopleData
   );
-
+  const partyObj = {
+    "더불어민주당": "#00A0E2",
+    "국민의힘": "#E61E2B",
+    "정의당" :"#FFCC00",
+    "국민의당": "#EA5504",
+    "열린민주당":" #003E9B",
+    "기본소득당": "#82C8B4",
+    "시대전환": "#5A147E",
+    "무소속": "#d2d2d2"
+  }
   const { name, party, local, count, committee } = peopleData;
   // FIXME: 중복되는 코드 정리할 방법을 생각해 볼 것!
   const nameParagraph = `${name} (${party}) / ${local}`;
@@ -67,6 +76,9 @@ const showOnPage = (mainAttendData, subAttendData, peopleData) => {
 
   const peopleParagraph = `${count} 의원이며, ${committee}에서 법안을 심사하고 있습니다.`;
   const peopleParagraphElement = document.getElementById("peopleParagraph");
+  const backgroundCircle = document.getElementById("backgroundCircle")
+  backgroundCircle.setAttribute("style", `background-color:${partyObj[party]};`)
+  document.getElementById("circleImg").src=`./img/img300/${name}.png`;
   peopleParagraphElement.innerHTML = peopleParagraph;
 
   const { main_attend, main_notAttend, main_work, main_home } = mainAttendData;
