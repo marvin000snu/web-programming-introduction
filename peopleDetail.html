@@ -27,20 +27,24 @@
       // ES6?
       window.addEventListener("load", async function () {
         const rate = await dataView();
-        const { mainAttendRate, subAttendRate } = rate;
+        const { main, sub } = rate;
+        
         var canvas = document.getElementById("chart");
         var ctx = canvas.getContext("2d");
         const data = {
           labels: [
             "본회의 출석률",
             "상임위원회 출석률",
-            "발의 법안수 순위",
-            "가결률"
+           //"발의 법안수 순위",
+            "가결률",
           ],
           datasets: [
             {
               label: "OOO 의원",
-              data: [mainAttendRate * 100, subAttendRate * 100, 90, 81],
+              data: [main * 100, 
+              sub * 100, 
+              //90, 
+              81],
               fill: true,
               backgroundColor: "rgba(255, 99, 132, 0.2)",
               borderColor: "rgb(255, 99, 132)",
@@ -51,7 +55,10 @@
             },
             {
               label: "의원 평균치",
-              data: [28, 48, 40, 19],
+              data: [28, 
+              48, 
+              //40, 
+              19],
               fill: true,
               backgroundColor: "rgba(54, 162, 235, 0.2)",
               borderColor: "rgb(54, 162, 235)",
@@ -131,7 +138,7 @@
           width: 600,
           height: 400,
           title: "의원님들의 법안랭킹",
-          hAxis: { title: "법률안 제출수 순위", minValue: 0, maxValue: 100 },
+          hAxis: { title: "법률안 제출 수", minValue: 0, maxValue: 150 },
           vAxis: { title: "법률안 통과율", minValue: 0, maxValue: 100 },
           legend: "none",
           backgroundColor: "#FEFDF9"
@@ -209,9 +216,49 @@
               제출 법률안 수: 50개 <br />
               300명 의원 중 134등을 기록했어요.
             </div>
-            <div id="paragraph">
-              통과는 얼마나?: 타율이 안 좋으시네요 <br />
-              제출한 법률안 50개 중, 10개만 통과되었어요.
+            <div id="mainpage" class="coverAll">
+                <div id="centerBox">
+                    <div id="name"></div>
+                </div>
+                <div id="boxCover">
+                    <div class="mainbox">
+                      <div style="height: 350px; width:250px;border-bottom-right-radius: 125px;border-bottom-left-radius: 125px;display:flex;justify-content:center;align-items:center; overflow:hidden">
+                        <div  id="backgroundCircle"></div>
+                        <img  id="circleImg" src=""/>
+                      </div>
+                        <div id="peopleParagraph"></div>
+                    </div>
+                    <div id="chartContainer">
+                        <canvas id="chart" width="400" height="400"></canvas>
+                    </div>
+                    <div class="semibox">
+                        <div id="subtitle">출석 점수</div>
+                        <div class="paragraph" id="attendScore1">
+                            상임위원회: 진정한 성실 개근맨! <br />
+                            00번의 회의 중, 00번 참석 / 00번 병가 / 00번 청가 / 00번
+                            결석했어요
+                        </div>
+                        <div class="paragraph" id="attendScore2">
+                            본회의: 의원님 얼굴 까먹기 일보직전 <br />
+                            00번의 회의 중, 00번 참석 / 00번 병가 / 00번 청가 / 00번
+                            결석했어요
+                        </div>
+                    </div>
+                    <div id="chartContainer">
+                        <div id="chart_div"></div>
+                    </div>
+                    <div class="semibox">
+                        <div id="subtitle">법안 점수</div>
+                        <div class="paragraph" id="lawScore1">
+                        </div>
+                        <div class="paragraph" id="lawScore2">
+                        </div>
+                    </div>
+                    <div id="chartContainer">
+                        <div id="chart_div2"></div>
+                    </div>
+                </div>
+                <div id="bottomLine"></div>
             </div>
           </div>
           <div id="chartContainer">

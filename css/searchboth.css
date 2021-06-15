@@ -127,12 +127,14 @@ img#logo {
 }
 
 #subtitle {
-  margin: 50px 100px 50px 100px;
+  margin: 0 auto;
 }
 
 #subtitleInner {
+  width: 1240px;
   font-size: 25px;
   line-height: 36px;
+  
 }
 
 #searchInput {
@@ -197,7 +199,7 @@ input#search {
   margin: -50px auto;
   width: 1240px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
@@ -291,4 +293,12 @@ h2 {
 hr {
   border: 2px solid #e6e7e4;
   margin-top: -10px;
+  margin-bottom: 70px;
+}
+
+p#warning-message {
+  margin: 0 auto;
+  text-align: center;
+  width: 50%;
+  font-size: 25px;
 }
