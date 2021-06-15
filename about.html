@@ -1,107 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>POLI-SEE</title>
     <link rel="stylesheet" href="./css/about.css" />
     <script
-    src="https://kit.fontawesome.com/139aa3f25a.js"
-    crossorigin="anonymous"
+      src="https://kit.fontawesome.com/139aa3f25a.js"
+      crossorigin="anonymous"
     ></script>
     <script type="module" src="./js/testData.js"></script>
     <script type="module" src="./js/lawsearch.js"></script>
     <script src="./js/movePage.js"></script>
     <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
-    rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
     />
-</head>
-<body>
-  <div id="headLine"></div>
-  <div id="content">
-    <div id="headBtnBox">
-      <div id="headBtnBoxLeft">
-        <div class="headBtn" onclick="moveToLawSearch()">법률안 검색</div>
-        <div class="headBtn" onClick="moveToPeopleSearch()">의원 검색</div>
+  </head>
+  <body>
+    <div id="headLine"></div>
+    <div id="content">
+      <div id="headBtnBox">
+        <div id="headBtnBoxLeft">
+          <div class="headBtn" onclick="moveToLawSearch()">법률안 검색</div>
+          <div class="headBtn" onclick="moveToPeopleSearch()">의원 검색</div>
+        </div>
+        <img id="logo" src="./img/LOGO OPEN.png" onclick="moveToHome()" />
+        <div id="headBtnBoxRight">
+          <div class="headBtn" onclick="moveToToday()">요즘 국회</div>
+          <div class="headBtn" onclick="moveToAbout()">ABOUT</div>
+        </div>
       </div>
-      <img id="logo" src="./img/LOGO OPEN.png" onclick="moveToHome()"/>
-      <div id="headBtnBoxRight">
-        <div class="headBtn">요즘 국회</div>
-        <div class="headBtn" onclick="moveToAbout()">ABOUT</div>
-      </div>
-    </div>
-    <div class="mission-grid">
+      <div class="mission-grid">
         <div class="mission-item">
-            <img id="mission-logo", src="./img/LOGO OPEN.png" alt="">
+          <img id="mission-logo" , src="./img/LOGO OPEN.png" alt="" />
         </div>
         <div class="mission-item">
-            <h2>Our Mission</h2>
-            <p id="mission-text">
-                POLI-SEE는
-                정치를 뜻하는 <strong><span style="color:#01b9b4">‘Politics’</span></strong>와 보다를 뜻하는 <strong><span style="color:#01b9b4">‘See’</span></strong>의 합성어로,<br>
-                누구나 쉽게 <span style="color:#01b9b4">21대 국회의 입법과정을 감시</span>할 수 있는 서비스를 지향합니다. <br>
-                6월 6일 기준 21대 국회에 제출된 법률안은 10695개입니다. 언론은 결코 이를 <br> 
-                모두 다루지 못합니다. 우리 손으로 먼저 어떤 법률안이 통과되고, 
-                또 통과되지 <br>못하고 있는지, 어느 의원이 법률안 제출에 열심인지를 쉽고 재미있게 살펴봅시다. 
-            </p>
+          <h2>Our Mission</h2>
+          <p id="mission-text">
+            POLI-SEE는 정치를 뜻하는
+            <strong><span style="color: #01b9b4">‘Politics’</span></strong
+            >와 보다를 뜻하는
+            <strong><span style="color: #01b9b4">‘See’</span></strong
+            >의 합성어로,<br />
+            누구나 쉽게
+            <span style="color: #01b9b4">21대 국회의 입법과정을 감시</span>할 수
+            있는 서비스를 지향합니다. <br />
+            6월 6일 기준 21대 국회에 제출된 법률안은 10695개입니다. 언론은 결코
+            이를 <br />
+            모두 다루지 못합니다. 우리 손으로 먼저 어떤 법률안이 통과되고, 또
+            통과되지 <br />못하고 있는지, 어느 의원이 법률안 제출에 열심인지를
+            쉽고 재미있게 살펴봅시다.
+          </p>
         </div>
-    </div>
-    <div class="about-grid">
+      </div>
+      <div class="about-grid">
         <h2 class="about-title">복잡한 검색은 가라, 원클릭 법률안 검색</h2>
         <p class="about-text">
-            기존 <A href = "https://likms.assembly.go.kr/bill/main.do" target = "blank">의안정보시스템</A>의 복잡한 검색 환경을 전면 개선했습니다.<br>
-            <span style="color:#01b9b4">홈화면</span>에서 관심있는 키워드나 의원명, 의안명을 입력하여 궁금한 정보에 <span style="color:#01b9b4">바로 접근</span>할 수 있습니다. <br>
-            또한 법률안 검색 메뉴를 통해 통과된 법률안과 그렇지 못한 법률안을 쉽게 확인할 수 있습니다. 
+          기존
+          <a href="https://likms.assembly.go.kr/bill/main.do" target="blank"
+            >의안정보시스템</a
+          >의 복잡한 검색 환경을 전면 개선했습니다.<br />
+          <span style="color: #01b9b4">홈화면</span>에서 관심있는 키워드나
+          의원명, 의안명을 입력하여 궁금한 정보에
+          <span style="color: #01b9b4">바로 접근</span>할 수 있습니다. <br />
+          또한 법률안 검색 메뉴를 통해 통과된 법률안과 그렇지 못한 법률안을 쉽게
+          확인할 수 있습니다.
         </p>
         <h2 class="about-title">누가누가 찬성했나, 이제는 읽지 말고 보자</h2>
         <p class="about-text">
-            기존 의안정보시스템이 각 법률안의 발의자와 찬반현황을 텍스트로 제공하는 것과 달리,<br>
-            POLI-SEE는 ‘보다’라는 서비스의 목표에 맞춰 <span style="color:#01b9b4">발의자와 찬반현황 데이터를 시각화</span>해 가독성을 높였습니다.<br>
-            또한 의원 및 소관위원회 아이콘을 전면 제작하여 딱딱한 법률안을 보다 친근하게 느낄 수<br>
-            있도록 메인 화면에 배치했습니다. 
+          기존 의안정보시스템이 각 법률안의 발의자와 찬반현황을 텍스트로
+          제공하는 것과 달리,<br />
+          POLI-SEE는 ‘보다’라는 서비스의 목표에 맞춰
+          <span style="color: #01b9b4">발의자와 찬반현황 데이터를 시각화</span
+          >해 가독성을 높였습니다.<br />
+          또한 의원 및 소관위원회 아이콘을 전면 제작하여 딱딱한 법률안을 보다
+          친근하게 느낄 수<br />
+          있도록 메인 화면에 배치했습니다.
         </p>
 
-        <h2 class="about-title">일잘러 의원은 누구인가, 본격 21대 의원 성적표</h2>
+        <h2 class="about-title">
+          일잘러 의원은 누구인가, 본격 21대 의원 성적표
+        </h2>
         <p class="about-text">
-            국회 입법과정을 감시하는 이유 중 하나는 국회의원들이 잘 하고 있나 확인하기 위함이죠. <br>
-            POLI-SEE는 소위 일 잘하는 의원이 누구인지 알아보기 위해 <span style="color:#01b9b4">출석 현황과 법률안 제출 현황</span>을
-            바탕으로<br> 시각화된 차트들을 만들었습니다. 우리 지역구 의원이 성실한지 궁금하다면 지금 바로 의원 검색 메뉴를 이용해보세요. 
+          국회 입법과정을 감시하는 이유 중 하나는 국회의원들이 잘 하고 있나
+          확인하기 위함이죠. <br />
+          POLI-SEE는 소위 일 잘하는 의원이 누구인지 알아보기 위해
+          <span style="color: #01b9b4">출석 현황과 법률안 제출 현황</span>을
+          바탕으로<br />
+          시각화된 차트들을 만들었습니다. 우리 지역구 의원이 성실한지 궁금하다면
+          지금 바로 의원 검색 메뉴를 이용해보세요.
         </p>
         <h2 class="about-title">Our Team Member</h2>
         <div>
-            <table>
-                <tbody>
-                    <tr>
-                        <td><strong>김예진</strong>&nbsp;<br>&nbsp;</td>
-                        <td>Front-end Developer<br>"아래 멘트는 팀원들과의 원만한 합의 하에 작성되었습니다."</b></td>
-                        <td>서울대학교 영어영문학과<br><br></td>
-                    </tr>
-                    <tr>
-                        <td><strong>김용인</strong>&nbsp;<br>&nbsp;</td>
-                        <td>Front-end Developer<br>"아악 PTSD 와요." "모르지 않을까요?" "홈런볼..."</td>
-                        <td>서울대학교 작곡과<br><br></td>
-                    </tr>
-                    <tr>
-                        <td><strong>유동훈</strong>&nbsp;<br>&nbsp;</td>
-                        <td>Develop Manager, Back-end Developer<br>"코딩 야매로 해요. 근데 앱을 여러 개 만들어 보긴 했어요."</td>
-                        <td>서울대학교 재료공학부<br><br></td>
-                    </tr>
-                    <tr>
-                        <td><strong>이기은</strong>&nbsp;<br>&nbsp;</td>
-                        <td>Project Manager, Front-end Developer<br>"이 정도는 돼야 브런치 작가 할 수 있어요."&nbsp;&nbsp;&nbsp;</td>
-                        <td>서울대학교 언론정보학과<br><br></td>
-                    </tr>
-                    <tr>
-                        <td><strong>이원진</strong>&nbsp;<br>&nbsp;</td>
-                        <td>Design Manager<br>"다들 전공 세 개 정도는 가지고 졸업하는 거 아닌가요?"</td>
-                        <td>서울대학교 소비자학과<br><br></td>
-                    </tr>
-                </tbody>
-            </table>
+          <table>
+            <tbody>
+              <tr>
+                <td><strong>김예진</strong>&nbsp;<br />&nbsp;</td>
+                <td>
+                  Front-end Developer<br />"아래 멘트는 팀원들과의 원만한 합의
+                  하에 작성되었습니다."
+                </td>
+                <td>서울대학교 영어영문학과<br /><br /></td>
+              </tr>
+              <tr>
+                <td><strong>김용인</strong>&nbsp;<br />&nbsp;</td>
+                <td>
+                  Front-end Developer<br />"아악 PTSD 와요." "모르지 않을까요?"
+                  "홈런볼..."
+                </td>
+                <td>서울대학교 작곡과<br /><br /></td>
+              </tr>
+              <tr>
+                <td><strong>유동훈</strong>&nbsp;<br />&nbsp;</td>
+                <td>
+                  Develop Manager, Back-end Developer<br />"코딩 야매로 해요.
+                  근데 앱을 여러 개 만들어 보긴 했어요."
+                </td>
+                <td>서울대학교 재료공학부<br /><br /></td>
+              </tr>
+              <tr>
+                <td><strong>이기은</strong>&nbsp;<br />&nbsp;</td>
+                <td>
+                  Project Manager, Front-end Developer<br />"이 정도는 돼야
+                  브런치 작가 할 수 있어요."&nbsp;&nbsp;&nbsp;
+                </td>
+                <td>서울대학교 언론정보학과<br /><br /></td>
+              </tr>
+              <tr>
+                <td><strong>이원진</strong>&nbsp;<br />&nbsp;</td>
+                <td>
+                  Design Manager<br />"다들 전공 세 개 정도는 가지고 졸업하는 거
+                  아닌가요?"
+                </td>
+                <td>서울대학교 소비자학과<br /><br /></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
     </div>
-    
-  </div>
-</body>
+  </body>
+  <div id="headLine"></div>
 </html>
