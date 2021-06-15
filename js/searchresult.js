@@ -4,9 +4,16 @@ import { getParameter } from "./peopleDetail.js";
 import { requestLawData } from "./lawsearch.js";
 import { requestPeopleData } from "./people.js";
 
-
 // 제안한 사람들에서, 한줄에 표시할 개수
-const ITEM_AMOUNT = 20;
+const ITEM_AMOUNT = 10;
+
+const getVoteResultFromServer = async (billNumber) => {
+  return $.ajax({
+    url: `http://3.34.197.145:3002/api/law/vote/${billNumber}`,
+    type: "GET",
+    dataType: "json",
+  });
+};
 
 /**
  * get current data from search result.
@@ -145,7 +152,7 @@ const createProposedPeopleGraphic = async (peopleList) => {
       row.appendChild(cell);
       count += 1;
 
-      if ( count % ITEM_AMOUNT == 0) {
+      if (count % ITEM_AMOUNT == 0) {
         tableBody.appendChild(row);
         row = document.createElement("tr");
       }
@@ -158,6 +165,41 @@ const createProposedPeopleGraphic = async (peopleList) => {
 
   table.appendChild(tableBody);
   div.appendChild(table);
+};
+
+const addVoteResultMessage = (generalResult, passGubn) => {
+  let message = undefined;
+  if (passGubn == "계류의안") {
+    message = "아직 투표를 하지 않았어요";
+  } else {
+    switch (generalResult) {
+      case "원안가결":
+        message = "원안 그대로 통과되었습니다";
+        break;
+      case "수정가결":
+        message = "수정해서 통과되었습니다";
+        break;
+      case "철회":
+        message = "앗, 의원님이 철회한 법률안입니다";
+        break;
+      case "대안반영폐기":
+        message = "기존 제안은 폐기, 대신 위원회가 대안을 마련했어요";
+        break;
+      case "폐기된 법률안입니다":
+        message = "폐기된 법률안입니다";
+        break;
+      case "부결":
+        message = "삐빅, 통과되지 못했습니다";
+        break;
+      default:
+        break;
+    }
+  }
+  if (message) {
+    const div = document.getElementById("voteResultMessage");
+    div.innerHTML = `투표 결과: ${message}`;
+  }
+  return;
 };
 
 const createVotingResult = (voteResult) => {
@@ -231,7 +273,14 @@ const generatePage = async () => {
   createStatus(lead, whoCreate, proposeDt, procStageCd);
   createProposedPeopleGraphic(team.split(","));
   calculateSuggestedDate(proposeDt);
-  createVotingResult(testVoteResult);
+
+  // TEST
+
+  if (agree !== "") {
+    const voteResult = await getVoteResultFromServer(billNo);
+    createVotingResult(testVoteResult);
+  }
+  addVoteResultMessage(generalResult, passGubn);
   createTextParagraph(summary);
 };
 

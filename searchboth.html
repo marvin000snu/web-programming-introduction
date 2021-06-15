@@ -43,21 +43,29 @@
                         <div id="inputWrapper">
                             <input id="search" placeholder="관심 있는 키워드로 검색해보세요!"
                                 />
+                            <script>
+                                    $("#search").keydown(function (e) {
+                                        if (e.keyCode == 13) {
+                                            e.preventDefault();
+                                            let keyword = document.getElementById("search").value;
+                                            moveToSearchBoth(keyword);
+                                        }
+                                    });
+                                </script>
                         </div>
                     </div>
                 </div>
                 <div>
                     <div id="subtitle">
+                        <h2 id="subtitleInner">의원 검색 결과</h2>
+                        <hr>
+                    </div>
+                    <div id="peopleCardBox"></div>
+                    <div id="subtitle">
                         <h2 id="subtitleInner">법률안 검색 결과</h2>
                         <hr>
                     </div>
-                </div>
-                <div id="cardBox"></div>
-                <div id="subtitle">
-                    <h2 id="subtitleInner">의원 검색 결과</h2>
-                    <hr>
-                </div>
-                <div id="peopleCardBox">
+                    <div id="cardBox"></div>
                 </div>
             </div>
             <div id="bottomLine"></div>
