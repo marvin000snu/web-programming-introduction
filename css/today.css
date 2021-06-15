@@ -275,33 +275,3 @@ body {
   justify-content: center;
   align-items: center;
 }
-
-.slider {
-  border: 2px solid #2d2d2d;
-  overflow: hidden;
-}
-.slide-item {
-  width: 300px;
-  height: 100px;
-  background-color: #2d2d2d;
-  border: 2px solid red;
-  box-sizing: border-box;
-  font-size: 24px;
-  color: red;
-  line-height: 100px;
-  text-align: center;
-}
-@keyframes slide {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-300px * 2));
-  }
-}
-.slide-box {
-  display: flex;
-  width: 1440px;
-  animation: slide 20s linear infinite;
-    overflow: hidden;
-}
