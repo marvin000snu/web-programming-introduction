@@ -186,7 +186,7 @@ div#boxCover {
 
 div#boxContainer {
   width: 150px;
-  height: 192px;
+  height: 220px;
   margin-top: 30px;
   padding-left: 25px;
   padding-right: 25px;
@@ -201,6 +201,7 @@ div#boxImg {
 }
 
 p#peopleName {
+  height: 30px;
   text-align: center;
   display: inline-block;
 }
@@ -257,4 +258,20 @@ select {
 
 body {
   border-bottom: 40px solid var(--main-color);
+}
+
+.peopleCardImage{
+  width:150px;
+  height:150px;
+}
+
+.peopleCardImageCover{
+  background-color: red;
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items:center
 }
