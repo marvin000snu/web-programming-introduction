@@ -1,37 +1,55 @@
-import { getParameter } from "./peopleDetail.js";
 import { committeeData, typeData, partyData } from "./tagData.js";
 
 const searchPeopleByKeyword = async (keyword) => {
-  let result = []
-  window.history.replaceState(undefined, undefined, `./people.html?keyword=${keyword}`);
-  await requestPeopleData().then(data => {
+  let result = [];
+  window.history.replaceState(
+    undefined,
+    undefined,
+    `./people.html?keyword=${keyword}`
+  );
+  await requestPeopleData().then((data) => {
     const peopleData = data["result"];
-    peopleData.forEach(d => {
+    peopleData.forEach((d) => {
       if (d.name == keyword) {
         result.push(d);
       }
-    })
-    
-  })
+    });
+  });
   // 중복되는 의원이 없는 경우
   if (result.length == 1) {
-    window.location.href = `./peopleDetail.html?id=${result[0].id}`
+    window.location.href = `./peopleDetail.html?id=${result[0].id}`;
   } else {
     removePrev();
     showOnPage(result);
   }
-}
+};
 
 /**
  *
  * @param {*} data People data
  */
 export const createPeopleCard = (data) => {
+  const partyObj = {
+    더불어민주당: "#00A0E2",
+    국민의힘: "#E61E2B",
+    정의당: "#FFCC00",
+    국민의당: "#EA5504",
+    열린민주당: " #003E9B",
+    기본소득당: "#82C8B4",
+    시대전환: "#5A147E",
+    무소속: "#d2d2d2",
+  };
+
   const { committee, count, gender, id, local, name, party, type } = data;
   const cardElement = document.createElement("div");
   const imgCover = document.createElement("div");
   const inner = document.createElement("p");
-
+  const peopleCardImageCover = document.createElement("div");
+  peopleCardImageCover.setAttribute("class", "peopleCardImageCover");
+  peopleCardImageCover.setAttribute(
+    "style",
+    `background-color:${partyObj[party]};`
+  );
   cardElement.setAttribute("id", "boxContainer");
   imgCover.setAttribute("id", "boxImg");
   inner.setAttribute("id", "peopleName");
@@ -41,13 +59,13 @@ export const createPeopleCard = (data) => {
 
   const image = new Image();
   image.setAttribute("class", "peopleCardImage");
-  image.src = "../img/peopleSample.png";
+  image.src = `../img/img300/${name}.png`;
   image.addEventListener("click", () => {
     location.href = `./peopleDetail.html?id=${id}`;
   });
   image.style.cursor = "pointer";
-
-  cardElement.appendChild(image);
+  peopleCardImageCover.appendChild(image);
+  cardElement.appendChild(peopleCardImageCover);
   cardElement.appendChild(inner);
 
   return cardElement;
@@ -57,7 +75,7 @@ export const requestPeopleData = async () => {
   return $.ajax({
     url: "http://3.34.197.145:3002/api/people/getAllPeople", // 클라이언트가 요청을 보낼 서버의 URL 주소
     type: "GET", // HTTP 요청 방식(GET, POST)
-    dataType: "json" // 서버에서 보내줄 데이터의 타입
+    dataType: "json", // 서버에서 보내줄 데이터의 타입
   });
 };
 
@@ -159,7 +177,7 @@ const tagSearch = async () => {
   });
 };
 
-const addCategory = (elements, datas, size) => {
+export const addCategory = (elements, datas, size) => {
   for (let i = 0; i < size; i++) {
     for (let key in datas[i]) {
       const optionElement = document.createElement("option");

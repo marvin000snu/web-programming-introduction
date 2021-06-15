@@ -25,7 +25,9 @@
             />
         <script>
       // ES6?
-      window.addEventListener("load", function () {
+      window.addEventListener("load", async function () {
+        const rate = await dataView();
+        const { mainAttendRate, subAttendRate } = rate;
         var canvas = document.getElementById("chart");
         var ctx = canvas.getContext("2d");
         const data = {
@@ -38,7 +40,7 @@
           datasets: [
             {
               label: "OOO 의원",
-              data: [65, 59, 90, 81],
+              data: [mainAttendRate * 100, subAttendRate * 100, 90, 81],
               fill: true,
               backgroundColor: "rgba(255, 99, 132, 0.2)",
               borderColor: "rgb(255, 99, 132)",
@@ -139,7 +141,7 @@
         );
 
         chart.draw(data, options);
-        dataView();
+        // dataView();
       }
     </script>
     </head>
@@ -156,7 +158,7 @@
                     />
                 <div id="headBtnBoxRight">
                     <div class="headBtn">요즘 국회</div>
-                    <div class="headBtn">ABOUT</div>
+                    <div class="headBtn" onclick="moveToAbout()">ABOUT</div>
                 </div>
             </div>
             <div id="mainpage" class="coverAll">
@@ -165,7 +167,10 @@
                 </div>
                 <div id="boxCover">
                     <div class="mainbox">
-                        <img src="../img/person1.png" />
+                      <div style="height: 350px; width:250px;border-bottom-right-radius: 125px;border-bottom-left-radius: 125px;display:flex;justify-content:center;align-items:center; overflow:hidden">
+                        <div  id="backgroundCircle"></div>
+                        <img  id="circleImg" src=""/>
+                      </div>
                         <div id="peopleParagraph"></div>
                     </div>
                     <div id="chartContainer">

@@ -94,7 +94,7 @@ body {
 }
 
 .coverAll {
-  flex: 1;
+  height:auto;
   display: flex;
   flex-direction: row;
   justify-content: center;

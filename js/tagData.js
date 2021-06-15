@@ -1,3 +1,9 @@
+const statusData = {
+  all: "전체",
+  처리중: "처리중",
+  완료: "완료"
+}
+
 const committeeData = {
   all: "전체",
   국회운영위원회: "국회운영위원회",
@@ -37,4 +43,4 @@ const partyData = {
   무소속: "무소속",
 };
 
-export { committeeData, typeData, partyData };
+export { committeeData, typeData, partyData, statusData };

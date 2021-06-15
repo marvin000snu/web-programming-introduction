@@ -16,7 +16,6 @@ body {
   align-items: center;
   padding: 0px;
   margin: 0px;
-  height: 100vh;
   font-family: "Noto Sans KR", sans-serif;
 }
 
@@ -35,6 +34,10 @@ body {
   width: 100vw;
   min-width: 1440px;
   margin-top: 50px;
+  z-index: 10;
+  /* position: firexed; */
+  bottom:0;
+  margin-top:100px;
 }
 
 #headBtnBox {
@@ -58,7 +61,7 @@ img#logo {
 
 #content {
   width: 1440px;
-  flex: 1;
+  height:auto;
   display: flex;
   flex-direction: column;
 }
@@ -106,7 +109,7 @@ img#logo {
 }
 
 .coverAll {
-  flex: 1;
+  height:auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -182,11 +185,14 @@ input#search {
 }
 
 #cardBox {
+  margin-top: 100px;
   width: 1240px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
+  height:auto;
+
 }
 
 .card {
@@ -194,19 +200,23 @@ input#search {
   height: 200px;
   background-color: white;
   border-radius: 10px;
-  margin-top: 40px;
+  margin-top: 20px;
+  margin-bottom:20px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .card .inner {
-  margin: 35px;
+  margin: 25px;
 }
 
 .cardTitle {
+  height: 60px;
   font-size: 20px;
   font-weight: 500;
-  height: 30px;
+  margin: 0 auto;
   color: "#2e1d14";
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .description {
@@ -235,13 +245,20 @@ p strong {
 select {
   width: 200px;
   height: 33px;
-  padding: .3em .5em;
+  padding: 0.3em 0.5em;
   font-family: Noto Sans KR, sans-serif;
-  -webkit-appearance: none; 
+  -webkit-appearance: none;
   border: 3px solid #b3b3b3;
   border-radius: 5px;
   -moz-appearance: none;
   appearance: none;
-  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%; //화살표 이미지
+  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg)
+    no-repeat 95% 50%; /* 화살표 이미지 */
 }
 
+p#warning-message {
+  margin: 0 auto;
+  text-align: center;
+  width: 50%;
+  font-size: 25px;
+}
