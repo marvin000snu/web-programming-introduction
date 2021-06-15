@@ -36,7 +36,7 @@ const requestPeopleDataByID = async (id) => {
  * @param {string} searchName
  * @returns parameter
  */
-const getParameter = (searchName) => {
+export const getParameter = (searchName) => {
   let params = window.location.search.substr(location.search.indexOf("?") + 1);
   params = params.split("&");
 
@@ -68,6 +68,7 @@ const showOnPage = (mainAttendData, subAttendData, peopleData) => {
     "시대전환": "#5A147E",
     "무소속": "#d2d2d2"
   }
+
   const { name, party, local, count, committee } = peopleData;
   // FIXME: 중복되는 코드 정리할 방법을 생각해 볼 것!
   const nameParagraph = `${name} (${party}) / ${local}`;
@@ -83,6 +84,14 @@ const showOnPage = (mainAttendData, subAttendData, peopleData) => {
 
   const { main_attend, main_notAttend, main_work, main_home } = mainAttendData;
   const { sub_attend, sub_notAttend, sub_worl, sub_home } = subAttendData;
+  const mainAttendRate = peopleData['main-attend-rate'];
+  const subAttendRate = peopleData['sub-attend-rate'];
+  console.log(mainAttendRate, subAttendRate);
+
+  window.mainAttendRate = mainAttendRate;
+  window.subAttendRate = subAttendRate;
+
+  return { mainAttendRate, subAttendRate }
 };
 
 // Loading bar
@@ -99,7 +108,11 @@ const onReady = (callback) => {
 };
 
 const show = (id, value) => {
-  document.getElementById(id).style.display = value ? "block" : "none";
+  try {
+    document.getElementById(id).style.display = value ? "block" : "none";
+  } catch (error) {
+    return;
+  }
 };
 
 onReady(() => {
@@ -140,7 +153,8 @@ const dataView = async () => {
     });
 
   if (mainAttendData && subAttendData && peopleData) {
-    showOnPage(mainAttendData, subAttendData, peopleData);
+    const rate = showOnPage(mainAttendData, subAttendData, peopleData);
+    return rate;
   }
 };
 

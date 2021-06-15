@@ -1,62 +1,103 @@
-function searchHandler() {
-  const value = document.getElementById("search").value;
-  
-}
+import { addCategory } from "./people.js";
+import { getParameter } from "./peopleDetail.js";
+import { committeeData, statusData } from "./tagData.js";
 
-function moveToHome() {
-  window.location.href = "./index.html";
-}
-
-function moveToPeopleSearch() {
-  window.location.href = "./people.html";
-}
-
-function entersearch() {
-  if (search.keycode == 13) {
-    searchInput();
+/**
+ *
+ * @param {string} keyword
+ * @returns data
+ */
+export const requestLawData = async (keyword) => {
+  if (keyword !== undefined) {
+    return $.ajax({
+      url: `http://3.34.197.145:3002/api/law/search/${keyword}`,
+      type: "GET",
+      dataType: "json",
+    });
+  } else {
+    return $.ajax({
+      url: `http://3.34.197.145:3002/api/law/preview`,
+      type: "GET",
+      dataType: "json",
+    });
   }
-}
+};
 
-// For presentation!
-const testLawData = [
-  {
-    id: "0",
-    title: "공동주택관리법 일부개정법률안",
-    summary: "공동주택, 회계관리, 회계감사에 대한 법률안이에요.",
-    whoCreate: "박상혁의원 외 12인",
-    where: "국토교통관리위원회",
-    when: "2021 - 04 - 05 제안",
-    isCompleted: false,
-  },
-  {
-    id: "1",
-    title: "부동산 거래신고 등에 관한 법률 일부개정법률안",
-    whoCreate: "박상혁의원 외 12인",
-    where: "국토교통관리위원회",
-    when: "2021 - 04 - 05",
-    summary: "공동주택, 회계관리, 회계감사",
-    isCompleted: true,
-  },
-  {
-    id: "2",
-    title: "자원의 절약과 재활용촉진에 관한 법률 일부개정법률안",
-    whoCreate: "박상혁의원 외 12인",
-    where: "국토교통관리위원회",
-    when: "2021 - 04 - 05",
-    summary: "공동주택, 회계관리, 회계감사",
-    isCompleted: false,
-  },
-];
+const searchByKeyword = async (keyword) => {
+  // window.location.replace(`./lawsearch.html?keyword=${keyword}`)
+  removePrevResult();
+  window.history.replaceState(
+    undefined,
+    undefined,
+    `lawsearch.html?keyword=${keyword}`
+  );
+  await requestLawData(keyword)
+    .then((data) => {
+      showOnPage(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      return;
+    });
+};
+
+const showOnPage = (lawData) => {
+  const maxAmount = 12; // 수정
+  const div = document.getElementById("cardBox");
+
+  // 검색 결과가 없을 경우
+  if (lawData.length == 0) {
+    const message = "검색결과가 없습니다!";
+    const pElement = document.createElement("p");
+    pElement.setAttribute("id", "warning-message");
+    pElement.innerHTML = message;
+    div.appendChild(pElement);
+    alert("검색결과가 없습니다.");
+    return;
+  } else {
+    for (let i = 0; i < maxAmount; i++) {
+      const currentData = lawData[i];
+      const lawCard = createCard(currentData);
+      div.appendChild(lawCard);
+    }
+  }
+};
+
+const removePrevResult = () => {
+  const div = document.getElementById("cardBox");
+  const length = div.children.length;
+  for (let i = 0; i < length; i++) {
+    div.children[0].remove();
+  }
+};
 
 /**
  * Create simple card
  *
  * ! Consider a more simpler way..
  * @param {*} data law data
+ * @param {string} keyword search keyword
  * @returns Card div element.
  */
 export const createCard = (data) => {
-  const { id, title, whoCreate, where, when, summary, isCompleted } = data;
+  const {
+    agree,
+    billId,
+    billName,
+    billNo,
+    disagree,
+    drop,
+    generalResult,
+    lead,
+    notattend,
+    passGubn,
+    procDt,
+    procStageCd,
+    proposeDt,
+    summary,
+    team,
+  } = data;
+
   const cardElement = document.createElement("div");
   const inner = document.createElement("div");
   const description = document.createElement("div");
@@ -66,56 +107,80 @@ export const createCard = (data) => {
   cardElement.setAttribute("class", "card");
   cardElement.style.cursor = "pointer";
   cardElement.addEventListener("click", () => {
-    moveToSearchResult(id);
+    moveToLawSearchResult(getParameter("keyword"), billId);
   });
   inner.setAttribute("class", "inner");
   description.setAttribute("class", "description");
   titleElement.setAttribute("class", "cardTitle");
   paragraphElement.setAttribute("class", "cardParagraph");
 
-  let paragraph =
-    `${whoCreate}` +
+  const whoCreate = `${lead}의원 외 ${team.split(",").length}인`;
+  const paragraph =
+    `누가? ${whoCreate}` +
     "</br>" +
-    `${where}` +
+    `어디서?` +
     "</br>" +
-    `${summary}`;
-  const cardTitle = document.createTextNode(title);
-  paragraphElement.innerHTML = paragraph;
+    `언제? ${proposeDt}` +
+    "</br>" +
+    "한줄요약: ";
+  if (billName.length > 45) {
+    titleElement.setAttribute("style", "font-size: 16px;");
+  }
+  const cardTitle = document.createTextNode(billName);
 
+  paragraphElement.innerHTML = paragraph;
   titleElement.appendChild(cardTitle);
 
   const image = new Image();
   image.setAttribute("class", "cardImage");
-  if (isCompleted) image.src = "./img/complete.png";
-  else image.src = "./img/inprogress.png";
+  const isCompleted = generalResult == "" ? false : true;
+  image.src = isCompleted ? "./img/complete.png" : "./img/inprogress.png";
 
   inner.appendChild(titleElement);
   description.appendChild(paragraphElement);
   description.appendChild(image);
   inner.appendChild(description);
-
   cardElement.appendChild(inner);
 
   return cardElement;
 };
 
 /**
- * Card item view.
- * ! Modify or remove this function after presentation.
+ * Search law data by tag
  */
-window.onload = () => {
-  const CardsPreview = () => {
-    const div = document.getElementById("cardBox");
-    // The number of cards shown in the preview
-    const maxAmount = 7;
+const tagSearch = async () => {
+  removePrev(); // ! Remove previous card data on main page
 
-    for (let i = 0; i < maxAmount; i++) {
-      const id = i % 3;
-      const currentData = testLawData[id];
-      const card = createCard(currentData);
-      div.appendChild(card);
-    }
-  };
+  const committee = document.getElementById("소속위원회").value;
+  const status = document.getElementById("상태").value;
 
-  CardsPreview();
+  await getData(party, type, committee).then((data) => {
+    showOnPage(data);
+  });
 };
+
+const initializeView = async () => {
+  const keyword = getParameter("keyword");
+  await requestLawData(keyword).then((data) => {
+    const div = document.getElementById("cardBox");
+    data.forEach((element) => {
+      const card = createCard(element);
+      div.appendChild(card);
+    });
+  });
+};
+
+window.onload = () => {
+  initializeView();
+
+  const committeeElement = document.getElementById("소속위원회");
+  const statusElement = document.getElementById("상태");
+
+  addCategory(
+    [committeeElement, statusElement],
+    [committeeData, statusData],
+    2
+  );
+};
+
+window.searchByKeyword = searchByKeyword;
