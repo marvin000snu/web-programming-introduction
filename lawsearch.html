@@ -85,6 +85,10 @@
                                 style="font-size: 20px"
                                 />
                             <script type="text/javascript">
+                            function searchHandler() {
+                                let keyword = document.getElementById("search").value;
+                                searchByKeyword(keyword);
+                            }
                 $("#search").keydown(function (e) {
                   if (e.keyCode == 13) {
                     e.preventDefault();

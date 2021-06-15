@@ -19,7 +19,7 @@
     <script>
         // ES6?
         window.addEventListener("load", async function () {
-            const rate = await dataView();
+            const { rate, name } = await dataView();
             const { main, sub } = rate;
 
             var canvas = document.getElementById("chart");
@@ -33,7 +33,7 @@
                 ],
                 datasets: [
                     {
-                        label: "OOO 의원",
+                        label: `${name} 의원`,
                         data: [main * 100,
                         sub * 100,
                             //90, 
@@ -99,7 +99,8 @@
                 title: "의원님들의 출석랭킹",
                 hAxis: { title: "상임위원회 출석률", minValue: 0, maxValue: 100 },
                 vAxis: { title: "본회의 출석률", minValue: 0, maxValue: 100 },
-                legend: "none"
+                legend: "none",
+                backgroundColor: "#FEFDF9"
             };
 
             var chart = new google.visualization.ScatterChart(
