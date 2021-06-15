@@ -1,7 +1,7 @@
 import { createVoteResultCanvas, colorSet, koreanStatusValue } from "./draw.js";
 import { testLawData, testVoteResult } from "./testData.js";
 import { getParameter } from "./peopleDetail.js";
-import { requestLawData } from "./lawsearch.js";
+import { getHashTag, getLawDataByID, requestLawData } from "./lawsearch.js";
 import { requestPeopleData } from "./people.js";
 
 // 제안한 사람들에서, 한줄에 표시할 개수
@@ -22,10 +22,8 @@ const getVoteResultFromServer = async (billNumber) => {
  * @returns current data
  */
 const getCurrentData = async (keyword, id) => {
-  const data = await requestLawData(
-    (keyword = keyword == "all" ? undefined : keyword)
-  );
-  return data.find((d) => d.billId == id);
+  const data = await getLawDataByID(id);
+  return data;
 };
 
 /**
@@ -259,12 +257,13 @@ const generatePage = async () => {
     summary,
     team,
   } = lawData;
+  const hashtag = await getHashTag(billId);
 
   console.log(lawData);
   console.log(team.split(",").length);
   const teamList = team.split(",");
   const whoCreate = `${lead}의원 외 ${teamList.length}인`;
-  const infoList = [whoCreate, "where", proposeDt];
+  const infoList = [whoCreate, "where", proposeDt, hashtag['hash-tag']];
   const titleElement = document.getElementById("title");
   titleElement.innerHTML = billName;
   const div = document.getElementById("infoBox");
