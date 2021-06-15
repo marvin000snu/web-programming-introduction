@@ -76,7 +76,7 @@ const getDataBySearchBoth = async (keyword) => {
  *
  * @param {Array} data People data.
  */
-const showOnPage = (lawData, peopleData) => {
+const showOnPage = async (lawData, peopleData) => {
   console.log("law=>", lawData, "people", peopleData);
   const maxAmount = 300; // 한페이지에 보여줄 Maximum 갯수
   const cardDiv = document.getElementById("cardBox");
@@ -90,10 +90,11 @@ const showOnPage = (lawData, peopleData) => {
     pElement.innerHTML = message;
     cardDiv.appendChild(pElement);
   } else {
-    lawData.forEach((element) => {
-      const card = createCard(element);
+    for (let i = 0; i < lawData.length; i++) {
+      const currentData = lawData[i];
+      const card = await createCard(currentData);
       cardDiv.appendChild(card);
-    })
+    }
   }
 
   // 의원 검색 결과가 없을 경우
@@ -122,11 +123,9 @@ const showOnPage = (lawData, peopleData) => {
 window.onload = async () => {
   const keyword = decodeURI(getParameter("keyword"));
   console.log(keyword);
-
-  await getDataBySearchBoth(keyword).then((data) => {
-    const { lawData, peopleData } = data;
-    showOnPage(lawData, peopleData);
-  });
+  const data = await getDataBySearchBoth(keyword);
+  const { lawData, peopleData } = data;
+  await showOnPage(lawData, peopleData);
 
   console.log(document.getElementById("search").placeholder);
   document.getElementById("search").placeholder = keyword;

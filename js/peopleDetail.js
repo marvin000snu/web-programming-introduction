@@ -143,6 +143,8 @@ const addAttendResultOnPage = (mainAttendResult, subAttendResult, mainRate, subR
 
   
   const div1 = document.getElementById("attendScore1");
+  console.log(div1);
+  /*
   div1.innerHTML =
     `상임위원회: ${getAttendMessage(subRate)}` +
     "<br />" +
@@ -150,7 +152,7 @@ const addAttendResultOnPage = (mainAttendResult, subAttendResult, mainRate, subR
     `/ ${subAttendCount.home}번 병가` +
     `/ ${subAttendCount.work}번 청가` +
     `/ ${subAttendCount.notAttend}번 결석했어요.`;
-
+  */
   const div2 = document.getElementById("attendScore2");
   div2.innerHTML =
     `본회의: ${getAttendMessage(mainRate)}` +

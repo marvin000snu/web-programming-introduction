@@ -7,15 +7,15 @@
 export const colorSet = {
   agree: "#219edb",
   disagree: "#e10d0d",
-  abstention: "#bebebe",
-  absence: "#5e5e5e",
+  notAttend: "#bebebe",
+  drop: "#5e5e5e",
 };
 
 export const koreanStatusValue = {
   agree: "찬성",
   disagree: "반대",
-  abstention: "기권",
-  absence: "불참",
+  notAttend: "기권",
+  drop: "불참",
 };
 
 /**
