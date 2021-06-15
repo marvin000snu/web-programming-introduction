@@ -57,7 +57,7 @@ const searchByKeyword = async (keyword) => {
     });
 };
 
-const showOnPage = (lawData) => {
+const showOnPage = async (lawData) => {
   const maxAmount = 12; // 수정
   const div = document.getElementById("cardBox");
 
@@ -73,7 +73,7 @@ const showOnPage = (lawData) => {
   } else {
     for (let i = 0; i < maxAmount; i++) {
       const currentData = lawData[i];
-      const lawCard = createCard(currentData);
+      const lawCard = await createCard(currentData);
       div.appendChild(lawCard);
     }
   }
