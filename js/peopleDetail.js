@@ -73,9 +73,9 @@ export const getParameter = (searchName) => {
 };
 
 /**
- * 
- * @param {*} billCount 
- * @param {*} billRate 
+ *
+ * @param {*} billCount
+ * @param {*} billRate
  */
 const addVoteResultOnPage = (billCount, billRate, leadLawData) => {
   // const passCount = leadLawData.filter(obj => obj.generalResult == "원안가결").length;
@@ -87,17 +87,19 @@ const addVoteResultOnPage = (billCount, billRate, leadLawData) => {
 
   const div2 = document.getElementById("lawScore2");
   div2.innerHTML =
-  `통과는 얼마나? : ${getPassMessage(billCount, billRate)}` + "<br />" +
-  `제출한 법률안 ${billCount}개 중, ${billRate}개만 통과되었어요.`;
+    `통과는 얼마나? : ${getPassMessage(billCount, billRate)}` +
+    "<br />" +
+    `제출한 법률안 ${billCount}개 중, ${billRate}개만 통과되었어요.`;
 };
 
 const getAttendMessage = (rate) => {
-  let message = undefined
+  let message = undefined;
   const percent = rate * 100;
+  console.log(percent);
   if (percent == 100) {
     message = "올출석한 그대는 진정한 성실맨!";
   } else if (90 <= percent < 100) {
-    message = "그래도 기본은 하셨습니다"
+    message = "그래도 기본은 하셨습니다";
   } else if (60 <= percent < 90) {
     message = "여의도에서 의원님을 애타게 찾고있습니다";
   } else {
@@ -105,29 +107,35 @@ const getAttendMessage = (rate) => {
   }
 
   return message;
-}
+};
 
 const getPassMessage = (total, passAmount) => {
   let message = undefined;
-  const percent = passAmount / total * 100;
+  const percent = (passAmount / total) * 100;
   if (percent == 100) {
-    message = "내는 족족 통과시키는 그대는 가결왕!"
+    message = "내는 족족 통과시키는 그대는 가결왕!";
   } else if (60 <= percent < 100) {
     message = "그래도 평균은 하셨어요";
   } else {
     message = "의원님에게는 유독 높은 본회의의 벽";
   }
-  
+
   return message;
-}
+};
 
 /**
- * 
- * @param {*} mainAttendResult 
- * @param {*} subAttendResult 
+ *
+ * @param {*} mainAttendResult
+ * @param {*} subAttendResult
  */
-const addAttendResultOnPage = (mainAttendResult, subAttendResult, mainRate, subRate) => {
-  let mainAttendTotal = 0, subAttendTotal = 0;
+const addAttendResultOnPage = (
+  mainAttendResult,
+  subAttendResult,
+  mainRate,
+  subRate
+) => {
+  let mainAttendTotal = 0,
+    subAttendTotal = 0;
 
   let mainAttendCount = {},
     subAttendCount = {};
@@ -141,7 +149,6 @@ const addAttendResultOnPage = (mainAttendResult, subAttendResult, mainRate, subR
     subAttendTotal += value[0] == "" ? 0 : value.length;
   }
 
-  
   const div1 = document.getElementById("attendScore1");
   console.log(div1);
   /*
@@ -164,14 +171,20 @@ const addAttendResultOnPage = (mainAttendResult, subAttendResult, mainRate, subR
 };
 
 /**
- * 
- * @param {*} mainAttendData 
- * @param {*} subAttendData 
- * @param {*} peopleData 
- * @param {*} scoreData 
- * @returns 
+ *
+ * @param {*} mainAttendData
+ * @param {*} subAttendData
+ * @param {*} peopleData
+ * @param {*} scoreData
+ * @returns
  */
-const showOnPage = (mainAttendData, subAttendData, peopleData, scoreData, leadLawData) => {
+const showOnPage = (
+  mainAttendData,
+  subAttendData,
+  peopleData,
+  scoreData,
+  leadLawData
+) => {
   // For deploy on server, remove this method.
   console.log(
     "Main =>",
@@ -302,7 +315,13 @@ const dataView = async () => {
     .catch((err) => {
       console.error(err);
     });
-  if (mainAttendData && subAttendData && peopleData && scoreData && leadLawData) {
+  if (
+    mainAttendData &&
+    subAttendData &&
+    peopleData &&
+    scoreData &&
+    leadLawData
+  ) {
     const rate = showOnPage(
       mainAttendData,
       subAttendData,
@@ -310,8 +329,8 @@ const dataView = async () => {
       scoreData,
       leadLawData
     );
-
-    return rate;
+    const name = peopleData.name;
+    return { rate, name };
   }
 };
 

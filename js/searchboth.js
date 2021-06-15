@@ -1,5 +1,5 @@
 import { createPeopleCard, requestPeopleData } from "./people.js";
-import { createCard, requestLawData } from "./lawsearch.js";
+import { createCard, getLawDataByHashtag, requestLawData } from "./lawsearch.js";
 import { getLeadLawData, getParameter } from "./peopleDetail.js";
 
 const createSimplePeopleList = (peopleData) => {
@@ -67,6 +67,12 @@ const getDataBySearchBoth = async (keyword) => {
         datas["lawData"] = res;
       }).catch(err => console.error(err));
     }
+
+  await getLawDataByHashtag(keyword).then(res => {
+    res.forEach(e => {
+      datas["lawData"].push(e);
+    })
+  })
 
   return datas;
 };

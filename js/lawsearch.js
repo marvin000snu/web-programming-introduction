@@ -2,6 +2,14 @@ import { addCategory } from "./people.js";
 import { getParameter } from "./peopleDetail.js";
 import { committeeData, statusData } from "./tagData.js";
 
+export const getLawDataByHashtag = async (hashTag) => {
+  return $.ajax({
+    url: `http://3.34.197.145:3002/api/law/searchByHashtag/${hashTag}`,
+    type: "GET",
+    dataType: "json",
+  });
+};
+
 /**
  *
  * @param {string} keyword
@@ -40,6 +48,7 @@ export const getHashTag = async (billId) => {
 };
 
 const searchByKeyword = async (keyword) => {
+  let lawData = [];
   // window.location.replace(`./lawsearch.html?keyword=${keyword}`)
   removePrevResult();
   window.history.replaceState(
@@ -49,12 +58,20 @@ const searchByKeyword = async (keyword) => {
   );
   await requestLawData(keyword)
     .then((data) => {
-      showOnPage(data);
+      lawData = data;
     })
     .catch((err) => {
       console.error(err);
       return;
     });
+  await getLawDataByHashtag(keyword)
+    .then((data) => {
+      data.forEach((e) => {
+        lawData.push(e);
+      });
+      showOnPage(lawData);
+    })
+    .catch((err) => console.error(err));
 };
 
 const showOnPage = async (lawData) => {
@@ -177,16 +194,10 @@ const tagSearch = async () => {
 };
 
 const initializeView = () => {
+  let lawData = [];
+  const div = document.getElementById("cardBox");
   const keyword = getParameter("keyword");
-  requestLawData(keyword).then((data) => {
-    const div = document.getElementById("cardBox");
-    data.forEach((element) => {
-      const card = createCard(element).then((res) => {
-        div.appendChild(res);
-      });
-      //div.appendChild(card);
-    });
-  });
+  searchByKeyword(keyword);
 };
 
 window.onload = () => {

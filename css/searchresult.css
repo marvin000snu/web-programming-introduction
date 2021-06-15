@@ -133,7 +133,7 @@ blockquote {
 }
 
 p#title {
-  width: 700px;
+  width: 600px;
   font-size: 30px;
   line-height: 40px;
   font-weight: 500;
@@ -244,6 +244,13 @@ pre {
   font-size: 18px;
   line-height: 20px;
   white-space: pre-wrap;
+  margin-top: -50px;
+  margin-bottom: -50px;
+}
+
+p#paragraphTitle {
+  font-size: 25px;
+  font-weight: bold;
 }
 
 #paragraphView {
