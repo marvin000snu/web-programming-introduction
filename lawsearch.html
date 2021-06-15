@@ -8,6 +8,7 @@
         <script
             src="https://kit.fontawesome.com/139aa3f25a.js"
             crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script type="module" src="./js/testData.js"></script>
         <script type="module" src="./js/lawsearch.js"></script>
         <script src="./js/movePage.js"></script>
@@ -16,10 +17,8 @@
             rel="stylesheet"
             />
     </head>
-
     <body>
         <div id="headLine"></div>
-
         <div id="content">
             <div id="headBtnBox">
                 <div id="headBtnBoxLeft">
@@ -42,8 +41,19 @@
                         </div>
                         <div id="inputWrapper">
                             <input
-                                id onkeyup="enterKey()" id="search" placeholder="관심
-                                있는 법률안을 검색해보세요!" style="font-size: 20px;" />
+                                id="search"
+                                type="text"
+                                placeholder="관심있는 법률안을 검색해보세요!"
+                                style="font-size: 20px;" />
+                            <script type="text/javascript">
+                                    $('#search').keydown(function(e) {
+                                        if (e.keyCode == 13) {
+                                            e.preventDefault();
+                                            let keyword = document.getElementById("search").value;
+                                            searchByKeyword(keyword);
+                                        }
+                                    })
+                                </script>
                         </div>
                     </div>
                 </div>

@@ -43,8 +43,16 @@
                             <i class="fas fa-search"></i>
                         </div>
                         <div id="inputWrapper">
-                            <input onkeyup="enterKey()" id="search" placeholder="관심
-                                있는 의원을 검색해보세요!" style="font-size: 20px;" />
+                            <input type="text" id="search" placeholder="관심있는 의원을 검색해보세요!" style="font-size: 20px;" />
+                            <script type="text/javascript">
+                                $('#search').keydown(function(e) {
+                                    if (e.keyCode == 13) {
+                                        e.preventDefault();
+                                        let keyword = document.getElementById("search").value;
+                                        searchPeopleByKeyword(keyword);
+                                    }
+                                })
+                            </script>
                         </div>
                     </div>
                     <div id="filter-search" style="padding: 15px;">

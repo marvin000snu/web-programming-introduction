@@ -1,15 +1,17 @@
-import { createSimplePeopleList } from "./convert.js";
 import { createVoteResultCanvas, colorSet, koreanStatusValue } from "./draw.js";
 import { testLawData, testVoteResult } from "./testData.js";
+import { getParameter } from "./peopleDetail.js";
+import { requestLawData } from "./lawsearch.js";
 
 /**
- * get current data from datalist.
- * @param {*} id
+ * get current data from search result.
+ * @param {*} keyword search keyword
+ * @param {*} id data id
  * @returns current data
  */
-const getCurrentData = (id) => {
-  const currentData = testLawData[id];
-  return currentData;
+const getCurrentData = async (keyword, id) => {
+  const data = await requestLawData(keyword = keyword == 'all' ? undefined : keyword);
+  return data.find(d => d.billId == id);
 };
 
 /**
@@ -20,7 +22,7 @@ const getCurrentData = (id) => {
 export const createInfoText = (infoList, div) => {
   // Modify this after presentation
   const text = ["누가?", "어디서?", "언제?", "한줄요약"];
-
+  console.log(infoList)
   for (let i = 0; i < infoList.length; i++) {
     const element = document.createElement("p");
     element.setAttribute("class", `info`);
@@ -28,8 +30,7 @@ export const createInfoText = (infoList, div) => {
     // create people list.
     // example: 박상혁의원 외 12인
     if (i == 0) {
-      const simpleList = createSimplePeopleList(infoList[0]);
-      element.innerHTML = simpleList;
+      element.innerHTML = infoList[0];
     } else if (i == infoList.length - 1) {
       const strongElement = document.createElement("strong");
       element.innerHTML = `${text[i]}`;
@@ -42,6 +43,9 @@ export const createInfoText = (infoList, div) => {
     div.appendChild(element);
   }
 
+  const summaryElement = document.getElementById("summary");
+  summaryElement.innerHTML = infoList[3];
+
   return;
 };
 
@@ -49,10 +53,9 @@ export const createInfoText = (infoList, div) => {
  * 수정예정.
  * @param {string} status
  */
-const createStatus = (status) => {
-  //const div = document.getElementById("statusbox");
-  //const statusMessage = document.createElement("p");
-  //statusMessage.setAttribute("id", "statusmessage");
+const createStatus = (proposeDate) => {
+  const proposeDateElement = document.getElementById("proposeDate");
+  proposeDateElement.innerHTML = proposeDate + "제안";
   return;
 };
 
@@ -79,6 +82,7 @@ const calculateSuggestedDate = (date) => {
  * Visualize and show the proposed people.
  */
 const createProposedPeopleGraphic = (peopleList) => {
+  console.log(peopleList);
   const div = document.getElementById("proposedPeopleView");
   const table = document.createElement("table");
   const tableBody = document.createElement("tbody");
@@ -89,7 +93,6 @@ const createProposedPeopleGraphic = (peopleList) => {
 
   for (let i = 0; i < amount; i++) {
     const cell = document.createElement("td");
-
     // Set class attribute for css layout.
     cell.setAttribute("class", "tooltipContainer");
     cell.setAttribute("id", "proposedPeopleGraphic");
@@ -154,31 +157,45 @@ const createTextParagraph = (textParagraph) => {
 /**
  * Render pages with multiple pieces of information.
  */
-const generatePage = () => {
-  const temp = location.href.split("?");
-  const idTemp = temp[1].split("=");
-  const id = idTemp[1];
-  const lawData = getCurrentData(id);
-  console.log(id);
-  const { title, whoCreate, where, when, summary, status, text } = lawData;
-  const infoList = [whoCreate, where, when, summary];
+const generatePage = async () => {
+  const id = getParameter("id");
+  const keyword = decodeURI(getParameter("keyword"));
+  const lawData = await getCurrentData(keyword, id);
+  const {
+    agree,
+    billId,
+    billName,
+    billNo,
+    disagree,
+    drop,
+    generalResult,
+    lead,
+    notattend,
+    passGubn,
+    procDt,
+    procStageCd,
+    proposeDt,
+    summary,
+    team,
+  } = lawData;
+
+  console.log(lawData);
+  console.log(team.split(",").length);
+  const teamList = team.split(",");
+  const whoCreate = `${lead}의원 외 ${teamList.length}인`;
+  const infoList = [whoCreate, 'where', proposeDt, summary];
   const titleElement = document.getElementById("title");
-  titleElement.innerHTML = title;
+  titleElement.innerHTML = billName
   const div = document.getElementById("infoBox");
 
   createInfoText(infoList, div);
-  createStatus(status);
-  createProposedPeopleGraphic(whoCreate);
-  calculateSuggestedDate(when);
+  createStatus(proposeDt);
+  createProposedPeopleGraphic(team.split(","));
+  calculateSuggestedDate(proposeDt);
   createVotingResult(testVoteResult);
-  createTextParagraph(text);
+  // createTextParagraph(text);
 };
 
 window.onload = () => {
   generatePage();
 };
-
-function moveToPeopleSearch() {
-  alert(1);
-  window.location.href = "./people.html";
-}

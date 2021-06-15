@@ -1,4 +1,26 @@
+import { getParameter } from "./peopleDetail.js";
 import { committeeData, typeData, partyData } from "./tagData.js";
+
+const searchPeopleByKeyword = async (keyword) => {
+  let result = []
+  window.history.replaceState(undefined, undefined, `./people.html?keyword=${keyword}`);
+  await requestPeopleData().then(data => {
+    const peopleData = data["result"];
+    peopleData.forEach(d => {
+      if (d.name == keyword) {
+        result.push(d);
+      }
+    })
+    
+  })
+  // 중복되는 의원이 없는 경우
+  if (result.length == 1) {
+    window.location.href = `./peopleDetail.html?id=${result[0].id}`
+  } else {
+    removePrev();
+    showOnPage(result);
+  }
+}
 
 /**
  *
@@ -148,9 +170,6 @@ const addCategory = (elements, datas, size) => {
   }
 };
 
-
-
-
 window.onload = async () => {
   await getData("all", "all", "all")
     .then((data) => {
@@ -172,9 +191,4 @@ window.onload = async () => {
 };
 
 window.tagSearch = tagSearch;
-
-function entersearch() {
-  if (search.keycode == 13) {
-    searchInput();
-  }
-}
+window.searchPeopleByKeyword = searchPeopleByKeyword;

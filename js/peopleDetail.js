@@ -36,7 +36,7 @@ const requestPeopleDataByID = async (id) => {
  * @param {string} searchName
  * @returns parameter
  */
-const getParameter = (searchName) => {
+export const getParameter = (searchName) => {
   let params = window.location.search.substr(location.search.indexOf("?") + 1);
   params = params.split("&");
 
@@ -87,7 +87,11 @@ const onReady = (callback) => {
 };
 
 const show = (id, value) => {
-  document.getElementById(id).style.display = value ? "block" : "none";
+  try {
+    document.getElementById(id).style.display = value ? "block" : "none";
+  } catch (error) {
+    return;
+  }
 };
 
 onReady(() => {
