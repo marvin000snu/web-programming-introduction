@@ -242,7 +242,7 @@ const showOnPage = (
 
   const { sub, main, billCount, billRate } = scoreData;
 
-  addVoteResultOnPage(billCount, billRate, leadLawData);
+  // addVoteResultOnPage(billCount, billRate, leadLawData);
   addAttendResultOnPage(mainAttendData, subAttendData, main, sub);
 
   return { main, sub };

@@ -46,6 +46,7 @@ window.onload = () => {
       div.appendChild(tagElement);
     }
   };
+  tagitemPreview();
   // 브라우저 인포 받아오는 부분
   navigator.sayswho = (function () {
     var ua = navigator.userAgent,
@@ -65,11 +66,13 @@ window.onload = () => {
     M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, "-?"];
     if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
     console.log(M);
-    return M[0]
-    
+    return M[0];
   })();
-  if(navigator.sayswho!="Chrome"){
-    alert("POLISEE는 크롬 브라우저에 최적화 되어있습니다! \n"+navigator.sayswho+" 에서는 화면이 정상적으로 표시되지 않을 수 있습니다.")
+  if (navigator.sayswho != "Chrome") {
+    alert(
+      "POLISEE는 크롬 브라우저에 최적화 되어있습니다! \n" +
+        navigator.sayswho +
+        " 에서는 화면이 정상적으로 표시되지 않을 수 있습니다."
+    );
   }
-  tagitemPreview();
 };

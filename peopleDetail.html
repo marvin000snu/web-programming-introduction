@@ -102,7 +102,7 @@
             return [
               t["sub-attend-rate"] * 100,
               t["main-attend-rate"] * 100,
-              id===idx+301 ? "#01b9b4":"#B3B3B3"
+              `point { size: ${id===idx+301 ? 18:6}; shape-type: ${id===idx+301 ? "star":"circle"}; fill-color: ${id===idx+301 ? "#01b9b4":"#B3B3B3"};  }`
             ];
           });
           var data = google.visualization.arrayToDataTable([
@@ -135,34 +135,6 @@
     <script type="text/javascript">
       google.charts.load("current", { packages: ["corechart"] });
       google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ["상임위원회 출석률", "본회의 출석률"],
-          [50, 100],
-          [4, 5.5],
-          [11, 14],
-          [4, 5],
-          [3, 3.5],
-          [6.5, 7]
-        ]);
-
-        var options = {
-          width: 600,
-          height: 400,
-          title: "의원님들의 법안랭킹",
-          hAxis: { title: "법률안 제출 수", minValue: 0, maxValue: 150 },
-          vAxis: { title: "법률안 통과율", minValue: 0, maxValue: 100 },
-          legend: "none",
-          backgroundColor: "#FEFDF9"
-        };
-
-        var chart = new google.visualization.ScatterChart(
-          document.getElementById("chart_div2")
-        );
-
-        chart.draw(data, options);
-      }
     </script>
   </head>
 
@@ -213,14 +185,6 @@
           </div>
           <div id="chartContainer">
             <div id="chart_div"></div>
-          </div>
-          <div class="semibox">
-            <div id="subtitle">법안 점수</div>
-            <div class="paragraph" id="lawScore1"></div>
-            <div class="paragraph" id="lawScore2"></div>
-          </div>
-          <div id="chartContainer">
-            <div id="chart_div2"></div>
           </div>
         </div>
       </div>
