@@ -54,7 +54,9 @@ const searchByKeyword = async (keyword) => {
   window.history.replaceState(
     undefined,
     undefined,
-    `lawsearch.html?keyword=${keyword}`
+    keyword == undefined
+      ? `lawsearch.html`
+      : `lawsearch.html?keyword=${keyword}`
   );
   await requestLawData(keyword)
     .then((data) => {
@@ -72,10 +74,19 @@ const searchByKeyword = async (keyword) => {
       showOnPage(lawData);
     })
     .catch((err) => console.error(err));
+
+  if (keyword !== undefined) {
+    try {
+      const infoTitle = document.getElementById("info_title");
+      infoTitle.remove();
+    } catch (err) {
+      //
+    }
+  }
 };
 
 const showOnPage = async (lawData) => {
-  const maxAmount = 12; // 수정
+  const maxAmount = lawData.length; // 수정
   const div = document.getElementById("cardBox");
 
   // 검색 결과가 없을 경우

@@ -32,6 +32,7 @@ const getCurrentData = async (keyword, id) => {
  * @returns
  */
 export const createInfoText = (infoList, div) => {
+  /*
   // Modify this after presentation
   const text = ["누가?", "어디서?", "언제?", "한줄요약"];
   for (let i = 0; i < infoList.length; i++) {
@@ -53,9 +54,9 @@ export const createInfoText = (infoList, div) => {
 
     div.appendChild(element);
   }
-
+  */
   const summaryElement = document.getElementById("summary");
-  summaryElement.innerHTML = infoList[3];
+  summaryElement.innerHTML = `${infoList[3]}에 대한 법률안 이에요.`;
 
   return;
 };
