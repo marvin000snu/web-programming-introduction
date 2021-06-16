@@ -1,8 +1,28 @@
 import { createVoteResultCanvas, colorSet, koreanStatusValue } from "./draw.js";
-import { testLawData, testVoteResult } from "./testData.js";
 import { getParameter } from "./peopleDetail.js";
 import { getHashTag, getLawDataByID, requestLawData } from "./lawsearch.js";
 import { requestPeopleData } from "./people.js";
+
+
+const committeeDataCode = {
+  국회운영위원회 : '9700005',
+  법제사법위원회 : '9700006',
+  정무위원회: '9700008',
+  국방위원회: '9700019',
+  환경노동위원회: '9700038',
+  정보위원회: '9700047',
+  기획재정위원회: '9700300',
+  보건복지위원회: '9700341',
+  여성가족위원회: '9700342',
+  국토교통위원회: '9700407',
+  농림축산식품해상수산위원회: '9700408',
+  외교통일위원회: '9700409',
+  과학기술정보방송통신위원회: '9700479',
+  행정안전위원회: '9700480',
+  산업통상자원중소벤처기업위원회: '9700481',
+  교육위원회: '9700512',
+  문화체육관광위원회: '9700513',
+}
 
 // 제안한 사람들에서, 한줄에 표시할 개수
 const ITEM_AMOUNT = 10;
@@ -56,7 +76,7 @@ export const createInfoText = (infoList, div) => {
   }
   */
   const summaryElement = document.getElementById("summary");
-  summaryElement.innerHTML = `${infoList[3]}에 대한 법률안 이에요.`;
+  summaryElement.innerHTML = `${infoList[3]}에 대한 법률안이에요.`;
 
   return;
 };
@@ -289,6 +309,7 @@ const generatePage = async () => {
     disagree,
     drop,
     generalResult,
+    group,
     lead,
     notattend,
     passGubn,
@@ -298,6 +319,7 @@ const generatePage = async () => {
     summary,
     team,
   } = lawData;
+  console.log('=>', lawData);
   const hashtag = await getHashTag(billId);
   const teamList = team.split(",");
   const whoCreate = `${lead}의원 외 ${teamList.length}인`;
@@ -305,7 +327,9 @@ const generatePage = async () => {
   const titleElement = document.getElementById("title");
   titleElement.innerHTML = billName;
   const div = document.getElementById("infoBox");
-
+  const img = document.getElementById("committeeImage");
+  img.setAttribute("src", `../img/${committeeDataCode[group]}_committee.png`)
+  img.setAttribute("style", "width: 130px; height: 165px;")
   createInfoText(infoList, div);
   createStatus(lead, whoCreate, proposeDt, procStageCd);
   createProposedPeopleGraphic(team.split(","));
