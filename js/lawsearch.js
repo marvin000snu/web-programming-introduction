@@ -2,6 +2,14 @@ import { addCategory } from "./people.js";
 import { getParameter } from "./peopleDetail.js";
 import { committeeData, statusData } from "./tagData.js";
 
+export const getLawDataByHashtag = async (hashTag) => {
+  return $.ajax({
+    url: `http://3.34.197.145:3002/api/law/searchByHashtag/${hashTag}`,
+    type: "GET",
+    dataType: "json",
+  });
+};
+
 /**
  *
  * @param {string} keyword
@@ -40,25 +48,45 @@ export const getHashTag = async (billId) => {
 };
 
 const searchByKeyword = async (keyword) => {
+  let lawData = [];
   // window.location.replace(`./lawsearch.html?keyword=${keyword}`)
   removePrevResult();
   window.history.replaceState(
     undefined,
     undefined,
-    `lawsearch.html?keyword=${keyword}`
+    keyword == undefined
+      ? `lawsearch.html`
+      : `lawsearch.html?keyword=${keyword}`
   );
   await requestLawData(keyword)
     .then((data) => {
-      showOnPage(data);
+      lawData = data;
     })
     .catch((err) => {
       console.error(err);
       return;
     });
+  await getLawDataByHashtag(keyword)
+    .then((data) => {
+      data.forEach((e) => {
+        lawData.push(e);
+      });
+      showOnPage(lawData);
+    })
+    .catch((err) => console.error(err));
+
+  if (keyword !== undefined) {
+    try {
+      const infoTitle = document.getElementById("info_title");
+      infoTitle.remove();
+    } catch (err) {
+      //
+    }
+  }
 };
 
 const showOnPage = async (lawData) => {
-  const maxAmount = 12; // 수정
+  const maxAmount = lawData.length; // 수정
   const div = document.getElementById("cardBox");
 
   // 검색 결과가 없을 경우
@@ -178,16 +206,10 @@ const tagSearch = async () => {
 };
 
 const initializeView = () => {
+  let lawData = [];
+  const div = document.getElementById("cardBox");
   const keyword = getParameter("keyword");
-  requestLawData(keyword).then((data) => {
-    const div = document.getElementById("cardBox");
-    data.forEach((element) => {
-      const card = createCard(element).then((res) => {
-        div.appendChild(res);
-      });
-      //div.appendChild(card);
-    });
-  });
+  searchByKeyword(keyword);
 };
 
 window.onload = () => {

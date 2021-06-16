@@ -46,6 +46,7 @@ img#logo {
   margin-top: 30px;
   width: 84.67px;
   height: 60px;
+  cursor: pointer;
 }
 
 #content {
@@ -133,7 +134,7 @@ blockquote {
 }
 
 p#title {
-  width: 700px;
+  width: 600px;
   font-size: 30px;
   line-height: 40px;
   font-weight: 500;
@@ -152,17 +153,16 @@ img#personImage {
 }
 
 p#whoCreate {
-  display: inline-block;
-  position: relative;
-  font-size: 19.5px;
-  font-weight: 200;
-  line-height: 3px;
-  margin-bottom: -5px;
-  margin-left: -188px;
-  margin-top: 18px;
-  color: #757575;
+  width: 176px;
+  height: 100px;
+  display: flex;
+  font-size: 19px;
   font-weight: 500;
-  letter-spacing: -1px;
+  line-height: 22px;
+  margin-left: -205px;
+  color: #757575;
+  text-align: center;
+  margin-top: 7.5px;
 }
 
 img#committeeImage {
@@ -172,14 +172,14 @@ img#committeeImage {
 }
 
 #proposeDate {
-  font-size: 15px;
   position: relative;
-  left: 50px;
+  font-size: 15px;
+  line-height: 22px;
+  text-align: center;
 }
 
 #statusbox {
   position: relative;
-  left: 10px;
   display: inline-block;
   background: #e6e7e4;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -199,7 +199,6 @@ img#committeeImage {
 
 #date {
   position: relative;
-  left: 10px;
   font-size: 15px;
   line-height: 22px;
   text-align: center;
@@ -244,6 +243,13 @@ pre {
   font-size: 18px;
   line-height: 20px;
   white-space: pre-wrap;
+  margin-top: -50px;
+  margin-bottom: -50px;
+}
+
+p#paragraphTitle {
+  font-size: 25px;
+  font-weight: bold;
 }
 
 #paragraphView {

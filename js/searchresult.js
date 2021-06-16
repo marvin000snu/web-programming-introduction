@@ -32,9 +32,9 @@ const getCurrentData = async (keyword, id) => {
  * @returns
  */
 export const createInfoText = (infoList, div) => {
+  /*
   // Modify this after presentation
   const text = ["누가?", "어디서?", "언제?", "한줄요약"];
-  console.log(infoList);
   for (let i = 0; i < infoList.length; i++) {
     const element = document.createElement("p");
     element.setAttribute("class", `info`);
@@ -54,9 +54,9 @@ export const createInfoText = (infoList, div) => {
 
     div.appendChild(element);
   }
-
+  */
   const summaryElement = document.getElementById("summary");
-  summaryElement.innerHTML = infoList[3];
+  summaryElement.innerHTML = `${infoList[3]}에 대한 법률안 이에요.`;
 
   return;
 };
@@ -226,11 +226,52 @@ const createVotingResult = (voteResult) => {
 };
 
 const createTextParagraph = (textParagraph) => {
-  const div = document.getElementById("paragraphView");
-  const paragraphContainer = document.createElement("p");
-  paragraphContainer.setAttribute("id", "paragraph");
-  paragraphContainer.innerHTML = "<pre>" + textParagraph + "</pre>";
-  div.appendChild(paragraphContainer);
+
+  let reasonTitle;
+  let reasonText;
+  let paragraphTitle;
+  let paragraphText;
+  let reasonAndParagraphTitle;
+  let reasonAndParagraph;
+
+  reasonTitle = textParagraph.substr(textParagraph.indexOf("제안이유"), 5);
+  reasonText = textParagraph.substring(textParagraph.indexOf("제안이유") + 5, textParagraph.indexOf("주요내용"));
+  paragraphTitle = textParagraph.substr(textParagraph.indexOf("주요내용"), 5);
+  paragraphText = textParagraph.substring(textParagraph.indexOf("주요내용") + 5);
+  reasonAndParagraphTitle = textParagraph.substr(textParagraph.indexOf("제안이유 및 주요내용"), 11);
+  reasonAndParagraph = textParagraph.substring(textParagraph.indexOf("제안이유 및 주요내용") + 11);
+
+
+  if (textParagraph.indexOf("제안이유 및 주요내용") == -1) {
+    const div = document.getElementById("paragraphView");
+
+    const reason_Title = document.createElement("p");
+    reason_Title.setAttribute("id", "paragraphTitle");
+    reason_Title.innerHTML = reasonTitle;
+    const reason = document.createElement("pre");
+    reason.innerHTML = reasonText;
+    const paragraph_Title = document.createElement("p");
+    paragraph_Title.setAttribute("id", "paragraphTitle");
+    paragraph_Title.innerHTML = paragraphTitle;
+    const paragraph = document.createElement("pre");
+    paragraph.innerHTML = paragraphText;
+
+    div.appendChild(reason_Title);
+    div.appendChild(reason);
+    div.appendChild(paragraph_Title);
+    div.appendChild(paragraph);
+  } else {
+    const div = document.getElementById("paragraphView");
+
+    const reasonAndParagraph_Title = document.createElement("p");
+    reasonAndParagraph_Title.setAttribute("id", "paragraphTitle");
+    reasonAndParagraph_Title.innerHTML = reasonAndParagraphTitle
+    const reasonAndParagraph_Text = document.createElement("pre");
+    reasonAndParagraph_Text.innerHTML = reasonAndParagraph;
+
+    div.appendChild(reasonAndParagraph_Title);
+    div.appendChild(reasonAndParagraph_Text);
+  }
 };
 
 /**
@@ -258,9 +299,6 @@ const generatePage = async () => {
     team,
   } = lawData;
   const hashtag = await getHashTag(billId);
-
-  console.log(lawData);
-  console.log(team.split(",").length);
   const teamList = team.split(",");
   const whoCreate = `${lead}의원 외 ${teamList.length}인`;
   const infoList = [whoCreate, "where", proposeDt, hashtag['hash-tag']];

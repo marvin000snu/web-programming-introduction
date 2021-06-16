@@ -85,6 +85,10 @@
                                 style="font-size: 20px"
                                 />
                             <script type="text/javascript">
+                            function searchHandler() {
+                                let keyword = document.getElementById("search").value;
+                                searchByKeyword(keyword);
+                            }
                 $("#search").keydown(function (e) {
                   if (e.keyCode == 13) {
                     e.preventDefault();
@@ -101,6 +105,10 @@
                     <select name="소속위원회" id="소속위원회"></select>
                     <label for="상태">상태</label>
                     <select name="상태" id="상태"></select>
+                </div>
+                <div id="info_title">
+                    <p style="font-weight: bold; font-size: 25px;">이런 법률안도 있어요!</p>
+                    <p style="margin-top: -20px;">새로고침할 때마다 새로운 12개 법률안을 보여드려요.</p>
                 </div>
                 <div id="cardBox"></div>
             </div>

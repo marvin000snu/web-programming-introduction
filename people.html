@@ -44,6 +44,10 @@
                         <div id="inputWrapper">
                             <input type="text" id="search" placeholder="관심있는 의원을 검색해보세요!" style="font-size: 20px;" />
                             <script type="text/javascript">
+                             function searchHandler() {
+                                let keyword = document.getElementById("search").value;
+                                searchPeopleByKeyword(keyword);
+                            }
                                 $('#search').keydown(function(e) {
                                     if (e.keyCode == 13) {
                                         e.preventDefault();

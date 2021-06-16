@@ -13,6 +13,9 @@ const searchPeopleByKeyword = async (keyword) => {
       if (d.name == keyword) {
         result.push(d);
       }
+      if (d.name.includes(keyword)) {
+        result.push(d);
+      }
     });
   });
   // 중복되는 의원이 없는 경우
@@ -45,6 +48,7 @@ export const createPeopleCard = (data) => {
   const imgCover = document.createElement("div");
   const inner = document.createElement("p");
   const peopleCardImageCover = document.createElement("div");
+
   peopleCardImageCover.setAttribute("class", "peopleCardImageCover");
   peopleCardImageCover.setAttribute(
     "style",

@@ -45,6 +45,7 @@ img#logo {
   margin-top: 30px;
   width: 84.67px;
   height: 60px;
+  cursor: pointer;
 }
 
 #subtitle2 {
@@ -225,6 +226,7 @@ input#search {
 }
 
 .description {
+  margin-top: 30px;
   align-items: center;
   justify-content: space-between;
   display: flex;

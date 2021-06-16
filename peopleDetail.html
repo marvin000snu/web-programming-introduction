@@ -24,69 +24,59 @@
       rel="stylesheet"
     />
     <script>
-      // ES6?
-      window.addEventListener("load", async function () {
-        const rate = await dataView();
-        const { main, sub } = rate;
+        // ES6?
+        window.addEventListener("load", async function () {
+            const { rate, name } = await dataView();
+            const { main, sub } = rate;
 
-        var canvas = document.getElementById("chart");
-        var ctx = canvas.getContext("2d");
-        const data = {
-          labels: [
-            "본회의 출석률",
-            "상임위원회 출석률",
-            //"발의 법안수 순위",
-            "가결률"
-          ],
-          datasets: [
-            {
-              label: "OOO 의원",
-              data: [
-                main * 100,
-                sub * 100,
-                //90,
-                81
-              ],
-              fill: true,
-              backgroundColor: "rgba(255, 99, 132, 0.2)",
-              borderColor: "rgb(255, 99, 132)",
-              pointBackgroundColor: "rgb(255, 99, 132)",
-              pointBorderColor: "#fff",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgb(255, 99, 132)"
-            },
-            {
-              label: "의원 평균치",
-              data: [
-                28,
-                48,
-                //40,
-                19
-              ],
-              fill: true,
-              backgroundColor: "rgba(54, 162, 235, 0.2)",
-              borderColor: "rgb(54, 162, 235)",
-              pointBackgroundColor: "rgb(54, 162, 235)",
-              pointBorderColor: "#fff",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgb(54, 162, 235)"
-            }
-          ]
-        };
-        const config = {
-          type: "radar",
-          data: data,
-          options: {
-            responsive: false,
-            elements: {
-              line: {
-                borderWidth: 3
-              }
-            }
-          }
-        };
-        new Chart(ctx, config);
-      });
+            var canvas = document.getElementById("chart");
+            var ctx = canvas.getContext("2d");
+            const data = {
+                labels: [
+                    "본회의 출석률",
+                    "상임위원회 출석률",
+                    //"발의 법안수 순위",
+                    "가결률",
+                ],
+                datasets: [
+                    {
+                        label: `${name} 의원`,
+                        data: [main * 100, sub * 100, 81],
+                        fill: true,
+                        backgroundColor: "rgba(255, 99, 132, 0.2)",
+                        borderColor: "rgb(255, 99, 132)",
+                        pointBackgroundColor: "rgb(255, 99, 132)",
+                        pointBorderColor: "#fff",
+                        pointHoverBackgroundColor: "#fff",
+                        pointHoverBorderColor: "rgb(255, 99, 132)"
+                    },
+                    {
+                        label: "의원 평균치",
+                        data: [82, 80, 18],
+                        fill: true,
+                        backgroundColor: "rgba(54, 162, 235, 0.2)",
+                        borderColor: "rgb(54, 162, 235)",
+                        pointBackgroundColor: "rgb(54, 162, 235)",
+                        pointBorderColor: "#fff",
+                        pointHoverBackgroundColor: "#fff",
+                        pointHoverBorderColor: "rgb(54, 162, 235)"
+                    }
+                ]
+            };
+            const config = {
+                type: "radar",
+                data: data,
+                options: {
+                    responsive: false,
+                    elements: {
+                        line: {
+                            borderWidth: 3
+                        }
+                    }
+                }
+            };
+            new Chart(ctx, config);
+        });
     </script>
     <script
       type="text/javascript"
