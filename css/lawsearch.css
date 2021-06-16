@@ -53,6 +53,7 @@ img#logo {
   margin-top: 30px;
   width: 84.67px;
   height: 60px;
+  cursor: pointer;
 }
 
 #subtitle {
@@ -261,4 +262,11 @@ p#warning-message {
   text-align: center;
   width: 50%;
   font-size: 25px;
+}
+
+#info_title {
+  width: 1240px;
+  margin-left: 15px;
+  margin-top: 30px;
+  margin-bottom: -100px;
 }

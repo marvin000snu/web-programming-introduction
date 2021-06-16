@@ -51,6 +51,7 @@ img#logo {
   margin-top: 30px;
   width: 84.67px;
   height: 60px;
+  cursor: pointer;
 }
 
 #headBtnBoxLeft {
