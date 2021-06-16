@@ -112,6 +112,7 @@ export const createCard = async (data) => {
     proposeDt,
     summary,
     team,
+    group
   } = data;
 
   const cardElement = document.createElement("div");
@@ -135,7 +136,7 @@ export const createCard = async (data) => {
   const paragraph =
     `누가? ${whoCreate}` +
     "</br>" +
-    `어디서?` +
+    `어디서? ${group}` +
     "</br>" +
     `언제? ${proposeDt}` +
     "</br>" +

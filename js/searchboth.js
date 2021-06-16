@@ -111,6 +111,8 @@ const showOnPage = async (lawData, peopleData) => {
         const currentData = peopleData[i];
         console.log(currentData);
         const peopleCard = createPeopleCard(currentData);
+        console.log("currentData:")
+        console.log(currentData)
         peopleCardDiv.appendChild(peopleCard);
       }
     } catch (err) {
