@@ -97,7 +97,7 @@ const getAttendMessage = (rate) => {
   const percent = rate * 100;
   console.log(percent);
   if (percent == 100) {
-    message = "올출석한 그대는 진정한 성실맨!";
+    message = "그대는 진정한 성실맨!";
   } else if (90 <= percent < 100) {
     message = "그래도 기본은 하셨습니다";
   } else if (60 <= percent < 90) {
@@ -151,7 +151,7 @@ const addAttendResultOnPage = (
 
   const div1 = document.getElementById("attendScore1");
   console.log(div1);
-  /*
+  
   div1.innerHTML =
     `상임위원회: ${getAttendMessage(subRate)}` +
     "<br />" +
@@ -159,7 +159,7 @@ const addAttendResultOnPage = (
     `/ ${subAttendCount.home}번 병가` +
     `/ ${subAttendCount.work}번 청가` +
     `/ ${subAttendCount.notAttend}번 결석했어요.`;
-  */
+  
   const div2 = document.getElementById("attendScore2");
   div2.innerHTML =
     `본회의: ${getAttendMessage(mainRate)}` +
