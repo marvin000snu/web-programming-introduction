@@ -246,7 +246,6 @@ input#search {
 .peopleCardImage {
   width: 150px;
   height: 150px;
-  background-color: red;
 }
 
 div#boxCover {
@@ -260,7 +259,7 @@ div#boxCover {
 
 div#boxContainer {
   width: 150px;
-  height: 192px;
+  height: 220px;
   margin-top: 30px;
   padding-left: 25px;
   padding-right: 25px;
@@ -305,3 +304,23 @@ p#warning-message {
   font-size: 25px;
 }
 
+.peopleCardImage{
+  width:150px;
+  height:150px;
+}
+
+.peopleCardImageCover{
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items:center
+}
+
+p#peopleName {
+  height: 30px;
+  text-align: center;
+  display: inline-block;
+}

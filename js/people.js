@@ -63,7 +63,21 @@ export const createPeopleCard = (data) => {
 
   const image = new Image();
   image.setAttribute("class", "peopleCardImage");
-  image.src = `../img/img300/${name}.png`;
+  if(id===497){
+    image.src = `../img/img300/${"이수진1"}.png`;
+
+  }else   if(id===498){
+    image.src = `../img/img300/${"이수진2"}.png`;
+
+  }else   if(id===335){
+    image.src = `../img/img300/${"김병욱1"}.png`;
+
+  }else   if(id===336){
+    image.src = `../img/img300/${"김병욱2"}.png`;
+
+  }else{
+    image.src = `../img/img300/${name}.png`;
+  }
   image.addEventListener("click", () => {
     location.href = `./peopleDetail.html?id=${id}`;
   });

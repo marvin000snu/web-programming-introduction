@@ -2,7 +2,7 @@ const requestPeopleData = async () => {
   return $.ajax({
     url: "http://3.34.197.145:3002/api/people/getAllPeople", // 클라이언트가 요청을 보낼 서버의 URL 주소
     type: "GET", // HTTP 요청 방식(GET, POST)
-    dataType: "json", // 서버에서 보내줄 데이터의 타입
+    dataType: "json" // 서버에서 보내줄 데이터의 타입
   });
 };
 
@@ -10,7 +10,7 @@ const requestMainAttendData = async (id) => {
   return $.ajax({
     url: `http://3.34.197.145:3002/api/people/getMainAttendData/${id}`,
     type: "GET",
-    dataType: "json",
+    dataType: "json"
   });
 };
 
@@ -18,7 +18,7 @@ const requestSubAttendData = async (id) => {
   return $.ajax({
     url: `http://3.34.197.145:3002/api/people/getSubAttendData/${id}`,
     type: "GET",
-    dataType: "json",
+    dataType: "json"
   });
 };
 
@@ -207,7 +207,7 @@ const showOnPage = (
     무소속: "#d2d2d2",
   };
 
-  const { name, party, local, count, committee } = peopleData;
+  const { name, party, local, count, committee, id } = peopleData;
   // FIXME: 중복되는 코드 정리할 방법을 생각해 볼 것!
   const nameParagraph = `${name} (${party}) / ${local}`;
   const nameElement = document.getElementById("name");
@@ -220,6 +220,23 @@ const showOnPage = (
     "style",
     `background-color:${partyObj[party]};`
   );
+  
+  if (id === 497) {
+    document.getElementById("circleImg").src = `./img/img300/${"이수진1"}.png`;
+  } else if (id === 498) {
+    document.getElementById("circleImg").src = `./img/img300/${"이수진2"}.png`;
+  } else if (id === 335) {
+    document.getElementById("circleImg").src = `./img/img300/${"김병욱1"}.png`;
+  } else if (id === 336) {
+    document.getElementById("circleImg").src = `./img/img300/${"김병욱2"}.png`;
+  } else {
+    document.getElementById("circleImg").src = `./img/img300/${name}.png`;
+  }
+  peopleParagraphElement.innerHTML = peopleParagraph;
+
+  const mainAttendRate = peopleData["main-attend-rate"];
+  const subAttendRate = peopleData["sub-attend-rate"];
+  console.log(mainAttendRate, subAttendRate);
   document.getElementById("circleImg").src = `./img/img300/${name}.png`;
   peopleParagraphElement.innerHTML = peopleParagraph;
 
